@@ -30,8 +30,8 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 h-20 bg-luxury-black/95 backdrop-blur border-b border-luxury-gold/20">
       <div className="section-padding h-full flex items-center justify-between gap-4">
         <NavLink to="/" className="flex items-center gap-3 shrink-0" onClick={() => setMenuOpen(false)}>
-          <img src={`${import.meta.env.BASE_URL}images/logo.png`} alt={siteConfig.name} className="h-12 w-12 object-contain rounded-full" />
-          <span className="font-display text-xl md:text-2xl text-luxury-cream tracking-wide">
+          <img src={`${import.meta.env.BASE_URL}images/logo-round.png`} alt={siteConfig.name} className="h-11 w-11 md:h-12 md:w-12 object-cover rounded-full shrink-0" />
+          <span className="font-display text-xl md:text-2xl text-luxury-cream tracking-wide whitespace-nowrap">
             {siteConfig.name}
           </span>
         </NavLink>

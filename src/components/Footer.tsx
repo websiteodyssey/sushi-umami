@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { InstagramIcon, FacebookIcon } from "./SocialIcons";
 import { siteConfig } from "../config/siteConfig";
 
@@ -9,14 +9,14 @@ const Footer = () => {
 
   return (
     <footer className="bg-luxury-black text-luxury-cream">
-      <div className="section-padding py-16 grid grid-cols-1 md:grid-cols-3 gap-12">
+      <div className="section-padding py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
         <div>
           <div className="flex items-center gap-3 mb-4">
             <img
-  src={`${import.meta.env.BASE_URL}images/logo.png`}
-  alt={siteConfig.name}
-  className="h-12 w-12 object-contain rounded-full"
-/>
+              src={`${import.meta.env.BASE_URL}images/logo-round.png`}
+              alt={siteConfig.name}
+              className="h-12 w-12 object-cover rounded-full shrink-0"
+            />
             <span className="font-display text-2xl text-luxury-cream">{siteConfig.name}</span>
           </div>
           <p className="font-body text-luxury-champagne/80 leading-relaxed">
@@ -61,6 +61,22 @@ const Footer = () => {
             <li className="flex items-center gap-3">
               <Mail size={18} className="text-luxury-gold shrink-0" />
               <a href={`mailto:${siteConfig.email}`} className="hover:text-luxury-gold transition-colors">{siteConfig.email}</a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="font-display text-lg text-luxury-gold uppercase tracking-luxury mb-4">
+            {t("common.openingHours")}
+          </h3>
+          <ul className="space-y-3 font-body text-luxury-cream/90">
+            <li className="flex items-center gap-3">
+              <Clock size={18} className="text-luxury-gold shrink-0" />
+              <span>{t("common.lunch")} : {siteConfig.hours.lunch}</span>
+            </li>
+            <li className="flex items-center gap-3">
+              <Clock size={18} className="text-luxury-gold shrink-0" />
+              <span>{t("common.dinner")} : {siteConfig.hours.dinner}</span>
             </li>
           </ul>
         </div>

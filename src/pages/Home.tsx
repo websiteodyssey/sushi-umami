@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Fish, Sandwich, Flame, Soup, Salad, Shell, IceCream, ArrowRight } from "lucide-react";
 import Carousel from "../components/Carousel";
 import ImageMarquee from "../components/ImageMarquee";
+import Reveal from "../components/Reveal";
 
 const Home = () => {
   const { t } = useTranslation();
@@ -41,16 +42,25 @@ const Home = () => {
         />
         <div className="absolute inset-0 bg-luxury-gradient pointer-events-none" />
         <div className="relative z-10 text-center px-6">
-          <p className="text-luxury-champagne text-sm md:text-lg tracking-luxury uppercase font-body mb-4">
+          <p
+            className="animate-fade-up text-luxury-champagne text-sm md:text-lg tracking-luxury uppercase font-body mb-4"
+            style={{ animationDelay: "1.4s" }}
+          >
             {t("home.heroSubtitle")}
           </p>
-          <h1 className="text-display-xl md:text-[6rem] font-display text-white leading-none">
+          <h1
+            className="animate-fade-up text-display-xl md:text-[6rem] font-display text-white leading-none"
+            style={{ animationDelay: "1.55s" }}
+          >
             {t("home.heroTitle")}
           </h1>
-          <p className="text-display-md font-display italic text-luxury-gold mt-6">
+          <p
+            className="animate-fade-up text-display-md font-display italic text-luxury-gold mt-6"
+            style={{ animationDelay: "1.7s" }}
+          >
             {t("home.heroTagline")}
           </p>
-          <div className="mt-10">
+          <div className="animate-fade-up mt-10" style={{ animationDelay: "1.85s" }}>
             <Link
               to="/menu"
               className="inline-flex items-center gap-3 bg-luxury-gold text-luxury-black hover:bg-luxury-cream transition-colors font-body uppercase text-sm tracking-luxury px-10 py-4"
@@ -65,7 +75,7 @@ const Home = () => {
       {/* Ambiance marquees */}
       <section className="py-16 md:py-24 lg:py-32 bg-luxury-cream overflow-hidden">
         <div className="section-padding mb-12">
-          <div className="text-center max-w-3xl mx-auto">
+          <Reveal className="text-center max-w-3xl mx-auto">
             <p className="text-luxury-gold text-sm tracking-luxury uppercase font-body mb-4">
               {t("home.ambianceSubtitle")}
             </p>
@@ -73,20 +83,20 @@ const Home = () => {
               {t("home.ambianceTitle")}
             </h2>
             <div className="h-px bg-luxury-gold mx-auto w-20" />
-          </div>
+          </Reveal>
         </div>
         <div className="space-y-6">
           <ImageMarquee images={marqueeImagesA} direction="left" speed={45} />
           <ImageMarquee images={marqueeImagesB} direction="right" speed={50} />
         </div>
-        <div className="section-padding mt-12 text-center">
+        <Reveal className="section-padding mt-12 text-center">
           <Link
             to="/gallery"
             className="inline-block border border-luxury-gold text-luxury-gold hover:bg-luxury-gold hover:text-luxury-black transition-colors font-body uppercase text-sm tracking-luxury px-8 py-4"
           >
             {t("home.ambianceCta")}
           </Link>
-        </div>
+        </Reveal>
       </section>
 
       {/* 7 Universes */}
@@ -98,7 +108,7 @@ const Home = () => {
           className="absolute left-0 top-0 w-[26rem] md:w-[36rem] opacity-50 pointer-events-none select-none"
         />
         <div className="section-padding relative z-10">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <Reveal className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-display-md font-display text-luxury-black mb-4">
               {t("home.universesTitle")}
             </h2>
@@ -106,14 +116,18 @@ const Home = () => {
               {t("home.universesSubtitle")}
             </p>
             <div className="h-px bg-luxury-gold mx-auto mt-6 w-20" />
-          </div>
+          </Reveal>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {universes.map((u) => (
-              <div key={u.title} className="luxury-card p-8 text-center flex flex-col items-center">
+            {universes.map((u, i) => (
+              <Reveal
+                key={u.title}
+                delay={(i % 4) * 100}
+                className="luxury-card p-8 text-center flex flex-col items-center"
+              >
                 <u.icon className="text-luxury-gold mb-4" size={32} />
                 <h3 className="font-display text-xl text-luxury-black mb-2">{u.title}</h3>
                 <p className="font-body text-luxury-gray-dark leading-relaxed">{u.text}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -122,7 +136,7 @@ const Home = () => {
       {/* Gallery preview */}
       <section className="relative py-16 md:py-24 lg:py-32 bg-luxury-black overflow-hidden">
         <div className="section-padding grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
+          <Reveal>
             <p className="text-luxury-gold text-sm tracking-luxury uppercase font-body mb-4">
               {t("home.galleryPreviewSubtitle")}
             </p>
@@ -138,8 +152,8 @@ const Home = () => {
             >
               {t("home.galleryPreviewCta")}
             </Link>
-          </div>
-          <div className="h-80 lg:h-[28rem]">
+          </Reveal>
+          <Reveal className="h-80 lg:h-[28rem]" delay={150}>
             <Carousel
               slides={[
                 { src: `${import.meta.env.BASE_URL}images/interior-1.png`, alt: t("gallery.interior1Alt") },
@@ -147,13 +161,13 @@ const Home = () => {
                 { src: `${import.meta.env.BASE_URL}images/interior-3.png`, alt: t("gallery.interior3Alt") },
               ]}
             />
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* CTA */}
       <section className="py-16 md:py-24 bg-luxury-cream text-center">
-        <div className="section-padding max-w-2xl mx-auto">
+        <Reveal className="section-padding max-w-2xl mx-auto">
           <h2 className="text-display-md font-display text-luxury-black mb-6">
             {t("home.ctaTitle")}
           </h2>
@@ -166,7 +180,7 @@ const Home = () => {
           >
             {t("home.ctaButton")}
           </button>
-        </div>
+        </Reveal>
       </section>
     </div>
   );
