@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600" fill="none">
+  <defs>
+    <radialGradient id="budGrad" cx="35%" cy="35%" r="75%">
+      <stop offset="0%" stop-color="#fdeef1" />
+      <stop offset="100%" stop-color="#dba9b8" />
+    </radialGradient>
+
+    <path id="petalShape" d="M0,0 C -17,-10 -23,-29 -12,-41 C -6,-47 6,-47 12,-41 C 23,-29 17,-10 0,0 Z" />
+
+    <g id="centerLight">
+      <circle cx="0" cy="0" r="5" fill="#e6aab9" />
+      <line x1="0" y1="0" x2="7" y2="-6" stroke="#e6aab9" stroke-width="1.2" />
+      <line x1="0" y1="0" x2="-7" y2="-6" stroke="#e6aab9" stroke-width="1.2" />
+      <line x1="0" y1="0" x2="8" y2="4" stroke="#e6aab9" stroke-width="1.2" />
+      <line x1="0" y1="0" x2="-8" y2="4" stroke="#e6aab9" stroke-width="1.2" />
+      <line x1="0" y1="0" x2="0" y2="9" stroke="#e6aab9" stroke-width="1.2" />
+      <circle cx="7" cy="-6" r="1.4" fill="#f0d4a3" />
+      <circle cx="-7" cy="-6" r="1.4" fill="#f0d4a3" />
+      <circle cx="8" cy="4" r="1.4" fill="#f0d4a3" />
+      <circle cx="-8" cy="4" r="1.4" fill="#f0d4a3" />
+      <circle cx="0" cy="9" r="1.4" fill="#f0d4a3" />
+    </g>
+
+    <g id="blossomLight">
+      <use href="#petalShape" fill="#fdf2f5" transform="rotate(-6)" />
+      <use href="#petalShape" fill="#fdf2f5" transform="rotate(66)" />
+      <use href="#petalShape" fill="#fdf2f5" transform="rotate(140)" />
+      <use href="#petalShape" fill="#fdf2f5" transform="rotate(212)" />
+      <use href="#petalShape" fill="#fdf2f5" transform="rotate(286)" />
+      <use href="#centerLight" />
+    </g>
+    <g id="blossomMed">
+      <use href="#petalShape" fill="#fbe1e8" transform="rotate(4)" />
+      <use href="#petalShape" fill="#fbe1e8" transform="rotate(74)" />
+      <use href="#petalShape" fill="#fbe1e8" transform="rotate(149)" />
+      <use href="#petalShape" fill="#fbe1e8" transform="rotate(218)" />
+      <use href="#petalShape" fill="#fbe1e8" transform="rotate(292)" />
+      <use href="#centerLight" />
+    </g>
+    <g id="blossomDeep">
+      <use href="#petalShape" fill="#f6cdd9" transform="rotate(-10)" />
+      <use href="#petalShape" fill="#f6cdd9" transform="rotate(62)" />
+      <use href="#petalShape" fill="#f6cdd9" transform="rotate(133)" />
+      <use href="#petalShape" fill="#f6cdd9" transform="rotate(207)" />
+      <use href="#petalShape" fill="#f6cdd9" transform="rotate(280)" />
+      <use href="#centerLight" />
+    </g>
+
+    <g id="bud">
+      <circle r="11" fill="url(#budGrad)" />
+    </g>
+
+    <path id="leaf" d="M0,0 C 10,-4 20,-3 28,0 C 20,3 10,4 0,0 Z" fill="#c9d3b7" />
+  </defs>
+
+  <!-- branch -->
+  <path d="M 20 520 C 80 470, 130 430, 190 380 C 250 330, 300 290, 360 240 C 420 190, 470 150, 550 80"
+    stroke="#b6a596" stroke-width="9" stroke-linecap="round" />
+  <path d="M 190 380 C 230 410, 270 430, 310 450" stroke="#b6a596" stroke-width="4" stroke-linecap="round" />
+  <path d="M 360 240 C 390 280, 415 315, 440 350" stroke="#b6a596" stroke-width="4" stroke-linecap="round" />
+  <path d="M 20 520 C 18 495, 17 465, 30 440" stroke="#b6a596" stroke-width="3" stroke-linecap="round" />
+
+  <!-- leaves -->
+  <use href="#leaf" transform="translate(310 450) rotate(20) scale(1.1)" />
+  <use href="#leaf" transform="translate(440 350) rotate(160)" />
+  <use href="#leaf" transform="translate(30 440) rotate(-50) scale(0.85)" />
+
+  <!-- buds -->
+  <use href="#bud" transform="translate(30 440) scale(0.8)" />
+  <use href="#bud" transform="translate(590 50) scale(0.9)" />
+
+  <!-- blossoms -->
+  <use href="#blossomMed" transform="translate(70 500) scale(1.4) rotate(-15)" />
+  <use href="#blossomLight" transform="translate(190 380) scale(1.6) rotate(25)" />
+  <use href="#blossomDeep" transform="translate(310 450) scale(1.3) rotate(-20)" />
+  <use href="#blossomLight" transform="translate(360 240) scale(1.8) rotate(10)" />
+  <use href="#blossomMed" transform="translate(440 350) scale(1.2) rotate(35)" />
+  <use href="#blossomDeep" transform="translate(470 150) scale(1.5) rotate(-30)" />
+  <use href="#blossomLight" transform="translate(550 80) scale(1.0) rotate(15)" />
+  <use href="#blossomMed" transform="translate(250 430) scale(1.0) rotate(-25)" />
+</svg>
