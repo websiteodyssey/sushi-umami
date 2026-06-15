@@ -18,17 +18,17 @@ const Home = () => {
   ];
 
   const marqueeImagesA = [
-    { src: "/images/interior-1.png", alt: t("gallery.interior1Alt") },
-    { src: "/images/interior-2.png", alt: t("gallery.interior2Alt") },
-    { src: "/images/interior-3.png", alt: t("gallery.interior3Alt") },
-    { src: "/images/logo.png", alt: t("common.brand") },
+    { src: `${import.meta.env.BASE_URL}images/interior-1.png`, alt: t("gallery.interior1Alt") },
+    { src: `${import.meta.env.BASE_URL}images/interior-2.png`, alt: t("gallery.interior2Alt") },
+    { src: `${import.meta.env.BASE_URL}images/interior-3.png`, alt: t("gallery.interior3Alt") },
+    { src: `${import.meta.env.BASE_URL}images/logo.png`, alt: t("common.brand") },
   ];
 
   const marqueeImagesB = [
-    { src: "/images/interior-2.png", alt: t("gallery.interior2Alt") },
-    { src: "/images/logo.png", alt: t("common.brand") },
-    { src: "/images/interior-3.png", alt: t("gallery.interior3Alt") },
-    { src: "/images/interior-1.png", alt: t("gallery.interior1Alt") },
+    { src: `${import.meta.env.BASE_URL}images/interior-2.png`, alt: t("gallery.interior2Alt") },
+    { src: `${import.meta.env.BASE_URL}images/logo.png`, alt: t("common.brand") },
+    { src: `${import.meta.env.BASE_URL}images/interior-3.png`, alt: t("gallery.interior3Alt") },
+    { src: `${import.meta.env.BASE_URL}images/interior-1.png`, alt: t("gallery.interior1Alt") },
   ];
 
   return (
@@ -37,7 +37,7 @@ const Home = () => {
       <section className="relative h-screen flex items-center justify-center overflow-hidden bg-luxury-black">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-50"
-          style={{ backgroundImage: "url('/images/interior-3.png')" }}
+          style={{ backgroundImage: `url('${import.meta.env.BASE_URL}images/interior-3.png')` }}
         />
         <div className="absolute inset-0 bg-luxury-gradient pointer-events-none" />
         <div className="relative z-10 text-center px-6">
@@ -92,7 +92,7 @@ const Home = () => {
       {/* 7 Universes */}
       <section className="py-16 md:py-24 lg:py-32 bg-luxury-cream relative overflow-hidden">
         <img
-          src="/images/sakura-branch.svg"
+          src={`${import.meta.env.BASE_URL}images/sakura-branch.svg`}
           alt=""
           aria-hidden="true"
           className="absolute left-0 top-0 w-[26rem] md:w-[36rem] opacity-50 pointer-events-none select-none"
@@ -142,9 +142,9 @@ const Home = () => {
           <div className="h-80 lg:h-[28rem]">
             <Carousel
               slides={[
-                { src: "/images/interior-1.png", alt: t("gallery.interior1Alt") },
-                { src: "/images/interior-2.png", alt: t("gallery.interior2Alt") },
-                { src: "/images/interior-3.png", alt: t("gallery.interior3Alt") },
+                { src: `${import.meta.env.BASE_URL}images/interior-1.png`, alt: t("gallery.interior1Alt") },
+                { src: `${import.meta.env.BASE_URL}images/interior-2.png`, alt: t("gallery.interior2Alt") },
+                { src: `${import.meta.env.BASE_URL}images/interior-3.png`, alt: t("gallery.interior3Alt") },
               ]}
             />
           </div>

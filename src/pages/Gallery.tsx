@@ -6,9 +6,9 @@ const Gallery = () => {
   const { t } = useTranslation();
 
   const images = [
-    { src: "/images/interior-1.png", alt: t("gallery.interior1Alt") },
-    { src: "/images/interior-2.png", alt: t("gallery.interior2Alt") },
-    { src: "/images/interior-3.png", alt: t("gallery.interior3Alt") },
+    { src: `${import.meta.env.BASE_URL}images/interior-1.png`, alt: t("gallery.interior1Alt") },
+    { src: `${import.meta.env.BASE_URL}images/interior-2.png`, alt: t("gallery.interior2Alt") },
+    { src: `${import.meta.env.BASE_URL}images/interior-3.png`, alt: t("gallery.interior3Alt") },
   ];
 
   return (
@@ -16,7 +16,7 @@ const Gallery = () => {
       <PageHero
         title={t("gallery.heroTitle")}
         subtitle={t("gallery.heroSubtitle")}
-        backgroundImage="/images/interior-1.png"
+        backgroundImage={`${import.meta.env.BASE_URL}images/interior-1.png`}
         emoji="🍣"
       />
 

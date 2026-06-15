@@ -16,7 +16,7 @@ const Contact = () => {
       <PageHero
         title={t("contact.heroTitle")}
         subtitle={t("contact.heroSubtitle")}
-        backgroundImage="/images/interior-1.png"
+        backgroundImage={`${import.meta.env.BASE_URL}images/interior-1.png`}
         emoji="🍵"
       />
 

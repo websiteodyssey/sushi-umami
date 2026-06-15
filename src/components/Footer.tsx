@@ -12,7 +12,11 @@ const Footer = () => {
       <div className="section-padding py-16 grid grid-cols-1 md:grid-cols-3 gap-12">
         <div>
           <div className="flex items-center gap-3 mb-4">
-            <img src="/images/logo.png" alt={siteConfig.name} className="h-12 w-12 object-contain rounded-full" />
+            <img
+  src={`${import.meta.env.BASE_URL}images/logo.png`}
+  alt={siteConfig.name}
+  className="h-12 w-12 object-contain rounded-full"
+/>
             <span className="font-display text-2xl text-luxury-cream">{siteConfig.name}</span>
           </div>
           <p className="font-body text-luxury-champagne/80 leading-relaxed">

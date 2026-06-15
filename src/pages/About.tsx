@@ -10,7 +10,7 @@ const About = () => {
       <PageHero
         title={t("about.heroTitle")}
         subtitle={t("about.heroSubtitle")}
-        backgroundImage="/images/interior-2.png"
+        backgroundImage={`${import.meta.env.BASE_URL}images/interior-2.png`}
         emoji="🏮"
       />
 
@@ -20,7 +20,7 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center max-w-6xl mx-auto">
             <div className="relative h-72 md:h-[28rem] luxury-card overflow-hidden order-1 lg:order-none">
               <img
-                src="/images/interior-1.png"
+                src={`${import.meta.env.BASE_URL}images/interior-1.png`}
                 alt={t("gallery.interior1Alt")}
                 className="w-full h-full object-cover"
                 loading="lazy"
@@ -53,7 +53,7 @@ const About = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-0 relative z-0">
           <div className="relative h-64 overflow-hidden group">
             <img
-              src="/images/interior-2.png"
+              src={`${import.meta.env.BASE_URL}images/interior-2.png`}
               alt={t("gallery.interior2Alt")}
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               loading="lazy"
@@ -62,7 +62,7 @@ const About = () => {
           </div>
           <div className="relative h-64 overflow-hidden group">
             <img
-              src="/images/interior-3.png"
+              src={`${import.meta.env.BASE_URL}images/interior-3.png`}
               alt={t("gallery.interior3Alt")}
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               loading="lazy"
@@ -71,7 +71,7 @@ const About = () => {
           </div>
           <div className="relative h-64 overflow-hidden group">
             <img
-              src="/images/interior-1.png"
+              src={`${import.meta.env.BASE_URL}images/interior-1.png`}
               alt={t("gallery.interior1Alt")}
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               loading="lazy"
@@ -117,7 +117,7 @@ const About = () => {
             </div>
             <div className="relative h-72 md:h-[28rem] luxury-card overflow-hidden">
               <img
-                src="/images/interior-3.png"
+                src={`${import.meta.env.BASE_URL}images/interior-3.png`}
                 alt={t("gallery.interior3Alt")}
                 className="w-full h-full object-cover"
                 loading="lazy"

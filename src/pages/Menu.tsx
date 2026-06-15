@@ -32,7 +32,7 @@ const Menu = () => {
       <PageHero
         title={t("menu.heroTitle")}
         subtitle={t("menu.heroSubtitle")}
-        backgroundImage="/images/interior-3.png"
+        backgroundImage={`${import.meta.env.BASE_URL}images/interior-3.png`}
         emoji="🍜"
       />
 
