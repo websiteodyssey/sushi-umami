@@ -14,7 +14,9 @@ import Contact from "./pages/Contact";
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // Jump instantly on route change (CSS scroll-behavior: smooth would otherwise
+    // animate a full scroll up from the previous position).
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
   }, [pathname]);
   return null;
 };

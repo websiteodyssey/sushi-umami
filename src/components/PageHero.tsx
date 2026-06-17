@@ -1,4 +1,5 @@
 import Ornament from "./Ornament";
+import SpinningSeal from "./SpinningSeal";
 
 interface PageHeroProps {
   title: string;
@@ -17,6 +18,9 @@ const PageHero = ({ title, subtitle, backgroundImage }: PageHeroProps) => {
       )}
       <div className="hero-overlay absolute inset-0 pointer-events-none" />
       <div className="frame-inset" />
+      <div className="hidden md:block absolute bottom-8 right-8 z-10 w-24 lg:w-28 h-24 lg:h-28 animate-fade-up" style={{ animationDelay: "0.5s" }}>
+        <SpinningSeal />
+      </div>
       <div className="relative z-10 text-center px-6">
         <p className="animate-fade-up text-luxury-champagne text-xs md:text-sm tracking-luxury-wide uppercase font-body mb-5" style={{ animationDelay: "0.05s" }}>
           {subtitle}

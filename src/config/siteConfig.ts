@@ -10,8 +10,5 @@ export const siteConfig = {
     lunch: "12h00 - 14h30",
     dinner: "19h00 - 22h30",
   },
-  social: {
-    instagram: "https://instagram.com/sushiumami",
-  },
   mapsUrl: "https://maps.google.com/?q=7+Rue+de+l'Hôtel+de+Ville,+44000+Nantes",
 };

@@ -2,6 +2,8 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { Fish, Sandwich, Flame, Soup, Salad, Shell, IceCream, ArrowRight, ChevronDown } from "lucide-react";
 import ImageMarquee from "../components/ImageMarquee";
+import TextMarquee from "../components/TextMarquee";
+import SpinningSeal from "../components/SpinningSeal";
 import Reveal from "../components/Reveal";
 import Ornament from "../components/Ornament";
 import SectionHeading from "../components/SectionHeading";
@@ -54,7 +56,6 @@ const Home = () => {
         <div className="hero-overlay absolute inset-0 pointer-events-none" />
         <div className="absolute inset-0 bg-luxury-black/35 pointer-events-none" />
         <div className="gold-halo absolute inset-0 pointer-events-none animate-fade-up" style={{ animationDelay: "1.4s" }} />
-        <div className="frame-inset" />
 
         {/* Vertical side captions */}
         <span className="hidden lg:block absolute left-8 top-1/2 -translate-y-1/2 [writing-mode:vertical-rl] rotate-180 text-luxury-champagne/60 text-xs tracking-luxury-wide uppercase font-body">
@@ -67,7 +68,7 @@ const Home = () => {
         <div className="relative z-10 text-center px-6 max-w-5xl">
           <div className="animate-fade-up flex items-center justify-center gap-4 mb-7" style={{ animationDelay: "1.3s" }}>
             <span className="h-px w-12 md:w-20 bg-gradient-to-r from-transparent to-luxury-gold" />
-            <p className="text-luxury-champagne text-xs md:text-sm tracking-luxury-wide uppercase font-body whitespace-nowrap">
+            <p className="text-luxury-champagne text-xs md:text-sm tracking-luxury-wide uppercase font-accent whitespace-nowrap">
               {t("home.heroSubtitle")}
             </p>
             <span className="h-px w-12 md:w-20 bg-gradient-to-l from-transparent to-luxury-gold" />
@@ -98,6 +99,11 @@ const Home = () => {
           </div>
         </div>
 
+        {/* Spinning gold seal */}
+        <div className="hidden md:block absolute bottom-10 right-10 z-10 w-28 lg:w-32 h-28 lg:h-32 animate-fade-up" style={{ animationDelay: "2s" }}>
+          <SpinningSeal />
+        </div>
+
         {/* Scroll cue */}
         <div className="animate-fade-up absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2" style={{ animationDelay: "2.2s" }}>
           <span className="text-luxury-champagne/60 text-[0.65rem] tracking-luxury uppercase font-body">
@@ -107,8 +113,13 @@ const Home = () => {
         </div>
       </section>
 
+      {/* ===================== CATEGORY MARQUEE ===================== */}
+      <section className="bg-luxury-black border-b border-luxury-gold/20 py-5">
+        <TextMarquee items={universes.map((u) => u.title)} speed={36} />
+      </section>
+
       {/* ===================== STAT STRIP ===================== */}
-      <section className="bg-luxury-ink grain relative border-y border-luxury-gold/15">
+      <section className="animate-aurora bg-gradient-to-br from-luxury-emerald-deep via-luxury-emerald to-luxury-emerald-deep grain relative border-y border-luxury-gold/25">
         <div className="section-padding py-10 md:py-14">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6">
             {stats.map((s, i) => (
@@ -118,7 +129,7 @@ const Home = () => {
                 className="text-center relative md:[&:not(:last-child)]:after:content-[''] md:after:absolute md:after:right-0 md:after:top-1/2 md:after:-translate-y-1/2 md:after:h-12 md:after:w-px md:after:bg-luxury-gold/20"
               >
                 <p className="font-display text-5xl md:text-6xl text-gold-foil leading-none">{s.value}</p>
-                <p className="font-body uppercase tracking-luxury text-xs text-luxury-champagne/70 mt-3">{s.label}</p>
+                <p className="font-accent uppercase tracking-luxury text-xs text-luxury-champagne/70 mt-3">{s.label}</p>
               </Reveal>
             ))}
           </div>
@@ -158,6 +169,12 @@ const Home = () => {
 
       {/* ===================== 7 UNIVERSES ===================== */}
       <section className="emerald-wash py-16 md:py-24 lg:py-32 bg-luxury-ink grain relative overflow-hidden">
+        <span className="hidden md:block absolute top-28 left-[7%] animate-float" aria-hidden="true">
+          <span className="block h-2.5 w-2.5 rotate-45 bg-luxury-gold/25" />
+        </span>
+        <span className="hidden md:block absolute bottom-24 right-[10%] animate-float" style={{ animationDelay: "1.4s" }} aria-hidden="true">
+          <span className="block h-2 w-2 rotate-45 bg-luxury-gold/20" />
+        </span>
         <div className="section-padding relative z-10">
           <Reveal className="mb-10 md:mb-16">
             <SectionHeading
@@ -187,7 +204,7 @@ const Home = () => {
             ))}
             <Reveal
               delay={(universes.length % 4) * 100}
-              className="group p-8 flex flex-col items-start justify-center border border-luxury-gold/30 bg-luxury-gold/[0.04] hover:bg-luxury-gold/10 transition-colors"
+              className="hover-bounce group p-8 flex flex-col items-start justify-center border border-luxury-gold/30 bg-luxury-gold/[0.04] hover:bg-luxury-gold/10 transition-colors"
             >
               <Link to="/menu" className="flex flex-col gap-4 w-full h-full justify-center">
                 <span className="font-display text-2xl text-luxury-cream leading-tight">{t("home.universesCardTitle")}</span>
@@ -204,9 +221,13 @@ const Home = () => {
       {/* ===================== FINAL CTA ===================== */}
       <section className="emerald-wash relative py-16 md:py-24 lg:py-32 bg-luxury-ink grain text-center overflow-hidden">
         <ParallaxBg src={`${import.meta.env.BASE_URL}images/bar.webp`} className="opacity-15" />
+        <div className="animate-aurora absolute inset-0 bg-gradient-to-br from-luxury-emerald-deep/50 via-transparent to-luxury-gold-deep/20 pointer-events-none" />
+        <span className="hidden md:block absolute top-16 right-[14%] animate-float" aria-hidden="true">
+          <span className="block h-2.5 w-2.5 rotate-45 bg-luxury-gold/25" />
+        </span>
         <Reveal className="section-padding max-w-2xl mx-auto relative z-10">
           <Ornament className="mb-8" />
-          <h2 className="text-display-md md:text-display-lg font-display text-gold-foil pb-1 mb-6">
+          <h2 className="text-[clamp(1.25rem,4.8vw,2.75rem)] leading-tight font-display text-gold-foil pb-1 mb-6 whitespace-nowrap">
             {t("home.ctaTitle")}
           </h2>
           <p className="text-lg text-luxury-champagne/75 font-body leading-relaxed mb-10">

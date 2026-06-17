@@ -17,7 +17,7 @@ const Ornament = ({ className = "", align = "center" }: OrnamentProps) => {
       aria-hidden="true"
     >
       <span className="h-px w-10 bg-gradient-to-r from-transparent to-luxury-gold" />
-      <span className="block h-1.5 w-1.5 rotate-45 bg-luxury-gold" />
+      <span className="block h-1.5 w-1.5 rotate-45 bg-luxury-gold animate-pulse-soft" />
       <span className="h-px w-10 bg-gradient-to-l from-transparent to-luxury-gold" />
     </div>
   );

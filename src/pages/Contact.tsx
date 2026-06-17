@@ -1,6 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { MapPin, Phone, Clock, ExternalLink } from "lucide-react";
-import { InstagramIcon } from "../components/SocialIcons";
+import { MapPin, Phone, Clock } from "lucide-react";
 import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
 import SectionHeading from "../components/SectionHeading";
@@ -70,20 +69,6 @@ const Contact = () => {
                   <p className="text-luxury-gray-dark">{t("contact.hoursLunch")}</p>
                   <p className="text-luxury-gray-dark">{t("contact.hoursDinner")}</p>
                   <p className="text-luxury-gray mt-1">{t("contact.hoursDays")}</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <ExternalLink className="text-luxury-gold mt-1 shrink-0" size={24} />
-                <div>
-                  <h3 className="font-display text-xl text-luxury-black mb-1">
-                    {t("contact.socialTitle")}
-                  </h3>
-                  <div className="flex items-center gap-4 mt-1">
-                    <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" className="text-luxury-gray-dark hover:text-luxury-gold transition-colors">
-                      <InstagramIcon size={22} />
-                    </a>
-                  </div>
                 </div>
               </div>
 

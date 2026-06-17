@@ -29,7 +29,7 @@ const Header = () => {
   ];
 
   const linkClass = ({ isActive }: { isActive: boolean }) =>
-    `nav-underline font-body uppercase text-sm tracking-luxury transition-colors ${
+    `nav-underline font-accent uppercase text-sm tracking-luxury transition-colors ${
       isActive ? "text-luxury-gold is-active" : "text-luxury-cream hover:text-luxury-gold"
     }`;
 
@@ -122,7 +122,7 @@ const Header = () => {
               onClick={close}
               style={{ transitionDelay: menuOpen ? `${150 + i * 55}ms` : "0ms" }}
               className={({ isActive }) =>
-                `group flex items-center justify-end gap-3 py-3.5 border-b border-luxury-gold/10 font-body uppercase text-sm tracking-luxury transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                `group flex items-center justify-end gap-3 py-3.5 border-b border-luxury-gold/10 font-accent uppercase text-sm tracking-luxury transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
                   menuOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-6"
                 } ${isActive ? "text-luxury-gold" : "text-luxury-cream"}`
               }

@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { MapPin, Phone, Clock } from "lucide-react";
-import { InstagramIcon } from "./SocialIcons";
 import { siteConfig } from "../config/siteConfig";
 
 const Footer = () => {
@@ -22,11 +21,6 @@ const Footer = () => {
           <p className="font-body text-luxury-champagne/80 leading-relaxed">
             {t("footer.tagline")}
           </p>
-          <div className="flex items-center gap-4 mt-6">
-            <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" className="text-luxury-cream hover:text-luxury-gold transition-colors">
-              <InstagramIcon size={20} />
-            </a>
-          </div>
         </div>
 
         <div>

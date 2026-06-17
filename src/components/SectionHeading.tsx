@@ -28,7 +28,7 @@ const SectionHeading = ({
   return (
     <div className={`${align === "center" ? "text-center mx-auto" : "text-left"} ${className}`}>
       {eyebrow && (
-        <p className="text-luxury-gold text-xs tracking-luxury-wide uppercase font-body mb-4">
+        <p className="text-luxury-gold text-xs tracking-luxury-wide uppercase font-accent mb-4">
           {eyebrow}
         </p>
       )}
