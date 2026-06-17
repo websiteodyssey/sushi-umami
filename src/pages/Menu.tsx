@@ -1,5 +1,4 @@
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
 import { Clock, IdCard, Trash2, Ban } from "lucide-react";
 import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
@@ -118,12 +117,12 @@ const Menu = () => {
         <ParallaxBg src={`${import.meta.env.BASE_URL}images/dining.webp`} className="opacity-15" />
         <Reveal className="section-padding relative z-10">
           <Ornament className="mb-8" />
-          <Link
-            to="/contact"
+          <button
+            type="button"
             className="btn-shine inline-block bg-luxury-gold text-luxury-black hover:bg-luxury-gold-bright transition-colors font-body uppercase text-sm tracking-luxury px-12 py-4"
           >
             {t("menu.reserveCta")}
-          </Link>
+          </button>
         </Reveal>
       </section>
     </div>

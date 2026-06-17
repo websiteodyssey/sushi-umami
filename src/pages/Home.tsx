@@ -89,12 +89,12 @@ const Home = () => {
               {t("home.heroCta2")}
               <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
             </Link>
-            <Link
-              to="/contact"
+            <button
+              type="button"
               className="btn-shine inline-flex items-center justify-center gap-3 border border-luxury-cream/40 text-luxury-cream hover:border-luxury-gold hover:text-luxury-gold transition-colors font-body uppercase text-sm tracking-luxury px-10 py-4"
             >
               {t("common.reserve")}
-            </Link>
+            </button>
           </div>
         </div>
 
@@ -212,12 +212,12 @@ const Home = () => {
           <p className="text-lg text-luxury-champagne/75 font-body leading-relaxed mb-10">
             {t("home.ctaText")}
           </p>
-          <Link
-            to="/contact"
+          <button
+            type="button"
             className="btn-shine inline-block bg-luxury-gold text-luxury-black hover:bg-luxury-gold-bright transition-colors font-body uppercase text-sm tracking-luxury px-12 py-4"
           >
             {t("home.ctaButton")}
-          </Link>
+          </button>
         </Reveal>
       </section>
     </div>

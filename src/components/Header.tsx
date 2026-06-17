@@ -43,7 +43,7 @@ const Header = () => {
           : "h-20 md:h-24 bg-gradient-to-b from-black/60 to-transparent border-b border-transparent"
       }`}
     >
-      <div className="section-padding h-full flex items-center justify-between gap-4">
+      <div className="section-padding relative z-50 h-full flex items-center justify-between gap-4">
         <NavLink to="/" className="flex items-center gap-3 shrink-0" onClick={close}>
           <img src={`${import.meta.env.BASE_URL}images/logo-round.webp`} alt={siteConfig.name} className="h-11 w-11 md:h-12 md:w-12 object-cover rounded-full shrink-0" />
           <span className="font-display text-xl md:text-2xl text-luxury-cream tracking-wide whitespace-nowrap">
@@ -61,12 +61,12 @@ const Header = () => {
 
         <div className="hidden lg:flex items-center gap-6">
           <LanguageSwitcher />
-          <NavLink
-            to="/contact"
+          <button
+            type="button"
             className="btn-shine border border-luxury-gold text-luxury-gold hover:bg-luxury-gold hover:text-luxury-black transition-colors font-body uppercase text-sm tracking-luxury px-6 py-2.5"
           >
             {t("common.reserve")}
-          </NavLink>
+          </button>
         </div>
 
         <div className="flex items-center gap-3 lg:hidden">
@@ -98,57 +98,56 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Tap-to-close backdrop (below the header bar) */}
+      {/* Tap-to-close backdrop */}
       <div
         onClick={close}
         aria-hidden="true"
-        className={`lg:hidden absolute top-full left-0 right-0 h-screen bg-luxury-black/50 backdrop-blur-[2px] transition-opacity duration-300 ${
+        className={`lg:hidden fixed inset-0 z-30 bg-luxury-black/60 backdrop-blur-sm transition-opacity duration-300 ${
           menuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
       />
 
-      {/* Sliding mobile panel */}
+      {/* Right-side sliding drawer */}
       <div
-        className={`lg:hidden absolute top-full left-0 right-0 origin-top bg-luxury-black/98 backdrop-blur border-b border-luxury-gold/20 shadow-2xl shadow-black/50 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-          menuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3 pointer-events-none"
+        className={`lg:hidden fixed top-0 right-0 z-40 h-[100svh] w-[80%] max-w-xs bg-luxury-black/98 backdrop-blur border-l border-luxury-gold/25 shadow-2xl shadow-black/60 transition-transform duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          menuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <nav className="px-6 pt-3 pb-7 flex flex-col">
+        <nav className="flex flex-col h-full pt-24 px-7 pb-8">
           {navItems.map((item, i) => (
             <NavLink
               key={item.to}
               to={item.to}
               end={item.to === "/"}
               onClick={close}
-              style={{ transitionDelay: menuOpen ? `${90 + i * 55}ms` : "0ms" }}
+              style={{ transitionDelay: menuOpen ? `${150 + i * 55}ms` : "0ms" }}
               className={({ isActive }) =>
-                `group flex items-center gap-3 py-3.5 border-b border-luxury-gold/10 font-body uppercase text-sm tracking-luxury transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                  menuOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-5"
+                `group flex items-center justify-end gap-3 py-3.5 border-b border-luxury-gold/10 font-body uppercase text-sm tracking-luxury transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                  menuOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-6"
                 } ${isActive ? "text-luxury-gold" : "text-luxury-cream"}`
               }
             >
               {({ isActive }) => (
                 <>
+                  {item.label}
                   <span
                     className={`block h-1.5 w-1.5 rotate-45 transition-all duration-300 ${
                       isActive ? "bg-luxury-gold opacity-100" : "bg-luxury-gold opacity-0 group-hover:opacity-60"
                     }`}
                   />
-                  {item.label}
                 </>
               )}
             </NavLink>
           ))}
-          <NavLink
-            to="/contact"
-            onClick={close}
-            style={{ transitionDelay: menuOpen ? `${90 + navItems.length * 55}ms` : "0ms" }}
-            className={`btn-shine mt-6 border border-luxury-gold text-luxury-gold hover:bg-luxury-gold hover:text-luxury-black font-body uppercase text-sm tracking-luxury px-6 py-3.5 text-center transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          <button
+            type="button"
+            style={{ transitionDelay: menuOpen ? `${150 + navItems.length * 55}ms` : "0ms" }}
+            className={`btn-shine mt-7 border border-luxury-gold text-luxury-gold hover:bg-luxury-gold hover:text-luxury-black font-body uppercase text-sm tracking-luxury px-6 py-3.5 text-center transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
               menuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
             }`}
           >
             {t("common.reserve")}
-          </NavLink>
+          </button>
         </nav>
       </div>
     </header>
