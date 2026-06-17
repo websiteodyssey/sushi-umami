@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Loader from "./components/Loader";
 import CustomCursor from "./components/CustomCursor";
+import ScrollProgress from "./components/ScrollProgress";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Menu from "./pages/Menu";
@@ -43,6 +44,7 @@ function App() {
     <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Loader />
       <CustomCursor />
+      <ScrollProgress />
       <ScrollToTop />
       <div className="min-h-screen flex flex-col bg-luxury-black">
         <Header />

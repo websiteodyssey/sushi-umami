@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
-import { MapPin, Phone, Mail, Clock, ExternalLink } from "lucide-react";
-import { InstagramIcon, FacebookIcon } from "../components/SocialIcons";
+import { MapPin, Phone, Clock, ExternalLink } from "lucide-react";
+import { InstagramIcon } from "../components/SocialIcons";
 import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
 import SectionHeading from "../components/SectionHeading";
@@ -19,7 +19,7 @@ const Contact = () => {
       <PageHero
         title={t("contact.heroTitle")}
         subtitle={t("contact.heroSubtitle")}
-        backgroundImage={`${import.meta.env.BASE_URL}images/salon.png`}
+        backgroundImage={`${import.meta.env.BASE_URL}images/salon.webp`}
       />
 
       <section className="py-16 md:py-24 lg:py-32 bg-luxury-cream">
@@ -62,18 +62,6 @@ const Contact = () => {
               </div>
 
               <div className="flex items-start gap-4">
-                <Mail className="text-luxury-gold mt-1 shrink-0" size={24} />
-                <div>
-                  <h3 className="font-display text-xl text-luxury-black mb-1">
-                    {t("contact.emailTitle")}
-                  </h3>
-                  <a href={`mailto:${siteConfig.email}`} className="text-luxury-gray-dark hover:text-luxury-gold transition-colors">
-                    {siteConfig.email}
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
                 <Clock className="text-luxury-gold mt-1 shrink-0" size={24} />
                 <div>
                   <h3 className="font-display text-xl text-luxury-black mb-1">
@@ -94,9 +82,6 @@ const Contact = () => {
                   <div className="flex items-center gap-4 mt-1">
                     <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" className="text-luxury-gray-dark hover:text-luxury-gold transition-colors">
                       <InstagramIcon size={22} />
-                    </a>
-                    <a href={siteConfig.social.facebook} target="_blank" rel="noopener noreferrer" className="text-luxury-gray-dark hover:text-luxury-gold transition-colors">
-                      <FacebookIcon size={22} />
                     </a>
                   </div>
                 </div>

@@ -5,6 +5,7 @@ import Reveal from "../components/Reveal";
 import Ornament from "../components/Ornament";
 import SectionHeading from "../components/SectionHeading";
 import GoldFrame from "../components/GoldFrame";
+import ParallaxBg from "../components/ParallaxBg";
 
 const About = () => {
   const { t } = useTranslation();
@@ -14,7 +15,7 @@ const About = () => {
       <PageHero
         title={t("about.heroTitle")}
         subtitle={t("about.heroSubtitle")}
-        backgroundImage={`${import.meta.env.BASE_URL}images/signature.png`}
+        backgroundImage={`${import.meta.env.BASE_URL}images/signature.webp`}
       />
 
       {/* History */}
@@ -25,7 +26,7 @@ const About = () => {
               <GoldFrame>
                 <div className="relative h-72 md:h-[30rem] overflow-hidden group">
                   <img
-                    src={`${import.meta.env.BASE_URL}images/dining.png`}
+                    src={`${import.meta.env.BASE_URL}images/dining.webp`}
                     alt={t("gallery.diningAlt")}
                     className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-105"
                     loading="lazy"
@@ -52,10 +53,7 @@ const About = () => {
 
       {/* Quote band */}
       <section className="emerald-wash py-16 md:py-24 lg:py-32 bg-luxury-ink grain relative overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-10"
-          style={{ backgroundImage: `url('${import.meta.env.BASE_URL}images/bar.png')` }}
-        />
+        <ParallaxBg src={`${import.meta.env.BASE_URL}images/bar.webp`} className="opacity-10" />
         <Reveal className="section-padding text-center relative z-10 max-w-3xl mx-auto">
           <span className="font-display text-6xl text-luxury-gold/40 leading-none">“</span>
           <p className="text-2xl md:text-4xl font-display text-luxury-cream italic -mt-4">
@@ -69,9 +67,9 @@ const About = () => {
       <section className="bg-luxury-black relative">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-luxury-gold/15">
           {[
-            { src: "salon.png", alt: t("gallery.salonAlt") },
-            { src: "atrium.png", alt: t("gallery.atriumAlt") },
-            { src: "washroom.png", alt: t("gallery.washroomAlt") },
+            { src: "salon.webp", alt: t("gallery.salonAlt") },
+            { src: "atrium.webp", alt: t("gallery.atriumAlt") },
+            { src: "washroom.webp", alt: t("gallery.washroomAlt") },
           ].map((img) => (
             <div key={img.src} className="relative h-72 overflow-hidden group bg-luxury-black">
               <img
@@ -119,7 +117,7 @@ const About = () => {
               <GoldFrame>
                 <div className="relative h-72 md:h-[30rem] overflow-hidden group">
                   <img
-                    src={`${import.meta.env.BASE_URL}images/salon.png`}
+                    src={`${import.meta.env.BASE_URL}images/salon.webp`}
                     alt={t("gallery.salonAlt")}
                     className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-105"
                     loading="lazy"
@@ -158,7 +156,7 @@ const About = () => {
                 { title: t("about.qualityCommitmentTitle"), text: t("about.qualityCommitment") },
                 { title: t("about.environmentTitle"), text: t("about.environment") },
               ].map((c, i) => (
-                <Reveal key={c.title} delay={i * 120} className="luxury-card-dark p-8">
+                <Reveal key={c.title} delay={i * 120} className="luxury-card-dark deco-corners p-8">
                   <span className="font-display text-3xl text-luxury-gold/30">{String(i + 1).padStart(2, "0")}</span>
                   <h4 className="font-display text-xl text-luxury-cream mt-3 mb-3">{c.title}</h4>
                   <p className="font-body text-luxury-champagne/65">{c.text}</p>

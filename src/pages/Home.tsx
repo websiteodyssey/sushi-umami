@@ -5,6 +5,7 @@ import ImageMarquee from "../components/ImageMarquee";
 import Reveal from "../components/Reveal";
 import Ornament from "../components/Ornament";
 import SectionHeading from "../components/SectionHeading";
+import ParallaxBg from "../components/ParallaxBg";
 import { siteConfig } from "../config/siteConfig";
 
 const Home = () => {
@@ -28,17 +29,17 @@ const Home = () => {
   ];
 
   const marqueeImagesA = [
-    { src: `${import.meta.env.BASE_URL}images/dining.png`, alt: t("gallery.diningAlt") },
-    { src: `${import.meta.env.BASE_URL}images/signature.png`, alt: t("gallery.signatureAlt") },
-    { src: `${import.meta.env.BASE_URL}images/salon.png`, alt: t("gallery.salonAlt") },
-    { src: `${import.meta.env.BASE_URL}images/bar.png`, alt: t("gallery.barAlt") },
+    { src: `${import.meta.env.BASE_URL}images/dining.webp`, alt: t("gallery.diningAlt") },
+    { src: `${import.meta.env.BASE_URL}images/signature.webp`, alt: t("gallery.signatureAlt") },
+    { src: `${import.meta.env.BASE_URL}images/salon.webp`, alt: t("gallery.salonAlt") },
+    { src: `${import.meta.env.BASE_URL}images/bar.webp`, alt: t("gallery.barAlt") },
   ];
 
   const marqueeImagesB = [
-    { src: `${import.meta.env.BASE_URL}images/salon.png`, alt: t("gallery.salonAlt") },
-    { src: `${import.meta.env.BASE_URL}images/atrium.png`, alt: t("gallery.atriumAlt") },
-    { src: `${import.meta.env.BASE_URL}images/bar.png`, alt: t("gallery.barAlt") },
-    { src: `${import.meta.env.BASE_URL}images/dining.png`, alt: t("gallery.diningAlt") },
+    { src: `${import.meta.env.BASE_URL}images/salon.webp`, alt: t("gallery.salonAlt") },
+    { src: `${import.meta.env.BASE_URL}images/atrium.webp`, alt: t("gallery.atriumAlt") },
+    { src: `${import.meta.env.BASE_URL}images/bar.webp`, alt: t("gallery.barAlt") },
+    { src: `${import.meta.env.BASE_URL}images/dining.webp`, alt: t("gallery.diningAlt") },
   ];
 
   return (
@@ -48,7 +49,7 @@ const Home = () => {
         {/* Cinematic background with slow zoom */}
         <div
           className="animate-ken-burns absolute inset-0 bg-cover bg-center bg-no-repeat blur-[3px] scale-105"
-          style={{ backgroundImage: `url('${import.meta.env.BASE_URL}images/dining.png')` }}
+          style={{ backgroundImage: `url('${import.meta.env.BASE_URL}images/dining.webp')` }}
         />
         <div className="hero-overlay absolute inset-0 pointer-events-none" />
         <div className="absolute inset-0 bg-luxury-black/35 pointer-events-none" />
@@ -88,12 +89,12 @@ const Home = () => {
               {t("home.heroCta2")}
               <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
             </Link>
-            <button
-              type="button"
+            <Link
+              to="/contact"
               className="btn-shine inline-flex items-center justify-center gap-3 border border-luxury-cream/40 text-luxury-cream hover:border-luxury-gold hover:text-luxury-gold transition-colors font-body uppercase text-sm tracking-luxury px-10 py-4"
             >
               {t("common.reserve")}
-            </button>
+            </Link>
           </div>
         </div>
 
@@ -202,10 +203,7 @@ const Home = () => {
 
       {/* ===================== FINAL CTA ===================== */}
       <section className="emerald-wash relative py-16 md:py-24 lg:py-32 bg-luxury-ink grain text-center overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-15"
-          style={{ backgroundImage: `url('${import.meta.env.BASE_URL}images/bar.png')` }}
-        />
+        <ParallaxBg src={`${import.meta.env.BASE_URL}images/bar.webp`} className="opacity-15" />
         <Reveal className="section-padding max-w-2xl mx-auto relative z-10">
           <Ornament className="mb-8" />
           <h2 className="text-display-md md:text-display-lg font-display text-gold-foil pb-1 mb-6">
@@ -214,12 +212,12 @@ const Home = () => {
           <p className="text-lg text-luxury-champagne/75 font-body leading-relaxed mb-10">
             {t("home.ctaText")}
           </p>
-          <button
-            type="button"
+          <Link
+            to="/contact"
             className="btn-shine inline-block bg-luxury-gold text-luxury-black hover:bg-luxury-gold-bright transition-colors font-body uppercase text-sm tracking-luxury px-12 py-4"
           >
             {t("home.ctaButton")}
-          </button>
+          </Link>
         </Reveal>
       </section>
     </div>

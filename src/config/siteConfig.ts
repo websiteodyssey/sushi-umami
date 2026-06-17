@@ -2,8 +2,6 @@ export const siteConfig = {
   name: "Sushi Umami",
   phone: "02 51 82 78 86",
   phoneHref: "tel:+33251827886",
-  email: "contact@sushiumami.fr",
-  website: "www.sushiumami.fr",
   address: {
     street: "7 Rue de l'Hôtel de Ville",
     city: "44000 Nantes",
@@ -14,7 +12,6 @@ export const siteConfig = {
   },
   social: {
     instagram: "https://instagram.com/sushiumami",
-    facebook: "https://facebook.com/sushiumami",
   },
   mapsUrl: "https://maps.google.com/?q=7+Rue+de+l'Hôtel+de+Ville,+44000+Nantes",
 };

@@ -45,7 +45,7 @@ const Header = () => {
     >
       <div className="section-padding h-full flex items-center justify-between gap-4">
         <NavLink to="/" className="flex items-center gap-3 shrink-0" onClick={close}>
-          <img src={`${import.meta.env.BASE_URL}images/logo-round.png`} alt={siteConfig.name} className="h-11 w-11 md:h-12 md:w-12 object-cover rounded-full shrink-0" />
+          <img src={`${import.meta.env.BASE_URL}images/logo-round.webp`} alt={siteConfig.name} className="h-11 w-11 md:h-12 md:w-12 object-cover rounded-full shrink-0" />
           <span className="font-display text-xl md:text-2xl text-luxury-cream tracking-wide whitespace-nowrap">
             {siteConfig.name}
           </span>
@@ -61,12 +61,12 @@ const Header = () => {
 
         <div className="hidden lg:flex items-center gap-6">
           <LanguageSwitcher />
-          <button
-            type="button"
+          <NavLink
+            to="/contact"
             className="btn-shine border border-luxury-gold text-luxury-gold hover:bg-luxury-gold hover:text-luxury-black transition-colors font-body uppercase text-sm tracking-luxury px-6 py-2.5"
           >
             {t("common.reserve")}
-          </button>
+          </NavLink>
         </div>
 
         <div className="flex items-center gap-3 lg:hidden">
@@ -139,8 +139,8 @@ const Header = () => {
               )}
             </NavLink>
           ))}
-          <button
-            type="button"
+          <NavLink
+            to="/contact"
             onClick={close}
             style={{ transitionDelay: menuOpen ? `${90 + navItems.length * 55}ms` : "0ms" }}
             className={`btn-shine mt-6 border border-luxury-gold text-luxury-gold hover:bg-luxury-gold hover:text-luxury-black font-body uppercase text-sm tracking-luxury px-6 py-3.5 text-center transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
@@ -148,7 +148,7 @@ const Header = () => {
             }`}
           >
             {t("common.reserve")}
-          </button>
+          </NavLink>
         </nav>
       </div>
     </header>

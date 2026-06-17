@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
-import { InstagramIcon, FacebookIcon } from "./SocialIcons";
+import { MapPin, Phone, Clock } from "lucide-react";
+import { InstagramIcon } from "./SocialIcons";
 import { siteConfig } from "../config/siteConfig";
 
 const Footer = () => {
@@ -13,7 +13,7 @@ const Footer = () => {
         <div>
           <div className="flex items-center gap-3 mb-4">
             <img
-              src={`${import.meta.env.BASE_URL}images/logo-round.png`}
+              src={`${import.meta.env.BASE_URL}images/logo-round.webp`}
               alt={siteConfig.name}
               className="h-12 w-12 object-cover rounded-full shrink-0"
             />
@@ -25,9 +25,6 @@ const Footer = () => {
           <div className="flex items-center gap-4 mt-6">
             <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" className="text-luxury-cream hover:text-luxury-gold transition-colors">
               <InstagramIcon size={20} />
-            </a>
-            <a href={siteConfig.social.facebook} target="_blank" rel="noopener noreferrer" className="text-luxury-cream hover:text-luxury-gold transition-colors">
-              <FacebookIcon size={20} />
             </a>
           </div>
         </div>
@@ -57,10 +54,6 @@ const Footer = () => {
             <li className="flex items-center gap-3">
               <Phone size={18} className="text-luxury-gold shrink-0" />
               <a href={siteConfig.phoneHref} className="hover:text-luxury-gold transition-colors">{siteConfig.phone}</a>
-            </li>
-            <li className="flex items-center gap-3">
-              <Mail size={18} className="text-luxury-gold shrink-0" />
-              <a href={`mailto:${siteConfig.email}`} className="hover:text-luxury-gold transition-colors">{siteConfig.email}</a>
             </li>
           </ul>
         </div>

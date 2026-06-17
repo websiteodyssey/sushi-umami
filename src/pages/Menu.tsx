@@ -1,9 +1,11 @@
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import { Clock, IdCard, Trash2, Ban } from "lucide-react";
 import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
 import Ornament from "../components/Ornament";
 import SectionHeading from "../components/SectionHeading";
+import ParallaxBg from "../components/ParallaxBg";
 import { siteConfig } from "../config/siteConfig";
 
 const Menu = () => {
@@ -33,22 +35,19 @@ const Menu = () => {
       <PageHero
         title={t("menu.heroTitle")}
         subtitle={t("menu.heroSubtitle")}
-        backgroundImage={`${import.meta.env.BASE_URL}images/bar.png`}
+        backgroundImage={`${import.meta.env.BASE_URL}images/bar.webp`}
       />
 
       {/* Pricing */}
       <section className="emerald-wash py-16 md:py-24 lg:py-32 bg-luxury-ink grain relative overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-10"
-          style={{ backgroundImage: `url('${import.meta.env.BASE_URL}images/signature.png')` }}
-        />
+        <ParallaxBg src={`${import.meta.env.BASE_URL}images/signature.webp`} className="opacity-10" />
         <div className="section-padding relative z-10">
           <Reveal className="mb-14">
             <SectionHeading tone="dark" title={t("menu.pricingTitle")} />
           </Reveal>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
-            <Reveal className="luxury-card-dark gold-glow p-8 md:p-10">
+            <Reveal className="luxury-card-dark deco-corners gold-glow p-8 md:p-10">
               <h3 className="font-display text-2xl text-luxury-gold uppercase tracking-luxury mb-8 text-center">
                 {t("menu.adultsTitle")}
               </h3>
@@ -63,7 +62,7 @@ const Menu = () => {
               </ul>
             </Reveal>
 
-            <Reveal delay={150} className="luxury-card-dark gold-glow p-8 md:p-10">
+            <Reveal delay={150} className="luxury-card-dark deco-corners gold-glow p-8 md:p-10">
               <h3 className="font-display text-2xl text-luxury-gold uppercase tracking-luxury mb-8 text-center">
                 {t("menu.childrenTitle")}
               </h3>
@@ -116,18 +115,15 @@ const Menu = () => {
 
       {/* CTA */}
       <section className="relative py-16 md:py-24 lg:py-32 bg-luxury-black grain text-center overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-15"
-          style={{ backgroundImage: `url('${import.meta.env.BASE_URL}images/dining.png')` }}
-        />
+        <ParallaxBg src={`${import.meta.env.BASE_URL}images/dining.webp`} className="opacity-15" />
         <Reveal className="section-padding relative z-10">
           <Ornament className="mb-8" />
-          <button
-            type="button"
+          <Link
+            to="/contact"
             className="btn-shine inline-block bg-luxury-gold text-luxury-black hover:bg-luxury-gold-bright transition-colors font-body uppercase text-sm tracking-luxury px-12 py-4"
           >
             {t("menu.reserveCta")}
-          </button>
+          </Link>
         </Reveal>
       </section>
     </div>

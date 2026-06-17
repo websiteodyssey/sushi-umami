@@ -9,12 +9,12 @@ const Gallery = () => {
   const { t } = useTranslation();
 
   const images = [
-    { src: `${import.meta.env.BASE_URL}images/dining.png`, alt: t("gallery.diningAlt") },
-    { src: `${import.meta.env.BASE_URL}images/signature.png`, alt: t("gallery.signatureAlt") },
-    { src: `${import.meta.env.BASE_URL}images/salon.png`, alt: t("gallery.salonAlt") },
-    { src: `${import.meta.env.BASE_URL}images/bar.png`, alt: t("gallery.barAlt") },
-    { src: `${import.meta.env.BASE_URL}images/atrium.png`, alt: t("gallery.atriumAlt") },
-    { src: `${import.meta.env.BASE_URL}images/washroom.png`, alt: t("gallery.washroomAlt") },
+    { src: `${import.meta.env.BASE_URL}images/dining.webp`, alt: t("gallery.diningAlt") },
+    { src: `${import.meta.env.BASE_URL}images/signature.webp`, alt: t("gallery.signatureAlt") },
+    { src: `${import.meta.env.BASE_URL}images/salon.webp`, alt: t("gallery.salonAlt") },
+    { src: `${import.meta.env.BASE_URL}images/bar.webp`, alt: t("gallery.barAlt") },
+    { src: `${import.meta.env.BASE_URL}images/atrium.webp`, alt: t("gallery.atriumAlt") },
+    { src: `${import.meta.env.BASE_URL}images/washroom.webp`, alt: t("gallery.washroomAlt") },
   ];
 
   return (
@@ -22,7 +22,7 @@ const Gallery = () => {
       <PageHero
         title={t("gallery.heroTitle")}
         subtitle={t("gallery.heroSubtitle")}
-        backgroundImage={`${import.meta.env.BASE_URL}images/dining.png`}
+        backgroundImage={`${import.meta.env.BASE_URL}images/dining.webp`}
       />
 
       <section className="emerald-wash relative py-16 md:py-24 lg:py-32 bg-luxury-ink grain">

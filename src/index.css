@@ -239,6 +239,34 @@ h4 {
     );
   }
 
+  /* Decorative gold corner brackets — a quiet architectural flourish on cards */
+  .deco-corners::before,
+  .deco-corners::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    pointer-events: none;
+    border-color: rgba(203, 168, 105, 0.5);
+    transition: border-color 0.4s ease;
+  }
+  .deco-corners::before {
+    top: 12px;
+    left: 12px;
+    border-top: 1px solid;
+    border-left: 1px solid;
+  }
+  .deco-corners::after {
+    bottom: 12px;
+    right: 12px;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+  }
+  .deco-corners:hover::before,
+  .deco-corners:hover::after {
+    border-color: rgba(203, 168, 105, 0.9);
+  }
+
   /* Deep emerald wash for dark sections — echoes the dining-room banquettes */
   .emerald-wash::before {
     content: "";

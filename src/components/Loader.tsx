@@ -26,7 +26,7 @@ const Loader = () => {
     >
       <div className="frame-inset" />
       <img
-        src={`${import.meta.env.BASE_URL}images/logo-round.png`}
+        src={`${import.meta.env.BASE_URL}images/logo-round.webp`}
         alt={siteConfig.name}
         className="animate-fade-up h-16 w-16 md:h-20 md:w-20 object-cover rounded-full mb-7 ring-1 ring-luxury-gold/40"
       />

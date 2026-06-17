@@ -3,13 +3,14 @@ import { useEffect, useState } from "react";
 const CustomCursor = () => {
   const [position, setPosition] = useState({ x: -100, y: -100 });
   const [hovering, setHovering] = useState(false);
-  const [enabled, setEnabled] = useState(false);
+  const [enabled] = useState(
+    () => typeof window !== "undefined" && window.matchMedia("(pointer: fine)").matches
+  );
 
   useEffect(() => {
-    if (!window.matchMedia("(pointer: fine)").matches) return;
+    if (!enabled) return;
 
     document.documentElement.classList.add("cursor-none");
-    setEnabled(true);
 
     const handleMove = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
@@ -28,7 +29,7 @@ const CustomCursor = () => {
       window.removeEventListener("mousemove", handleMove);
       window.removeEventListener("mouseover", handleOver);
     };
-  }, []);
+  }, [enabled]);
 
   if (!enabled) return null;
 
