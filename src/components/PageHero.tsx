@@ -1,34 +1,32 @@
+import Ornament from "./Ornament";
+
 interface PageHeroProps {
   title: string;
   subtitle: string;
   backgroundImage?: string;
-  emoji?: string;
 }
 
-const PageHero = ({ title, subtitle, backgroundImage, emoji }: PageHeroProps) => {
+const PageHero = ({ title, subtitle, backgroundImage }: PageHeroProps) => {
   return (
-    <section className="relative h-[50vh] min-h-[360px] flex items-center justify-center overflow-hidden bg-luxury-black">
+    <section className="relative h-[52svh] min-h-[340px] md:min-h-[400px] flex items-center justify-center overflow-hidden bg-luxury-black grain">
       {backgroundImage && (
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
+          className="animate-ken-burns absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url('${backgroundImage}')` }}
         />
       )}
-      <div className="absolute inset-0 bg-luxury-gradient" />
+      <div className="hero-overlay absolute inset-0 pointer-events-none" />
+      <div className="frame-inset" />
       <div className="relative z-10 text-center px-6">
-        <p className="text-luxury-champagne text-sm md:text-lg tracking-luxury uppercase font-body mb-4">
+        <p className="animate-fade-up text-luxury-champagne text-xs md:text-sm tracking-luxury-wide uppercase font-body mb-5" style={{ animationDelay: "0.05s" }}>
           {subtitle}
         </p>
-        <h1 className="flex items-center justify-center gap-3 md:gap-6 text-display-lg md:text-display-xl font-display text-luxury-cream">
-          {emoji && (
-            <span className="text-3xl md:text-5xl" aria-hidden="true">{emoji}</span>
-          )}
-          <span>{title}</span>
-          {emoji && (
-            <span className="text-3xl md:text-5xl" aria-hidden="true">{emoji}</span>
-          )}
+        <h1 className="animate-fade-up text-display-lg md:text-display-xl lg:text-[5.5rem] font-display font-medium leading-[0.98]" style={{ animationDelay: "0.15s" }}>
+          <span className="text-gold-foil">{title}</span>
         </h1>
-        <div className="h-px bg-luxury-gold mx-auto mt-6 w-20" />
+        <div className="animate-fade-up" style={{ animationDelay: "0.3s" }}>
+          <Ornament className="mt-7" />
+        </div>
       </div>
     </section>
   );

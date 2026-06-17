@@ -18,23 +18,35 @@ const ScrollToTop = () => {
   return null;
 };
 
+/**
+ * Re-keyed on the path so each page mounts fresh and plays a gentle fade-up.
+ * It's a fade-IN only (never fades the old page out to a blank screen), and the
+ * shell sits on black, so the page emerges from dark — no white flash.
+ */
+const AnimatedMain = () => {
+  const { pathname } = useLocation();
+  return (
+    <main key={pathname} className="flex-1 animate-page-in">
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/menu" element={<Menu />} />
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </main>
+  );
+};
+
 function App() {
   return (
     <BrowserRouter basename={import.meta.env.BASE_URL}>
       <Loader />
       <CustomCursor />
       <ScrollToTop />
-      <div className="min-h-screen flex flex-col bg-luxury-cream">
+      <div className="min-h-screen flex flex-col bg-luxury-black">
         <Header />
-        <main className="flex-1">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/menu" element={<Menu />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-        </main>
+        <AnimatedMain />
         <Footer />
       </div>
     </BrowserRouter>

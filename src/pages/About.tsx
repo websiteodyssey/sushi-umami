@@ -1,92 +1,97 @@
 import { useTranslation } from "react-i18next";
 import { Sparkles, Home as HomeIcon, BadgeCheck, Leaf } from "lucide-react";
 import PageHero from "../components/PageHero";
+import Reveal from "../components/Reveal";
+import Ornament from "../components/Ornament";
+import SectionHeading from "../components/SectionHeading";
+import GoldFrame from "../components/GoldFrame";
 
 const About = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="pt-20">
+    <div>
       <PageHero
         title={t("about.heroTitle")}
         subtitle={t("about.heroSubtitle")}
-        backgroundImage={`${import.meta.env.BASE_URL}images/interior-2.png`}
-        emoji="🏮"
+        backgroundImage={`${import.meta.env.BASE_URL}images/signature.png`}
       />
 
       {/* History */}
-      <section className="py-12 md:py-20 lg:py-28 bg-luxury-cream relative">
+      <section className="py-16 md:py-24 lg:py-32 bg-luxury-cream relative">
         <div className="section-padding relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center max-w-6xl mx-auto">
-            <div className="relative h-72 md:h-[28rem] luxury-card overflow-hidden order-1 lg:order-none">
-              <img
-                src={`${import.meta.env.BASE_URL}images/interior-1.png`}
-                alt={t("gallery.interior1Alt")}
-                className="w-full h-full object-cover"
-                loading="lazy"
+            <Reveal className="order-1 lg:order-none">
+              <GoldFrame>
+                <div className="relative h-72 md:h-[30rem] overflow-hidden group">
+                  <img
+                    src={`${import.meta.env.BASE_URL}images/dining.png`}
+                    alt={t("gallery.diningAlt")}
+                    className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </div>
+              </GoldFrame>
+            </Reveal>
+            <Reveal delay={150}>
+              <SectionHeading
+                tone="light"
+                align="left"
+                eyebrow={t("about.heroSubtitle")}
+                title={t("about.historyTitle")}
+                className="mb-8"
               />
-            </div>
-            <div>
-              <h2 className="text-display-md font-display mb-6 text-luxury-black">
-                {t("about.historyTitle")}
-              </h2>
               <div className="space-y-6 text-lg text-luxury-gray-dark leading-relaxed font-body">
                 <p>{t("about.historyIntro")}</p>
                 <p>{t("about.historyText3")}</p>
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
 
       {/* Quote band */}
-      <section className="py-12 md:py-16 bg-luxury-black">
-        <div className="section-padding text-center">
-          <p className="text-2xl md:text-3xl font-display text-luxury-gold italic">
+      <section className="emerald-wash py-16 md:py-24 lg:py-32 bg-luxury-ink grain relative overflow-hidden">
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-10"
+          style={{ backgroundImage: `url('${import.meta.env.BASE_URL}images/bar.png')` }}
+        />
+        <Reveal className="section-padding text-center relative z-10 max-w-3xl mx-auto">
+          <span className="font-display text-6xl text-luxury-gold/40 leading-none">“</span>
+          <p className="text-2xl md:text-4xl font-display text-luxury-cream italic -mt-4">
             {t("about.historyText4")}
           </p>
-        </div>
+          <Ornament className="mt-8" />
+        </Reveal>
       </section>
 
       {/* Photo strip */}
-      <section className="py-16 bg-luxury-gray-light relative">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 relative z-0">
-          <div className="relative h-64 overflow-hidden group">
-            <img
-              src={`${import.meta.env.BASE_URL}images/interior-2.png`}
-              alt={t("gallery.interior2Alt")}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              loading="lazy"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-luxury-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-          </div>
-          <div className="relative h-64 overflow-hidden group">
-            <img
-              src={`${import.meta.env.BASE_URL}images/interior-3.png`}
-              alt={t("gallery.interior3Alt")}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              loading="lazy"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-luxury-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-          </div>
-          <div className="relative h-64 overflow-hidden group">
-            <img
-              src={`${import.meta.env.BASE_URL}images/interior-1.png`}
-              alt={t("gallery.interior1Alt")}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              loading="lazy"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-luxury-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-          </div>
+      <section className="bg-luxury-black relative">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-luxury-gold/15">
+          {[
+            { src: "salon.png", alt: t("gallery.salonAlt") },
+            { src: "atrium.png", alt: t("gallery.atriumAlt") },
+            { src: "washroom.png", alt: t("gallery.washroomAlt") },
+          ].map((img) => (
+            <div key={img.src} className="relative h-72 overflow-hidden group bg-luxury-black">
+              <img
+                src={`${import.meta.env.BASE_URL}images/${img.src}`}
+                alt={img.alt}
+                className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-110"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-luxury-black/60 to-transparent opacity-60 group-hover:opacity-20 transition-opacity duration-500" />
+            </div>
+          ))}
         </div>
       </section>
 
       {/* Philosophy */}
-      <section className="py-12 md:py-20 lg:py-28 bg-luxury-cream relative">
+      <section className="py-16 md:py-24 lg:py-32 bg-luxury-cream relative">
         <div className="section-padding relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center max-w-6xl mx-auto">
-            <div>
-              <h2 className="text-display-md font-display mb-4 text-luxury-black">
+            <Reveal>
+              <h2 className="text-display-md md:text-display-lg font-display mb-4 text-luxury-black">
                 {t("about.philosophyTitle")}
               </h2>
               <p className="text-2xl font-display text-luxury-gold mb-6 italic">
@@ -95,81 +100,74 @@ const About = () => {
               <p className="text-lg text-luxury-gray-dark leading-relaxed font-body mb-6">
                 {t("about.philosophyText1")}
               </p>
-              <p className="font-body text-luxury-gray-dark mb-4">{t("about.philosophyText2")}</p>
+              <p className="font-body text-luxury-gray-dark mb-6">{t("about.philosophyText2")}</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="flex items-center gap-4 luxury-card p-6">
-                  <Sparkles className="text-luxury-gold" size={28} />
-                  <span className="font-body">{t("about.freshness")}</span>
-                </div>
-                <div className="flex items-center gap-4 luxury-card p-6">
-                  <HomeIcon className="text-luxury-gold" size={28} />
-                  <span className="font-body">{t("about.homemade")}</span>
-                </div>
-                <div className="flex items-center gap-4 luxury-card p-6">
-                  <BadgeCheck className="text-luxury-gold" size={28} />
-                  <span className="font-body">{t("about.quality")}</span>
-                </div>
-                <div className="flex items-center gap-4 luxury-card p-6">
-                  <Leaf className="text-luxury-gold" size={28} />
-                  <span className="font-body">{t("about.accessible")}</span>
-                </div>
+                {[
+                  { Icon: Sparkles, label: t("about.freshness") },
+                  { Icon: HomeIcon, label: t("about.homemade") },
+                  { Icon: BadgeCheck, label: t("about.quality") },
+                  { Icon: Leaf, label: t("about.accessible") },
+                ].map(({ Icon, label }, i) => (
+                  <Reveal key={label} delay={i * 80} className="flex items-center gap-4 luxury-card p-6">
+                    <Icon className="text-luxury-gold shrink-0" size={28} strokeWidth={1.4} />
+                    <span className="font-body">{label}</span>
+                  </Reveal>
+                ))}
               </div>
-            </div>
-            <div className="relative h-72 md:h-[28rem] luxury-card overflow-hidden">
-              <img
-                src={`${import.meta.env.BASE_URL}images/interior-3.png`}
-                alt={t("gallery.interior3Alt")}
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
-            </div>
+            </Reveal>
+            <Reveal delay={150}>
+              <GoldFrame>
+                <div className="relative h-72 md:h-[30rem] overflow-hidden group">
+                  <img
+                    src={`${import.meta.env.BASE_URL}images/salon.png`}
+                    alt={t("gallery.salonAlt")}
+                    className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </div>
+              </GoldFrame>
+            </Reveal>
           </div>
-          <div className="max-w-3xl mx-auto text-center mt-12">
+          <Reveal className="max-w-3xl mx-auto text-center mt-14">
             <p className="text-lg text-luxury-gray-dark leading-relaxed font-body">
               {t("about.philosophyText3")}
             </p>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Team & values */}
-      <section className="py-12 md:py-20 lg:py-28 bg-luxury-ivory relative overflow-hidden">
+      <section className="emerald-wash py-16 md:py-24 lg:py-32 bg-luxury-ink grain relative overflow-hidden">
         <div className="section-padding relative z-10">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-display-md font-display mb-6 md:mb-8 lg:mb-12 text-luxury-black text-center">
-              {t("about.teamTitle")}
-            </h2>
-            <div className="space-y-8 text-lg text-luxury-gray-dark leading-relaxed font-body">
+            <Reveal className="mb-12">
+              <SectionHeading tone="dark" title={t("about.teamTitle")} />
+            </Reveal>
+            <Reveal className="space-y-6 text-lg text-luxury-champagne/80 leading-relaxed font-body text-center">
               <p>{t("about.teamText1")}</p>
               <p>{t("about.teamText2")}</p>
-              <h3 className="text-2xl font-display text-luxury-black mt-12 mb-8">
+            </Reveal>
+            <Reveal className="text-center">
+              <h3 className="text-2xl font-display text-luxury-gold mt-14 mb-10">
                 {t("about.commitments")}
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="luxury-card p-8">
-                  <h4 className="font-display text-xl text-luxury-black mb-3">
-                    {t("about.teamCohesionTitle")}
-                  </h4>
-                  <p className="font-body text-luxury-gray-dark">{t("about.teamCohesion")}</p>
-                </div>
-                <div className="luxury-card p-8">
-                  <h4 className="font-display text-xl text-luxury-black mb-3">
-                    {t("about.qualityCommitmentTitle")}
-                  </h4>
-                  <p className="font-body text-luxury-gray-dark">{t("about.qualityCommitment")}</p>
-                </div>
-                <div className="luxury-card p-8">
-                  <h4 className="font-display text-xl text-luxury-black mb-3">
-                    {t("about.environmentTitle")}
-                  </h4>
-                  <p className="font-body text-luxury-gray-dark">{t("about.environment")}</p>
-                </div>
-              </div>
+            </Reveal>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+              {[
+                { title: t("about.teamCohesionTitle"), text: t("about.teamCohesion") },
+                { title: t("about.qualityCommitmentTitle"), text: t("about.qualityCommitment") },
+                { title: t("about.environmentTitle"), text: t("about.environment") },
+              ].map((c, i) => (
+                <Reveal key={c.title} delay={i * 120} className="luxury-card-dark p-8">
+                  <span className="font-display text-3xl text-luxury-gold/30">{String(i + 1).padStart(2, "0")}</span>
+                  <h4 className="font-display text-xl text-luxury-cream mt-3 mb-3">{c.title}</h4>
+                  <p className="font-body text-luxury-champagne/65">{c.text}</p>
+                </Reveal>
+              ))}
             </div>
           </div>
         </div>
       </section>
-
     </div>
   );
 };

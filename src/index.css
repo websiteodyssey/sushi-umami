@@ -1,33 +1,37 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap");
 @import "tailwindcss";
 
 @theme {
-  --color-luxury-black: #1c1611;
-  --color-luxury-cream: #eae5db;
-  --color-luxury-champagne: #ddd3c1;
-  --color-luxury-gold: #c9a35f;
-  --color-luxury-sage: #4f5c43;
+  --color-luxury-black: #0a0806;
+  --color-luxury-ink: #12100b;
+  --color-luxury-cream: #efe9dd;
+  --color-luxury-champagne: #e1d7c5;
+  --color-luxury-gold: #cba869;
+  --color-luxury-gold-bright: #f2dca2;
+  --color-luxury-gold-deep: #927231;
+  --color-luxury-emerald: #1d3a2c;
+  --color-luxury-emerald-deep: #112318;
   --color-luxury-gray: #9c9388;
   --color-luxury-gray-dark: #2f2820;
-  --color-luxury-gray-light: #d6cfc0;
-  --color-luxury-ivory: #f6f2e8;
+  --color-luxury-ivory: #f8f4eb;
 
   --font-display: "Playfair Display", serif;
   --font-body: "Cormorant Garamond", serif;
 
   --letter-spacing-luxury: 0.25em;
+  --letter-spacing-luxury-wide: 0.4em;
 
-  --text-display-xl: 4.5rem;
-  --text-display-xl--line-height: 1.1;
-  --text-display-xl--letter-spacing: -0.02em;
+  --text-display-xl: clamp(2.75rem, 6.5vw, 5rem);
+  --text-display-xl--line-height: 1.06;
+  --text-display-xl--letter-spacing: -0.025em;
 
-  --text-display-lg: 3.5rem;
-  --text-display-lg--line-height: 1.2;
+  --text-display-lg: clamp(2.2rem, 5.5vw, 3.75rem);
+  --text-display-lg--line-height: 1.12;
   --text-display-lg--letter-spacing: -0.02em;
 
-  --text-display-md: 2.5rem;
-  --text-display-md--line-height: 1.3;
-  --text-display-md--letter-spacing: -0.01em;
+  --text-display-md: clamp(1.8rem, 4.2vw, 2.75rem);
+  --text-display-md--line-height: 1.22;
+  --text-display-md--letter-spacing: -0.015em;
 }
 
 html,
@@ -44,8 +48,18 @@ body {
 body {
   margin: 0;
   font-family: var(--font-body);
-  background-color: var(--color-luxury-cream);
+  font-size: 1.0625rem;
+  background-color: var(--color-luxury-black);
   color: var(--color-luxury-gray-dark);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern", "liga", "calt";
+}
+
+/* Elegant old-style figures for prices — a quiet fine-dining detail */
+.num-elegant {
+  font-feature-settings: "onum" 1, "kern" 1;
+  font-variant-numeric: oldstyle-nums;
 }
 
 .cursor-none,
@@ -58,6 +72,11 @@ h2,
 h3,
 h4 {
   font-family: var(--font-display);
+}
+
+::selection {
+  background-color: rgba(201, 163, 95, 0.85);
+  color: #0d0b09;
 }
 
 @layer utilities {
@@ -80,19 +99,180 @@ h4 {
     }
   }
 
+  /* ---- Gold foil text: a brushed-metal gradient with a moving sheen ---- */
+  .text-gold-foil {
+    background-image: linear-gradient(
+      100deg,
+      #8a6a2c 0%,
+      #e6c684 20%,
+      #fff6df 38%,
+      #cba869 52%,
+      #f2dca2 68%,
+      #8a6a2c 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gold-shimmer {
+    background-image: linear-gradient(
+      100deg,
+      #8a6a2c 0%,
+      #cba869 28%,
+      #fff6df 50%,
+      #cba869 72%,
+      #8a6a2c 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    animation: gold-sheen 6s linear infinite;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 50px rgba(203, 168, 105, 0.4), 0 0 18px rgba(203, 168, 105, 0.25);
+  }
+
+  /* ---- Buttons: a diagonal light sweep on hover ---- */
+  .btn-shine {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .btn-shine::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -160%;
+    width: 60%;
+    height: 100%;
+    z-index: 1;
+    background: linear-gradient(
+      100deg,
+      transparent,
+      rgba(255, 255, 255, 0.5),
+      transparent
+    );
+    transform: skewX(-20deg);
+    pointer-events: none;
+  }
+  .btn-shine:hover::after {
+    animation: btn-shine 0.9s ease;
+  }
+
+  /* ---- Soft gold halo on hover ---- */
+  .gold-glow {
+    transition: box-shadow 0.5s ease, transform 0.5s ease;
+  }
+  .gold-glow:hover {
+    box-shadow: 0 0 50px -10px rgba(203, 168, 105, 0.5);
+  }
+
+  /* ---- Animated underline for nav links ---- */
+  .nav-underline {
+    position: relative;
+  }
+  .nav-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, var(--color-luxury-gold), transparent);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .nav-underline:hover::after,
+  .nav-underline.is-active::after {
+    transform: scaleX(1);
+  }
+
+  /* ---- Luxury cards: ivory with a hairline gold frame + lift on hover ---- */
   .luxury-card {
+    position: relative;
     background-color: var(--color-luxury-ivory);
-    border: 1px solid rgba(201, 163, 95, 0.18);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(201, 163, 95, 0.22);
+    transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
   }
 
   .luxury-card:hover {
-    border-color: rgba(201, 163, 95, 0.5);
-    box-shadow: 0 10px 30px rgba(28, 22, 17, 0.1);
+    border-color: rgba(201, 163, 95, 0.6);
+    box-shadow: 0 24px 60px -20px rgba(13, 11, 9, 0.35);
+    transform: translateY(-4px);
   }
 
-  .bg-luxury-gradient {
-    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+  /* Dark variant for sections on black */
+  .luxury-card-dark {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(201, 163, 95, 0.18);
+    transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease, background-color 0.4s ease;
+  }
+
+  .luxury-card-dark:hover {
+    border-color: rgba(203, 168, 105, 0.6);
+    background-color: rgba(203, 168, 105, 0.06);
+    box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.85), 0 0 40px -16px rgba(203, 168, 105, 0.4);
+    transform: translateY(-5px);
+  }
+
+  /* Cinematic hero overlay: top fade, bottom weight, and a soft vignette */
+  .hero-overlay {
+    background:
+      radial-gradient(ellipse at center, transparent 35%, rgba(0, 0, 0, 0.55) 100%),
+      linear-gradient(180deg, rgba(13, 11, 9, 0.7) 0%, rgba(13, 11, 9, 0.25) 35%, rgba(13, 11, 9, 0.85) 100%);
+  }
+
+  /* Soft gold halo, e.g. radiating behind the hero title */
+  .gold-halo {
+    background: radial-gradient(
+      ellipse 50% 45% at center,
+      rgba(203, 168, 105, 0.22),
+      transparent 70%
+    );
+  }
+
+  /* Deep emerald wash for dark sections — echoes the dining-room banquettes */
+  .emerald-wash::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(75% 65% at 6% 0%, rgba(29, 58, 44, 0.28), transparent 62%),
+      radial-gradient(65% 60% at 100% 100%, rgba(17, 35, 24, 0.32), transparent 62%);
+  }
+
+  /* Editorial film-grain veneer over dark sections */
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.06;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Thin precious frame inset inside the viewport */
+  .frame-inset {
+    position: absolute;
+    inset: 1rem;
+    border: 1px solid rgba(201, 163, 95, 0.35);
+    pointer-events: none;
+  }
+
+  @media (min-width: 768px) {
+    .frame-inset {
+      inset: 1.75rem;
+    }
   }
 
   .animate-marquee-left {
@@ -107,11 +287,19 @@ h4 {
     animation: loader-bar 1.4s ease-in-out forwards;
   }
 
+  .animate-ken-burns {
+    animation: ken-burns 18s ease-out forwards;
+  }
+
+  .animate-float {
+    animation: float 3.5s ease-in-out infinite;
+  }
+
   /* Scroll-triggered reveal: hidden until .is-visible is added */
   .reveal {
     opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    transform: translateY(34px);
+    transition: opacity 1s ease, transform 1s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform;
   }
 
@@ -123,18 +311,83 @@ h4 {
   /* On-mount entrance, used for the hero once the loader fades out */
   .animate-fade-up {
     opacity: 0;
-    animation: fade-up 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation: fade-up 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-letter-in {
+    opacity: 0;
+    animation: letter-in 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  /* Gentle fade applied to page content on every route change */
+  .animate-page-in {
+    animation: page-in 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+
+@keyframes gold-sheen {
+  to {
+    background-position: -200% center;
+  }
+}
+
+@keyframes btn-shine {
+  to {
+    left: 160%;
   }
 }
 
 @keyframes fade-up {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(34px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes letter-in {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ken-burns {
+  from {
+    transform: scale(1.04);
+  }
+  to {
+    transform: scale(1.12);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
   }
 }
 
@@ -146,7 +399,12 @@ h4 {
     transition: none;
   }
 
-  .animate-fade-up {
+  .animate-fade-up,
+  .animate-letter-in,
+  .animate-page-in,
+  .animate-ken-burns,
+  .animate-float,
+  .text-gold-shimmer {
     opacity: 1;
     animation: none;
   }
