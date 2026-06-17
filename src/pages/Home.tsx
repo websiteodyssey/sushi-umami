@@ -87,17 +87,17 @@ const Home = () => {
             {t("home.heroTagline")}
           </p>
 
-          <div className="animate-fade-up mt-9 md:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 max-w-xs sm:max-w-none mx-auto" style={{ animationDelay: "1.7s" }}>
+          <div className="animate-fade-up mt-9 md:mt-10 flex flex-row items-center justify-center gap-2 sm:gap-4" style={{ animationDelay: "1.7s" }}>
             <Link
               to="/menu"
-              className="btn-shine group inline-flex items-center justify-center gap-3 bg-luxury-gold text-luxury-black hover:bg-luxury-gold-bright transition-colors font-accent uppercase text-sm tracking-luxury rounded-full px-9 py-4"
+              className="btn-shine group inline-flex items-center justify-center gap-2 bg-luxury-gold text-luxury-black hover:bg-luxury-gold-bright transition-colors font-accent uppercase text-xs sm:text-sm tracking-luxury rounded-full px-5 sm:px-9 py-3.5 sm:py-4"
             >
               {t("home.heroCta2")}
-              <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+              <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
             </Link>
             <button
               type="button"
-              className="btn-shine inline-flex items-center justify-center gap-3 bg-luxury-gold text-luxury-black hover:bg-luxury-gold-bright transition-colors font-accent uppercase text-sm tracking-luxury rounded-full px-9 py-4"
+              className="btn-shine inline-flex items-center justify-center gap-2 bg-luxury-gold text-luxury-black hover:bg-luxury-gold-bright transition-colors font-accent uppercase text-xs sm:text-sm tracking-luxury rounded-full px-5 sm:px-9 py-3.5 sm:py-4"
             >
               {t("common.reserve")}
             </button>
@@ -246,16 +246,10 @@ const Home = () => {
           </Reveal>
           <ContactDetails
             actions={
-              <Reveal delay={240} className="flex flex-col gap-3">
-                <button
-                  type="button"
-                  className="btn-shine block text-center bg-luxury-gold text-luxury-black hover:bg-luxury-gold-bright transition-colors font-accent uppercase text-sm tracking-luxury rounded-full px-6 py-4"
-                >
-                  {t("home.ctaButton")}
-                </button>
+              <Reveal delay={240}>
                 <Link
                   to="/contact"
-                  className="btn-shine block text-center border border-luxury-gold text-luxury-gold hover:bg-luxury-gold hover:text-luxury-black transition-colors font-accent uppercase text-sm tracking-luxury rounded-full px-6 py-4"
+                  className="btn-shine block text-center bg-luxury-gold text-luxury-black hover:bg-luxury-gold-bright transition-colors font-accent uppercase text-sm tracking-luxury rounded-full px-6 py-4"
                 >
                   {t("common.contactUs")}
                 </Link>
