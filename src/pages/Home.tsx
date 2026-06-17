@@ -9,6 +9,8 @@ import Reveal from "../components/Reveal";
 import Ornament from "../components/Ornament";
 import SectionHeading from "../components/SectionHeading";
 import ParallaxBg from "../components/ParallaxBg";
+import SectionFX from "../components/SectionFX";
+import ContactDetails from "../components/ContactDetails";
 import { siteConfig } from "../config/siteConfig";
 
 const Home = () => {
@@ -48,7 +50,7 @@ const Home = () => {
   return (
     <div>
       {/* ===================== HERO ===================== */}
-      <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-luxury-black grain py-28 md:py-32">
+      <section className="relative min-h-[84svh] md:min-h-[100svh] flex items-center justify-center overflow-hidden bg-luxury-black grain py-24 md:py-32">
         {/* Cinematic background video (poster shows instantly while it loads) */}
         <video
           className="absolute inset-0 w-full h-full object-cover"
@@ -85,7 +87,7 @@ const Home = () => {
             {t("home.heroTagline")}
           </p>
 
-          <div className="animate-fade-up mt-9 md:mt-10" style={{ animationDelay: "1.7s" }}>
+          <div className="animate-fade-up mt-9 md:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 max-w-xs sm:max-w-none mx-auto" style={{ animationDelay: "1.7s" }}>
             <Link
               to="/menu"
               className="btn-shine group inline-flex items-center justify-center gap-3 bg-luxury-gold text-luxury-black hover:bg-luxury-gold-bright transition-colors font-accent uppercase text-sm tracking-luxury rounded-full px-9 py-4"
@@ -93,9 +95,15 @@ const Home = () => {
               {t("home.heroCta2")}
               <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
             </Link>
+            <button
+              type="button"
+              className="btn-shine inline-flex items-center justify-center gap-3 bg-luxury-gold text-luxury-black hover:bg-luxury-gold-bright transition-colors font-accent uppercase text-sm tracking-luxury rounded-full px-9 py-4"
+            >
+              {t("common.reserve")}
+            </button>
           </div>
 
-          <div className="animate-fade-up mt-12 md:mt-16 grid grid-cols-2 sm:grid-cols-4 gap-y-8 gap-x-6 max-w-md sm:max-w-2xl mx-auto" style={{ animationDelay: "1.9s" }}>
+          <div className="animate-fade-up mt-16 md:mt-16 grid grid-cols-2 sm:grid-cols-4 gap-y-8 gap-x-6 max-w-md sm:max-w-2xl mx-auto" style={{ animationDelay: "1.9s" }}>
             {stats.map((s) => (
               <div key={s.label} className="text-center">
                 <p className="font-display text-4xl md:text-5xl text-gold-foil leading-none">{s.value}</p>
@@ -225,6 +233,38 @@ const Home = () => {
         </div>
       </section>
 
+      {/* ===================== FIND US ===================== */}
+      <section className="emerald-wash relative py-16 md:py-24 lg:py-32 bg-luxury-ink grain overflow-hidden">
+        <SectionFX />
+        <div className="section-padding relative z-10">
+          <Reveal className="max-w-2xl mx-auto mb-12">
+            <SectionHeading
+              tone="dark"
+              eyebrow={t("common.findUsEyebrow")}
+              title={t("common.findUsTitle")}
+            />
+          </Reveal>
+          <ContactDetails
+            actions={
+              <Reveal delay={240} className="flex flex-col gap-3">
+                <button
+                  type="button"
+                  className="btn-shine block text-center bg-luxury-gold text-luxury-black hover:bg-luxury-gold-bright transition-colors font-accent uppercase text-sm tracking-luxury rounded-full px-6 py-4"
+                >
+                  {t("home.ctaButton")}
+                </button>
+                <Link
+                  to="/contact"
+                  className="btn-shine block text-center border border-luxury-gold text-luxury-gold hover:bg-luxury-gold hover:text-luxury-black transition-colors font-accent uppercase text-sm tracking-luxury rounded-full px-6 py-4"
+                >
+                  {t("common.contactUs")}
+                </Link>
+              </Reveal>
+            }
+          />
+        </div>
+      </section>
+
       {/* ===================== FINAL CTA ===================== */}
       <section className="relative py-20 md:py-28 lg:py-36 bg-luxury-black grain text-center overflow-hidden">
         <ParallaxBg src={`${import.meta.env.BASE_URL}images/bar.webp`} className="opacity-40" />
@@ -235,7 +275,8 @@ const Home = () => {
         <Reveal className="section-padding max-w-2xl mx-auto relative z-10">
           <Ornament className="mb-8" />
           <h2 className="text-display-md md:text-display-lg leading-tight font-display text-gold-foil pb-1 mb-6">
-            {t("home.ctaTitle")}
+            <span className="block">{t("home.ctaTitleA")}</span>
+            <span className="block">{t("home.ctaTitleB")}</span>
           </h2>
           <p className="text-lg text-luxury-champagne/75 font-body leading-relaxed mb-10">
             {t("home.ctaText")}
