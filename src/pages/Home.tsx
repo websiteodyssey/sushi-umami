@@ -100,7 +100,7 @@ const Home = () => {
         </div>
 
         {/* Spinning gold seal */}
-        <div className="hidden md:block absolute bottom-10 right-10 z-10 w-28 lg:w-32 h-28 lg:h-32 animate-fade-up" style={{ animationDelay: "2s" }}>
+        <div className="absolute bottom-5 left-5 w-[4.5rem] h-[4.5rem] md:bottom-10 md:right-10 md:left-auto md:w-28 md:h-28 lg:w-32 lg:h-32 z-10 animate-fade-up" style={{ animationDelay: "2s" }}>
           <SpinningSeal />
         </div>
 
@@ -120,16 +120,16 @@ const Home = () => {
 
       {/* ===================== STAT STRIP ===================== */}
       <section className="animate-aurora bg-gradient-to-br from-luxury-emerald-deep via-luxury-emerald to-luxury-emerald-deep grain relative border-y border-luxury-gold/25">
-        <div className="section-padding py-10 md:py-14">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-6">
+        <div className="section-padding py-5 md:py-14">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-5 md:gap-y-10 gap-x-6">
             {stats.map((s, i) => (
               <Reveal
                 key={s.label}
                 delay={i * 100}
                 className="text-center relative md:[&:not(:last-child)]:after:content-[''] md:after:absolute md:after:right-0 md:after:top-1/2 md:after:-translate-y-1/2 md:after:h-12 md:after:w-px md:after:bg-luxury-gold/20"
               >
-                <p className="font-display text-5xl md:text-6xl text-gold-foil leading-none">{s.value}</p>
-                <p className="font-accent uppercase tracking-luxury text-xs text-luxury-champagne/70 mt-3">{s.label}</p>
+                <p className="font-display text-2xl md:text-6xl text-gold-foil leading-none">{s.value}</p>
+                <p className="font-accent uppercase tracking-luxury text-[0.6rem] md:text-xs text-luxury-champagne/70 mt-1.5 md:mt-3">{s.label}</p>
               </Reveal>
             ))}
           </div>
@@ -169,10 +169,10 @@ const Home = () => {
 
       {/* ===================== 7 UNIVERSES ===================== */}
       <section className="emerald-wash py-16 md:py-24 lg:py-32 bg-luxury-ink grain relative overflow-hidden">
-        <span className="hidden md:block absolute top-28 left-[7%] animate-float" aria-hidden="true">
+        <span className="absolute top-28 left-[7%] animate-float" aria-hidden="true">
           <span className="block h-2.5 w-2.5 rotate-45 bg-luxury-gold/25" />
         </span>
-        <span className="hidden md:block absolute bottom-24 right-[10%] animate-float" style={{ animationDelay: "1.4s" }} aria-hidden="true">
+        <span className="absolute bottom-24 right-[8%] animate-float" style={{ animationDelay: "1.4s" }} aria-hidden="true">
           <span className="block h-2 w-2 rotate-45 bg-luxury-gold/20" />
         </span>
         <div className="section-padding relative z-10">
@@ -222,7 +222,7 @@ const Home = () => {
       <section className="emerald-wash relative py-16 md:py-24 lg:py-32 bg-luxury-ink grain text-center overflow-hidden">
         <ParallaxBg src={`${import.meta.env.BASE_URL}images/bar.webp`} className="opacity-15" />
         <div className="animate-aurora absolute inset-0 bg-gradient-to-br from-luxury-emerald-deep/50 via-transparent to-luxury-gold-deep/20 pointer-events-none" />
-        <span className="hidden md:block absolute top-16 right-[14%] animate-float" aria-hidden="true">
+        <span className="absolute top-16 right-[12%] animate-float" aria-hidden="true">
           <span className="block h-2.5 w-2.5 rotate-45 bg-luxury-gold/25" />
         </span>
         <Reveal className="section-padding max-w-2xl mx-auto relative z-10">

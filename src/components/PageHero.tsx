@@ -18,7 +18,7 @@ const PageHero = ({ title, subtitle, backgroundImage }: PageHeroProps) => {
       )}
       <div className="hero-overlay absolute inset-0 pointer-events-none" />
       <div className="frame-inset" />
-      <div className="hidden md:block absolute bottom-8 right-8 z-10 w-24 lg:w-28 h-24 lg:h-28 animate-fade-up" style={{ animationDelay: "0.5s" }}>
+      <div className="absolute bottom-5 right-5 w-[4.5rem] h-[4.5rem] md:bottom-8 md:right-8 md:w-24 md:h-24 lg:w-28 lg:h-28 z-10 animate-fade-up" style={{ animationDelay: "0.5s" }}>
         <SpinningSeal />
       </div>
       <div className="relative z-10 text-center px-6">
