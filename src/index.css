@@ -200,6 +200,7 @@ h4 {
     position: relative;
     background-color: var(--color-luxury-ivory);
     border: 1px solid rgba(201, 163, 95, 0.22);
+    border-radius: 1.5rem;
     transition: border-color 0.4s ease, box-shadow 0.4s ease,
       transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
@@ -213,8 +214,11 @@ h4 {
   /* Dark variant for sections on black */
   .luxury-card-dark {
     position: relative;
-    background-color: rgba(255, 255, 255, 0.02);
+    background:
+      radial-gradient(120% 90% at 78% 0%, rgba(203, 168, 105, 0.13), transparent 52%),
+      linear-gradient(155deg, rgba(38, 29, 14, 0.6) 0%, rgba(10, 8, 6, 0.72) 65%);
     border: 1px solid rgba(201, 163, 95, 0.18);
+    border-radius: 1.5rem;
     transition: border-color 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease,
       transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
@@ -335,6 +339,31 @@ h4 {
     animation: pulse-soft 3.2s ease-in-out infinite;
   }
 
+  /* Looping version of the card hover glow (gold border + halo) */
+  .animate-card-pulse {
+    animation: card-pulse 4.8s ease-in-out infinite;
+  }
+
+  /* Offsets each card so the pulse ripples through the grid like a wave */
+  .cards-stagger > *:nth-child(2) {
+    animation-delay: 0.22s;
+  }
+  .cards-stagger > *:nth-child(3) {
+    animation-delay: 0.44s;
+  }
+  .cards-stagger > *:nth-child(4) {
+    animation-delay: 0.66s;
+  }
+  .cards-stagger > *:nth-child(5) {
+    animation-delay: 0.88s;
+  }
+  .cards-stagger > *:nth-child(6) {
+    animation-delay: 1.1s;
+  }
+  .cards-stagger > *:nth-child(7) {
+    animation-delay: 1.32s;
+  }
+
   /* Living gradient — slowly drifting emerald/gold wash */
   .animate-aurora {
     background-size: 220% 220%;
@@ -373,9 +402,9 @@ h4 {
     animation: letter-in 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
-  /* Gentle fade applied to page content on every route change */
+  /* Entrance applied to page content on every route change */
   .animate-page-in {
-    animation: page-in 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation: page-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 }
 
@@ -418,11 +447,11 @@ h4 {
 @keyframes page-in {
   from {
     opacity: 0;
-    transform: translateY(14px);
+    transform: translateY(30px) scale(0.985);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }
 
@@ -463,6 +492,30 @@ h4 {
   }
 }
 
+@keyframes card-pulse {
+  0%,
+  100% {
+    border-color: rgba(201, 163, 95, 0.25);
+    box-shadow: 0 0 0 0 rgba(203, 168, 105, 0);
+  }
+  50% {
+    border-color: rgba(242, 220, 162, 0.9);
+    box-shadow: 0 0 55px -6px rgba(203, 168, 105, 0.7), 0 0 22px -8px rgba(242, 220, 162, 0.5);
+  }
+}
+
+/* On mobile the glow follows scroll position rather than a timer */
+@media (max-width: 767px) {
+  .animate-card-pulse {
+    animation: none;
+  }
+}
+
+.animate-card-pulse.is-lit {
+  border-color: rgba(242, 220, 162, 0.9);
+  box-shadow: 0 0 55px -6px rgba(203, 168, 105, 0.7), 0 0 22px -8px rgba(242, 220, 162, 0.5);
+}
+
 @keyframes aurora {
   0% {
     background-position: 0% 50%;
@@ -488,6 +541,7 @@ h4 {
   .animate-spin-slow,
   .animate-aurora,
   .animate-pulse-soft,
+  .animate-card-pulse,
   .text-gold-shimmer {
     opacity: 1;
     animation: none;

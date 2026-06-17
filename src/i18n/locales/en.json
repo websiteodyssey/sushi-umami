@@ -22,6 +22,9 @@
     "heroSubtitle": "Japanese Restaurant — All You Can Eat",
     "heroTitle": "Sushi Umami",
     "heroTagline": "Seven worlds, endless flavors",
+    "heroLine1": "A journey",
+    "heroLine2": "of flavors",
+    "heroLine3": "without limits",
     "heroCta2": "Discover the Buffet",
     "universesTitle": "Our 7 Culinary Worlds",
     "universesSubtitle": "A flavor journey at the heart of Japanese cuisine",
@@ -57,7 +60,10 @@
     "stat4": "Open lunch & dinner",
     "manifestoEyebrow": "The Art of the Japanese Buffet",
     "universesEyebrow": "The Menu",
-    "universesCardTitle": "And so much more to discover on site."
+    "universesCardTitle": "And so much more to discover on site.",
+    "pricingLead": "Small price,",
+    "pricingAccent": "big pleasure",
+    "pricingCta": "See all prices"
   },
   "about": {
     "heroSubtitle": "Our Story",
@@ -90,6 +96,9 @@
     "heroSubtitle": "All-You-Can-Eat Buffet",
     "heroTitle": "Our Buffet",
     "pricingTitle": "Prices",
+    "dayLabel": "Day",
+    "dayWeek": "Mon – Fri",
+    "dayWeekend": "Weekends & holidays",
     "adultsTitle": "Adults",
     "childrenTitle": "Children (under 10)",
     "labelMidiWeek": "Lunch (Monday - Friday)",

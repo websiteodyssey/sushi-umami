@@ -1,9 +1,10 @@
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { Fish, Sandwich, Flame, Soup, Salad, Shell, IceCream, ArrowRight, ChevronDown } from "lucide-react";
+import { Fish, Sandwich, Flame, Soup, Salad, Shell, IceCream, ArrowRight } from "lucide-react";
 import ImageMarquee from "../components/ImageMarquee";
 import TextMarquee from "../components/TextMarquee";
 import SpinningSeal from "../components/SpinningSeal";
+import PricingTabs from "../components/PricingTabs";
 import Reveal from "../components/Reveal";
 import Ornament from "../components/Ornament";
 import SectionHeading from "../components/SectionHeading";
@@ -47,12 +48,19 @@ const Home = () => {
   return (
     <div>
       {/* ===================== HERO ===================== */}
-      <section className="relative h-[100svh] min-h-[540px] flex items-center justify-center overflow-hidden bg-luxury-black grain">
-        {/* Cinematic background with slow zoom */}
-        <div
-          className="animate-ken-burns absolute inset-0 bg-cover bg-center bg-no-repeat blur-[3px] scale-105"
-          style={{ backgroundImage: `url('${import.meta.env.BASE_URL}images/dining.webp')` }}
-        />
+      <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-luxury-black grain py-28 md:py-32">
+        {/* Cinematic background video (poster shows instantly while it loads) */}
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster={`${import.meta.env.BASE_URL}images/dining.webp`}
+        >
+          <source src={`${import.meta.env.BASE_URL}images/hero.mp4`} type="video/mp4" />
+        </video>
         <div className="hero-overlay absolute inset-0 pointer-events-none" />
         <div className="absolute inset-0 bg-luxury-black/35 pointer-events-none" />
         <div className="gold-halo absolute inset-0 pointer-events-none animate-fade-up" style={{ animationDelay: "1.4s" }} />
@@ -65,75 +73,47 @@ const Home = () => {
           {siteConfig.address.city.replace(/^\d+\s*/, "")} — France
         </span>
 
-        <div className="relative z-10 text-center px-6 max-w-5xl">
-          <div className="animate-fade-up flex items-center justify-center gap-4 mb-7" style={{ animationDelay: "1.3s" }}>
-            <span className="h-px w-12 md:w-20 bg-gradient-to-r from-transparent to-luxury-gold" />
-            <p className="text-luxury-champagne text-xs md:text-sm tracking-luxury-wide uppercase font-accent whitespace-nowrap">
-              {t("home.heroSubtitle")}
-            </p>
-            <span className="h-px w-12 md:w-20 bg-gradient-to-l from-transparent to-luxury-gold" />
-          </div>
+        <div className="relative z-10 text-center px-6 max-w-4xl">
+          <p className="animate-fade-up text-luxury-gold text-xs md:text-sm tracking-luxury-wide uppercase font-accent mb-6" style={{ animationDelay: "1.3s" }}>
+            {t("home.heroSubtitle")}
+          </p>
 
-          <h1 className="animate-letter-in text-glow font-display font-semibold text-white text-[clamp(2.6rem,11vw,8.5rem)] leading-[0.95]" style={{ animationDelay: "1.45s" }}>
-            <span className="text-gold-shimmer">{t("home.heroTitle")}</span>
+          <h1 className="animate-letter-in text-glow font-display font-semibold leading-[0.95]" style={{ animationDelay: "1.45s" }}>
+            <span className="text-gold-shimmer text-[clamp(2.9rem,11vw,7.5rem)]">{t("home.heroTitle")}</span>
           </h1>
-
-          <p className="animate-fade-up text-2xl md:text-display-md font-display italic text-luxury-cream mt-6" style={{ animationDelay: "1.7s" }}>
+          <p className="animate-fade-up font-display italic text-luxury-cream text-xl md:text-2xl lg:text-3xl mt-4" style={{ animationDelay: "1.6s" }}>
             {t("home.heroTagline")}
           </p>
 
-          <div className="animate-fade-up mt-10 md:mt-12 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 max-w-sm sm:max-w-none mx-auto" style={{ animationDelay: "1.9s" }}>
+          <div className="animate-fade-up mt-9 md:mt-10" style={{ animationDelay: "1.7s" }}>
             <Link
               to="/menu"
-              className="btn-shine group inline-flex items-center justify-center gap-3 bg-luxury-gold text-luxury-black hover:bg-luxury-gold-bright transition-colors font-body uppercase text-sm tracking-luxury px-10 py-4"
+              className="btn-shine group inline-flex items-center justify-center gap-3 bg-luxury-gold text-luxury-black hover:bg-luxury-gold-bright transition-colors font-accent uppercase text-sm tracking-luxury rounded-full px-9 py-4"
             >
               {t("home.heroCta2")}
               <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
             </Link>
-            <button
-              type="button"
-              className="btn-shine inline-flex items-center justify-center gap-3 border border-luxury-cream/40 text-luxury-cream hover:border-luxury-gold hover:text-luxury-gold transition-colors font-body uppercase text-sm tracking-luxury px-10 py-4"
-            >
-              {t("common.reserve")}
-            </button>
+          </div>
+
+          <div className="animate-fade-up mt-12 md:mt-16 grid grid-cols-2 sm:grid-cols-4 gap-y-8 gap-x-6 max-w-md sm:max-w-2xl mx-auto" style={{ animationDelay: "1.9s" }}>
+            {stats.map((s) => (
+              <div key={s.label} className="text-center">
+                <p className="font-display text-4xl md:text-5xl text-gold-foil leading-none">{s.value}</p>
+                <p className="font-accent uppercase tracking-luxury text-[0.65rem] md:text-xs text-luxury-champagne/70 mt-2">{s.label}</p>
+              </div>
+            ))}
           </div>
         </div>
 
         {/* Spinning gold seal */}
-        <div className="absolute bottom-5 left-5 w-[4.5rem] h-[4.5rem] md:bottom-10 md:right-10 md:left-auto md:w-28 md:h-28 lg:w-32 lg:h-32 z-10 animate-fade-up" style={{ animationDelay: "2s" }}>
+        <div className="hidden lg:block absolute bottom-10 right-10 w-28 xl:w-32 h-28 xl:h-32 z-10 animate-fade-up" style={{ animationDelay: "2s" }}>
           <SpinningSeal />
-        </div>
-
-        {/* Scroll cue */}
-        <div className="animate-fade-up absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2" style={{ animationDelay: "2.2s" }}>
-          <span className="text-luxury-champagne/60 text-[0.65rem] tracking-luxury uppercase font-body">
-            {t("home.scroll")}
-          </span>
-          <ChevronDown size={20} className="text-luxury-gold animate-float" />
         </div>
       </section>
 
       {/* ===================== CATEGORY MARQUEE ===================== */}
       <section className="bg-luxury-black border-b border-luxury-gold/20 py-5">
         <TextMarquee items={universes.map((u) => u.title)} speed={36} />
-      </section>
-
-      {/* ===================== STAT STRIP ===================== */}
-      <section className="animate-aurora bg-gradient-to-br from-luxury-emerald-deep via-luxury-emerald to-luxury-emerald-deep grain relative border-y border-luxury-gold/25">
-        <div className="section-padding py-5 md:py-14">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-5 md:gap-y-10 gap-x-6">
-            {stats.map((s, i) => (
-              <Reveal
-                key={s.label}
-                delay={i * 100}
-                className="text-center relative md:[&:not(:last-child)]:after:content-[''] md:after:absolute md:after:right-0 md:after:top-1/2 md:after:-translate-y-1/2 md:after:h-12 md:after:w-px md:after:bg-luxury-gold/20"
-              >
-                <p className="font-display text-2xl md:text-6xl text-gold-foil leading-none">{s.value}</p>
-                <p className="font-accent uppercase tracking-luxury text-[0.6rem] md:text-xs text-luxury-champagne/70 mt-1.5 md:mt-3">{s.label}</p>
-              </Reveal>
-            ))}
-          </div>
-        </div>
       </section>
 
       {/* ===================== AMBIANCE ===================== */}
@@ -160,7 +140,7 @@ const Home = () => {
         <Reveal className="section-padding mt-14 text-center relative z-10">
           <Link
             to="/gallery"
-            className="inline-block border border-luxury-gold text-luxury-gold hover:bg-luxury-gold hover:text-luxury-black transition-colors font-body uppercase text-sm tracking-luxury px-8 py-4"
+            className="inline-block border border-luxury-gold text-luxury-gold hover:bg-luxury-gold hover:text-luxury-black transition-colors font-body uppercase text-sm tracking-luxury rounded-full px-8 py-4"
           >
             {t("home.ambianceCta")}
           </Link>
@@ -185,12 +165,12 @@ const Home = () => {
               className="max-w-3xl"
             />
           </Reveal>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+          <div className="cards-stagger grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {universes.map((u, i) => (
               <Reveal
                 key={u.title}
                 delay={(i % 4) * 100}
-                className="luxury-card-dark group p-8 flex flex-col items-start"
+                className="luxury-card-dark animate-card-pulse group p-8 flex flex-col items-start"
               >
                 <div className="flex items-center justify-between w-full mb-6">
                   <u.icon className="text-luxury-gold transition-transform duration-500 group-hover:scale-110" size={34} strokeWidth={1.4} />
@@ -218,16 +198,43 @@ const Home = () => {
         </div>
       </section>
 
+      {/* ===================== PRICING ===================== */}
+      <section className="relative py-16 md:py-24 lg:py-32 bg-luxury-ink grain emerald-wash overflow-hidden">
+        <ParallaxBg src={`${import.meta.env.BASE_URL}images/signature.webp`} className="opacity-[0.12]" />
+        <div className="animate-aurora absolute inset-0 bg-gradient-to-br from-luxury-emerald-deep/45 via-transparent to-luxury-gold-deep/25 pointer-events-none" />
+        <span className="absolute top-20 left-[8%] animate-float" aria-hidden="true">
+          <span className="block h-2.5 w-2.5 rotate-45 bg-luxury-gold/25" />
+        </span>
+        <div className="section-padding relative z-10">
+          <Reveal className="text-center max-w-3xl mx-auto mb-10">
+            <div className="flex items-center justify-center gap-3 mb-5">
+              <span className="h-px w-8 bg-luxury-gold/60" />
+              <span className="font-accent uppercase tracking-luxury-wide text-xs text-luxury-gold">
+                {t("menu.pricingTitle")}
+              </span>
+              <span className="h-px w-8 bg-luxury-gold/60" />
+            </div>
+            <h2 className="font-display text-display-md md:text-display-lg leading-tight">
+              <span className="text-luxury-cream">{t("home.pricingLead")} </span>
+              <span className="text-gold-shimmer italic">{t("home.pricingAccent")}</span>
+            </h2>
+          </Reveal>
+          <Reveal>
+            <PricingTabs />
+          </Reveal>
+        </div>
+      </section>
+
       {/* ===================== FINAL CTA ===================== */}
-      <section className="emerald-wash relative py-16 md:py-24 lg:py-32 bg-luxury-ink grain text-center overflow-hidden">
-        <ParallaxBg src={`${import.meta.env.BASE_URL}images/bar.webp`} className="opacity-15" />
-        <div className="animate-aurora absolute inset-0 bg-gradient-to-br from-luxury-emerald-deep/50 via-transparent to-luxury-gold-deep/20 pointer-events-none" />
+      <section className="relative py-20 md:py-28 lg:py-36 bg-luxury-black grain text-center overflow-hidden">
+        <ParallaxBg src={`${import.meta.env.BASE_URL}images/bar.webp`} className="opacity-40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-luxury-black via-luxury-black/75 to-luxury-black/85 pointer-events-none" />
         <span className="absolute top-16 right-[12%] animate-float" aria-hidden="true">
           <span className="block h-2.5 w-2.5 rotate-45 bg-luxury-gold/25" />
         </span>
         <Reveal className="section-padding max-w-2xl mx-auto relative z-10">
           <Ornament className="mb-8" />
-          <h2 className="text-[clamp(1.25rem,4.8vw,2.75rem)] leading-tight font-display text-gold-foil pb-1 mb-6 whitespace-nowrap">
+          <h2 className="text-display-md md:text-display-lg leading-tight font-display text-gold-foil pb-1 mb-6">
             {t("home.ctaTitle")}
           </h2>
           <p className="text-lg text-luxury-champagne/75 font-body leading-relaxed mb-10">
@@ -235,7 +242,7 @@ const Home = () => {
           </p>
           <button
             type="button"
-            className="btn-shine inline-block bg-luxury-gold text-luxury-black hover:bg-luxury-gold-bright transition-colors font-body uppercase text-sm tracking-luxury px-12 py-4"
+            className="btn-shine inline-block bg-luxury-gold text-luxury-black hover:bg-luxury-gold-bright transition-colors font-body uppercase text-sm tracking-luxury rounded-full px-12 py-4"
           >
             {t("home.ctaButton")}
           </button>

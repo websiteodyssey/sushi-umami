@@ -22,6 +22,9 @@
     "heroSubtitle": "Restaurant Japonais — Buffet à Volonté",
     "heroTitle": "Sushi Umami",
     "heroTagline": "Sept univers, une infinité de saveurs",
+    "heroLine1": "Le voyage",
+    "heroLine2": "des saveurs",
+    "heroLine3": "à volonté",
     "heroCta2": "Découvrir le buffet",
     "universesTitle": "Nos 7 Univers Culinaires",
     "universesSubtitle": "Un voyage gustatif au cœur de la cuisine japonaise",
@@ -57,7 +60,10 @@
     "stat4": "Ouvert midi & soir",
     "manifestoEyebrow": "L'Art du Buffet Japonais",
     "universesEyebrow": "La Carte",
-    "universesCardTitle": "Et bien plus encore à découvrir sur place."
+    "universesCardTitle": "Et bien plus encore à découvrir sur place.",
+    "pricingLead": "Petit prix,",
+    "pricingAccent": "grand plaisir",
+    "pricingCta": "Voir tous les tarifs"
   },
   "about": {
     "heroSubtitle": "Notre Histoire",
@@ -90,6 +96,9 @@
     "heroSubtitle": "Buffet à Volonté",
     "heroTitle": "Notre Buffet",
     "pricingTitle": "Tarifs",
+    "dayLabel": "Jour",
+    "dayWeek": "Lun – Ven",
+    "dayWeekend": "Week-end & fériés",
     "adultsTitle": "Adultes",
     "childrenTitle": "Enfants (-10 ans)",
     "labelMidiWeek": "Midi (Lundi - Vendredi)",

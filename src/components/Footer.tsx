@@ -8,7 +8,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-luxury-black text-luxury-cream">
-      <div className="section-padding py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div className="section-padding py-12 md:py-16 grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 lg:gap-12">
         <div>
           <div className="flex items-center gap-3 mb-4">
             <img
@@ -43,7 +43,9 @@ const Footer = () => {
           <ul className="space-y-3 font-body text-luxury-cream/90">
             <li className="flex items-start gap-3">
               <MapPin size={18} className="text-luxury-gold mt-1 shrink-0" />
-              <span>{siteConfig.address.street}, {siteConfig.address.city}</span>
+              <a href={siteConfig.mapsUrl} target="_blank" rel="noopener noreferrer" className="hover:text-luxury-gold transition-colors">
+                {siteConfig.address.street}, {siteConfig.address.city}
+              </a>
             </li>
             <li className="flex items-center gap-3">
               <Phone size={18} className="text-luxury-gold shrink-0" />

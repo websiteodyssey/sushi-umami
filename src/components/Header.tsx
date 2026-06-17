@@ -63,7 +63,7 @@ const Header = () => {
           <LanguageSwitcher />
           <button
             type="button"
-            className="btn-shine border border-luxury-gold text-luxury-gold hover:bg-luxury-gold hover:text-luxury-black transition-colors font-body uppercase text-sm tracking-luxury px-6 py-2.5"
+            className="btn-shine border border-luxury-gold text-luxury-gold hover:bg-luxury-gold hover:text-luxury-black transition-colors font-body uppercase text-sm tracking-luxury rounded-full px-6 py-2.5"
           >
             {t("common.reserve")}
           </button>
@@ -113,36 +113,46 @@ const Header = () => {
           menuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <nav className="flex flex-col h-full pt-24 px-7 pb-8">
+        <nav className="flex flex-col h-full pt-24 px-8 pb-8">
+          {/* Decorative gold line that draws in on open */}
+          <span
+            className={`h-px bg-gradient-to-r from-luxury-gold to-transparent mb-5 origin-left transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+              menuOpen ? "scale-x-100" : "scale-x-0"
+            }`}
+            style={{ transitionDelay: menuOpen ? "120ms" : "0ms" }}
+            aria-hidden="true"
+          />
           {navItems.map((item, i) => (
             <NavLink
               key={item.to}
               to={item.to}
               end={item.to === "/"}
               onClick={close}
-              style={{ transitionDelay: menuOpen ? `${150 + i * 55}ms` : "0ms" }}
+              style={{ transitionDelay: menuOpen ? `${180 + i * 60}ms` : "0ms" }}
               className={({ isActive }) =>
-                `group flex items-center justify-end gap-3 py-3.5 border-b border-luxury-gold/10 font-accent uppercase text-sm tracking-luxury transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                  menuOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-6"
+                `group flex items-center gap-4 py-3.5 border-b border-luxury-gold/10 font-accent uppercase text-base tracking-luxury transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                  menuOpen ? "opacity-100 translate-x-0 blur-0" : "opacity-0 -translate-x-6 blur-[2px]"
                 } ${isActive ? "text-luxury-gold" : "text-luxury-cream"}`
               }
             >
               {({ isActive }) => (
                 <>
-                  {item.label}
                   <span
-                    className={`block h-1.5 w-1.5 rotate-45 transition-all duration-300 ${
-                      isActive ? "bg-luxury-gold opacity-100" : "bg-luxury-gold opacity-0 group-hover:opacity-60"
+                    className={`block h-1.5 w-1.5 rotate-45 shrink-0 transition-all duration-300 ${
+                      isActive
+                        ? "bg-luxury-gold opacity-100 scale-125"
+                        : "bg-luxury-gold opacity-40 group-hover:opacity-100 group-hover:scale-125"
                     }`}
                   />
+                  {item.label}
                 </>
               )}
             </NavLink>
           ))}
           <button
             type="button"
-            style={{ transitionDelay: menuOpen ? `${150 + navItems.length * 55}ms` : "0ms" }}
-            className={`btn-shine mt-7 border border-luxury-gold text-luxury-gold hover:bg-luxury-gold hover:text-luxury-black font-body uppercase text-sm tracking-luxury px-6 py-3.5 text-center transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+            style={{ transitionDelay: menuOpen ? `${180 + navItems.length * 60}ms` : "0ms" }}
+            className={`btn-shine mt-7 border border-luxury-gold text-luxury-gold hover:bg-luxury-gold hover:text-luxury-black font-accent uppercase text-sm tracking-luxury rounded-full px-6 py-3.5 text-center transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
               menuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
             }`}
           >

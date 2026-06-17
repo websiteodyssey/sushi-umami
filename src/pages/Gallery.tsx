@@ -4,6 +4,7 @@ import Carousel from "../components/Carousel";
 import Reveal from "../components/Reveal";
 import SectionHeading from "../components/SectionHeading";
 import GoldFrame from "../components/GoldFrame";
+import SectionFX from "../components/SectionFX";
 
 const Gallery = () => {
   const { t } = useTranslation();
@@ -25,7 +26,8 @@ const Gallery = () => {
         backgroundImage={`${import.meta.env.BASE_URL}images/dining.webp`}
       />
 
-      <section className="emerald-wash relative py-16 md:py-24 lg:py-32 bg-luxury-ink grain">
+      <section className="emerald-wash relative overflow-hidden py-16 md:py-24 lg:py-32 bg-luxury-ink grain">
+        <SectionFX />
         <div className="section-padding relative z-10">
           <Reveal className="max-w-2xl mx-auto mb-14">
             <SectionHeading
@@ -46,9 +48,9 @@ const Gallery = () => {
           </Reveal>
 
           {/* Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+          <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6">
             {images.map((img, i) => (
-              <Reveal key={img.src} delay={(i % 3) * 140} className="relative h-72 lg:h-80 overflow-hidden group">
+              <Reveal key={img.src} delay={(i % 3) * 140} className="relative aspect-[4/3] overflow-hidden group">
                 <img
                   src={img.src}
                   alt={img.alt}

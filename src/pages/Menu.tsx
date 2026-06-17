@@ -5,6 +5,7 @@ import Reveal from "../components/Reveal";
 import Ornament from "../components/Ornament";
 import SectionHeading from "../components/SectionHeading";
 import ParallaxBg from "../components/ParallaxBg";
+import SectionFX from "../components/SectionFX";
 import { siteConfig } from "../config/siteConfig";
 
 const Menu = () => {
@@ -40,13 +41,14 @@ const Menu = () => {
       {/* Pricing */}
       <section className="emerald-wash py-16 md:py-24 lg:py-32 bg-luxury-ink grain relative overflow-hidden">
         <ParallaxBg src={`${import.meta.env.BASE_URL}images/signature.webp`} className="opacity-10" />
+        <SectionFX />
         <div className="section-padding relative z-10">
           <Reveal className="mb-14">
             <SectionHeading tone="dark" title={t("menu.pricingTitle")} />
           </Reveal>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
-            <Reveal className="luxury-card-dark deco-corners gold-glow p-8 md:p-10">
+          <div className="cards-stagger grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
+            <Reveal className="luxury-card-dark animate-card-pulse deco-corners gold-glow p-8 md:p-10">
               <h3 className="font-display text-2xl text-luxury-gold uppercase tracking-luxury mb-8 text-center">
                 {t("menu.adultsTitle")}
               </h3>
@@ -61,7 +63,7 @@ const Menu = () => {
               </ul>
             </Reveal>
 
-            <Reveal delay={150} className="luxury-card-dark deco-corners gold-glow p-8 md:p-10">
+            <Reveal delay={150} className="luxury-card-dark animate-card-pulse deco-corners gold-glow p-8 md:p-10">
               <h3 className="font-display text-2xl text-luxury-gold uppercase tracking-luxury mb-8 text-center">
                 {t("menu.childrenTitle")}
               </h3>
@@ -119,7 +121,7 @@ const Menu = () => {
           <Ornament className="mb-8" />
           <button
             type="button"
-            className="btn-shine inline-block bg-luxury-gold text-luxury-black hover:bg-luxury-gold-bright transition-colors font-body uppercase text-sm tracking-luxury px-12 py-4"
+            className="btn-shine inline-block bg-luxury-gold text-luxury-black hover:bg-luxury-gold-bright transition-colors font-body uppercase text-sm tracking-luxury rounded-full px-12 py-4"
           >
             {t("menu.reserveCta")}
           </button>

@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import Loader from "./components/Loader";
 import CustomCursor from "./components/CustomCursor";
 import ScrollProgress from "./components/ScrollProgress";
+import ScrollLit from "./components/ScrollLit";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Menu from "./pages/Menu";
@@ -47,6 +48,7 @@ function App() {
       <Loader />
       <CustomCursor />
       <ScrollProgress />
+      <ScrollLit />
       <ScrollToTop />
       <div className="min-h-screen flex flex-col bg-luxury-black">
         <Header />

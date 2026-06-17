@@ -6,6 +6,7 @@ import Ornament from "../components/Ornament";
 import SectionHeading from "../components/SectionHeading";
 import GoldFrame from "../components/GoldFrame";
 import ParallaxBg from "../components/ParallaxBg";
+import SectionFX from "../components/SectionFX";
 
 const About = () => {
   const { t } = useTranslation();
@@ -54,6 +55,7 @@ const About = () => {
       {/* Quote band */}
       <section className="emerald-wash py-16 md:py-24 lg:py-32 bg-luxury-ink grain relative overflow-hidden">
         <ParallaxBg src={`${import.meta.env.BASE_URL}images/bar.webp`} className="opacity-10" />
+        <SectionFX />
         <Reveal className="section-padding text-center relative z-10 max-w-3xl mx-auto">
           <span className="font-display text-6xl text-luxury-gold/40 leading-none">“</span>
           <p className="text-2xl md:text-4xl font-display text-luxury-cream italic -mt-4">
@@ -136,6 +138,7 @@ const About = () => {
 
       {/* Team & values */}
       <section className="emerald-wash py-16 md:py-24 lg:py-32 bg-luxury-ink grain relative overflow-hidden">
+        <SectionFX />
         <div className="section-padding relative z-10">
           <div className="max-w-4xl mx-auto">
             <Reveal className="mb-12">
@@ -150,13 +153,13 @@ const About = () => {
                 {t("about.commitments")}
               </h3>
             </Reveal>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+            <div className="cards-stagger grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
               {[
                 { title: t("about.teamCohesionTitle"), text: t("about.teamCohesion") },
                 { title: t("about.qualityCommitmentTitle"), text: t("about.qualityCommitment") },
                 { title: t("about.environmentTitle"), text: t("about.environment") },
               ].map((c, i) => (
-                <Reveal key={c.title} delay={i * 120} className="luxury-card-dark deco-corners p-8">
+                <Reveal key={c.title} delay={i * 120} className="luxury-card-dark animate-card-pulse deco-corners p-8">
                   <span className="font-display text-3xl text-luxury-gold/30">{String(i + 1).padStart(2, "0")}</span>
                   <h4 className="font-display text-xl text-luxury-cream mt-3 mb-3">{c.title}</h4>
                   <p className="font-body text-luxury-champagne/65">{c.text}</p>

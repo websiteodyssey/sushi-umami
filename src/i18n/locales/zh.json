@@ -22,6 +22,9 @@
     "heroSubtitle": "日本料理餐厅 — 自助餐无限量",
     "heroTitle": "Sushi Umami",
     "heroTagline": "七大风味世界，无限美味之旅",
+    "heroLine1": "味觉",
+    "heroLine2": "之旅",
+    "heroLine3": "无限畅享",
     "heroCta2": "探索自助餐",
     "universesTitle": "七大美食世界",
     "universesSubtitle": "一场深入日本料理核心的味觉之旅",
@@ -57,7 +60,10 @@
     "stat4": "午晚均营业",
     "manifestoEyebrow": "日式自助餐的艺术",
     "universesEyebrow": "菜单",
-    "universesCardTitle": "更多精彩，敬请到店探索。"
+    "universesCardTitle": "更多精彩，敬请到店探索。",
+    "pricingLead": "实惠价格，",
+    "pricingAccent": "极致享受",
+    "pricingCta": "查看全部价格"
   },
   "about": {
     "heroSubtitle": "我们的故事",
@@ -90,6 +96,9 @@
     "heroSubtitle": "无限量自助餐",
     "heroTitle": "我们的自助餐",
     "pricingTitle": "价格",
+    "dayLabel": "日期",
+    "dayWeek": "周一至周五",
+    "dayWeekend": "周末及节假日",
     "adultsTitle": "成人",
     "childrenTitle": "儿童（10岁以下）",
     "labelMidiWeek": "午餐（周一至周五）",
