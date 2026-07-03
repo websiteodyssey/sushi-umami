@@ -30,6 +30,7 @@ const Contact = () => {
           </Reveal>
 
           <ContactDetails
+            showSocial
             actions={
               <Reveal delay={240}>
                 <a

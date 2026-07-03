@@ -3,11 +3,15 @@ import { MapPin, Phone, Clock } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import Reveal from "./Reveal";
 import GoldFrame from "./GoldFrame";
+import InstagramIcon from "./InstagramIcon";
+import TikTokIcon from "./TikTokIcon";
 import { siteConfig } from "../config/siteConfig";
 
 interface ContactDetailsProps {
   /** Buttons rendered below the info cards (left column). */
   actions?: ReactNode;
+  /** Show a non-clickable social block (Instagram / TikTok). */
+  showSocial?: boolean;
 }
 
 /**
@@ -15,8 +19,9 @@ interface ContactDetailsProps {
  * badges, an optional actions area, and the Google map. Shared by the Contact
  * page and the home page.
  */
-const ContactDetails = ({ actions }: ContactDetailsProps) => {
+const ContactDetails = ({ actions, showSocial = false }: ContactDetailsProps) => {
   const { t } = useTranslation();
+  const { instagram, tiktok } = siteConfig.social;
 
   const mapEmbedSrc = `https://www.google.com/maps?q=${encodeURIComponent(
     `${siteConfig.address.street}, ${siteConfig.address.city}`
@@ -70,6 +75,27 @@ const ContactDetails = ({ actions }: ContactDetailsProps) => {
             <p className="text-luxury-champagne/55 mt-1">{t("contact.hoursDays")}</p>
           </div>
         </Reveal>
+
+        {showSocial && (instagram || tiktok) && (
+          <Reveal delay={240} className="luxury-card-dark p-6 flex items-center gap-5">
+            <div>
+              <h3 className={label}>{t("contact.followTitle")}</h3>
+              {/* Visual only — intentionally not clickable */}
+              <div className="flex items-center gap-3 mt-2" aria-label="Instagram, TikTok">
+                {instagram && (
+                  <span className={badge} aria-hidden="true">
+                    <InstagramIcon size={22} />
+                  </span>
+                )}
+                {tiktok && (
+                  <span className={badge} aria-hidden="true">
+                    <TikTokIcon size={21} />
+                  </span>
+                )}
+              </div>
+            </div>
+          </Reveal>
+        )}
 
         {actions}
       </div>

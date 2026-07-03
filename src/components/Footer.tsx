@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { MapPin, Phone, Clock } from "lucide-react";
+import InstagramIcon from "./InstagramIcon";
+import TikTokIcon from "./TikTokIcon";
 import { siteConfig } from "../config/siteConfig";
 
 const Footer = () => {
@@ -21,6 +23,27 @@ const Footer = () => {
           <p className="font-body text-luxury-champagne/80 leading-relaxed">
             {t("footer.tagline")}
           </p>
+          {(siteConfig.social.instagram || siteConfig.social.tiktok) && (
+            /* Visual only — intentionally not clickable (no redirect). */
+            <div className="flex items-center gap-3 mt-5" aria-label="Instagram, TikTok">
+              {siteConfig.social.instagram && (
+                <span
+                  aria-hidden="true"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-luxury-gold/30 text-luxury-cream/80"
+                >
+                  <InstagramIcon size={20} />
+                </span>
+              )}
+              {siteConfig.social.tiktok && (
+                <span
+                  aria-hidden="true"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-luxury-gold/30 text-luxury-cream/80"
+                >
+                  <TikTokIcon size={19} />
+                </span>
+              )}
+            </div>
+          )}
         </div>
 
         <div>
