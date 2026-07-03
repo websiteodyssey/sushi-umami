@@ -286,13 +286,14 @@ h4 {
   }
 
   /* Editorial film-grain veneer over dark sections */
+  /* Static noise veneer. No mix-blend-mode: blending re-composites the whole
+     section every frame when animated content sits beneath it (major scroll jank). */
   .grain::after {
     content: "";
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.06;
-    mix-blend-mode: overlay;
+    opacity: 0.045;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
@@ -339,35 +340,51 @@ h4 {
     animation: pulse-soft 3.2s ease-in-out infinite;
   }
 
-  /* Looping version of the card hover glow (gold border + halo) */
+  /* Looping card halo. The glow lives on a pseudo-element and we pulse its
+     OPACITY (compositor-only) instead of animating box-shadow on the card
+     itself, which would repaint a large blurred region every frame × 7 cards. */
   .animate-card-pulse {
-    animation: card-pulse 4.8s ease-in-out infinite;
+    position: relative;
+  }
+  .animate-card-pulse::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    box-shadow: 0 0 55px -6px rgba(203, 168, 105, 0.7), 0 0 22px -8px rgba(242, 220, 162, 0.5);
+    opacity: 0;
+    animation: glow-pulse 4.8s ease-in-out infinite;
+    will-change: opacity;
   }
 
   /* Offsets each card so the pulse ripples through the grid like a wave */
-  .cards-stagger > *:nth-child(2) {
+  .cards-stagger > *:nth-child(2)::after {
     animation-delay: 0.22s;
   }
-  .cards-stagger > *:nth-child(3) {
+  .cards-stagger > *:nth-child(3)::after {
     animation-delay: 0.44s;
   }
-  .cards-stagger > *:nth-child(4) {
+  .cards-stagger > *:nth-child(4)::after {
     animation-delay: 0.66s;
   }
-  .cards-stagger > *:nth-child(5) {
+  .cards-stagger > *:nth-child(5)::after {
     animation-delay: 0.88s;
   }
-  .cards-stagger > *:nth-child(6) {
+  .cards-stagger > *:nth-child(6)::after {
     animation-delay: 1.1s;
   }
-  .cards-stagger > *:nth-child(7) {
+  .cards-stagger > *:nth-child(7)::after {
     animation-delay: 1.32s;
   }
 
-  /* Living gradient — slowly drifting emerald/gold wash */
+  /* Emerald/gold wash. The drift used to animate background-position, which
+     repaints the (large) layer every frame; we animate opacity instead — that
+     runs on the compositor, so it costs almost nothing and never blocks scroll. */
   .animate-aurora {
-    background-size: 220% 220%;
-    animation: aurora 16s ease-in-out infinite alternate;
+    background-size: 200% 200%;
+    animation: aurora-fade 14s ease-in-out infinite alternate;
+    will-change: opacity;
   }
 
   /* Playful bounce lift for cards/badges */
@@ -389,6 +406,9 @@ h4 {
   .reveal.is-visible {
     opacity: 1;
     transform: none;
+    /* Release the promoted layer once the entrance is done — keeping will-change
+       on dozens of revealed elements permanently wastes GPU memory. */
+    will-change: auto;
   }
 
   /* On-mount entrance, used for the hero once the loader fades out */
@@ -492,22 +512,21 @@ h4 {
   }
 }
 
-@keyframes card-pulse {
+@keyframes glow-pulse {
   0%,
   100% {
-    border-color: rgba(201, 163, 95, 0.25);
-    box-shadow: 0 0 0 0 rgba(203, 168, 105, 0);
+    opacity: 0;
   }
   50% {
-    border-color: rgba(242, 220, 162, 0.9);
-    box-shadow: 0 0 55px -6px rgba(203, 168, 105, 0.7), 0 0 22px -8px rgba(242, 220, 162, 0.5);
+    opacity: 1;
   }
 }
 
 /* On mobile the glow follows scroll position rather than a timer */
 @media (max-width: 767px) {
-  .animate-card-pulse {
+  .animate-card-pulse::after {
     animation: none;
+    opacity: 0;
   }
 }
 
@@ -516,12 +535,12 @@ h4 {
   box-shadow: 0 0 55px -6px rgba(203, 168, 105, 0.7), 0 0 22px -8px rgba(242, 220, 162, 0.5);
 }
 
-@keyframes aurora {
+@keyframes aurora-fade {
   0% {
-    background-position: 0% 50%;
+    opacity: 0.55;
   }
   100% {
-    background-position: 100% 50%;
+    opacity: 1;
   }
 }
 
@@ -542,9 +561,14 @@ h4 {
   .animate-aurora,
   .animate-pulse-soft,
   .animate-card-pulse,
+  .animate-card-pulse::after,
   .text-gold-shimmer {
     opacity: 1;
     animation: none;
+  }
+
+  .animate-card-pulse::after {
+    opacity: 0;
   }
 }
 

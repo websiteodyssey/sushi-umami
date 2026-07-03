@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 interface CarouselSlide {
   src: string;
   alt: string;
+  caption?: string;
 }
 
 interface CarouselProps {
@@ -43,6 +44,17 @@ const Carousel = ({ slides, autoPlayMs = 5000, className = "" }: CarouselProps) 
         />
       ))}
       <div className="absolute inset-0 bg-luxury-black/20" />
+
+      {slides[index]?.caption && (
+        <div className="absolute inset-x-0 bottom-0 pt-16 pb-10 px-6 bg-gradient-to-t from-luxury-black/85 via-luxury-black/40 to-transparent pointer-events-none text-center">
+          <span className="font-accent uppercase tracking-luxury text-[0.6rem] text-luxury-gold/80">
+            {String(index + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}
+          </span>
+          <p className="font-display text-2xl md:text-3xl text-luxury-cream mt-1">
+            {slides[index].caption}
+          </p>
+        </div>
+      )}
 
       <button
         type="button"

@@ -11,6 +11,8 @@ import About from "./pages/About";
 import Menu from "./pages/Menu";
 import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
+import LegalMentions from "./pages/LegalMentions";
+import Privacy from "./pages/Privacy";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -37,6 +39,8 @@ const AnimatedMain = () => {
         <Route path="/menu" element={<Menu />} />
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/mentions-legales" element={<LegalMentions />} />
+        <Route path="/confidentialite" element={<Privacy />} />
       </Routes>
     </main>
   );

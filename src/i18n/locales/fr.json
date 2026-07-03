@@ -70,6 +70,13 @@
     "pricingAccent": "grand plaisir",
     "pricingCta": "Voir tous les tarifs"
   },
+  "specialties": {
+    "eyebrow": "Le Comptoir",
+    "title": "Nos Spécialités",
+    "subtitle": "Un aperçu de nos créations signature, dressées à la minute par nos chefs.",
+    "cta": "Découvrir le buffet",
+    "altSuffix": "spécialité signature de Sushi Umami"
+  },
   "about": {
     "heroSubtitle": "Notre Histoire",
     "heroTitle": "À Propos",
@@ -124,12 +131,17 @@
     "heroTitle": "Galerie",
     "title": "Notre Univers en Images",
     "subtitle": "Un cadre élégant, pensé dans les moindres détails pour une expérience sensorielle complète.",
-    "barAlt": "Bar à sushi et cave à saké, marbre noir et lumière dorée",
-    "diningAlt": "Salle principale aux banquettes vertes et cercles dorés",
-    "salonAlt": "Salon privé orné de fresques et tables de marbre dressées",
-    "atriumAlt": "Verrière et patio arboré baigné de lumière naturelle",
-    "signatureAlt": "Mur signature aux niches dorées rétroéclairées",
-    "washroomAlt": "Espace lavabo en marbre noir et miroirs ronds lumineux"
+    "barAlt": "Bar aux verres suspendus et machine à espresso, lumière dorée",
+    "diningAlt": "Salle principale aux banquettes vertes et tables laquées de laiton",
+    "salonAlt": "Salon aux banquettes vertes, verdure suspendue et suspensions circulaires",
+    "atriumAlt": "Verrière et verdure suspendue baignées de lumière naturelle",
+    "signatureAlt": "Mur signature aux niches dorées rétroéclairées en éventail",
+    "washroomAlt": "Enseigne lumineuse Sushi Umami",
+    "greeneryAlt": "Verdure suspendue en cages dorées au-dessus de la salle",
+    "tableAlt": "Tables laquées de laiton dressées aux verres glacés",
+    "barDetailAlt": "Machine à espresso et étagères rétroéclairées du bar",
+    "pendantAlt": "Suspension lanterne en cage dorée à la lumière chaude",
+    "wallDetailAlt": "Gros plan des coquilles art-déco rétroéclairées du mur signature"
   },
   "contact": {
     "heroSubtitle": "Nous Trouver",
@@ -144,10 +156,65 @@
     "hoursDinner": "Soir : 19h00 - 22h30",
     "hoursDays": "Ouvert 7j/7"
   },
+  "legal": {
+    "heroSubtitle": "Informations légales",
+    "heroTitle": "Mentions Légales",
+    "editorTitle": "Éditeur du site",
+    "editorIntro": "Le présent site est édité par :",
+    "fields": {
+      "company": "Dénomination sociale",
+      "brand": "Enseigne",
+      "legalForm": "Forme juridique",
+      "capital": "Capital social",
+      "headOffice": "Siège social",
+      "rcs": "RCS",
+      "siren": "SIREN",
+      "managementNumber": "N° de gestion",
+      "euid": "Identifiant européen (EUID)",
+      "naf": "Code APE / NAF",
+      "president": "Président",
+      "activity": "Activité",
+      "phone": "Téléphone"
+    },
+    "directorTitle": "Directeur de la publication",
+    "directorText": "Le directeur de la publication est {{president}}, en qualité de Président de la société {{company}}.",
+    "hostTitle": "Hébergement",
+    "hostText": "Le site est hébergé par GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis (GitHub Pages).",
+    "ipTitle": "Propriété intellectuelle",
+    "ipText": "L'ensemble des éléments composant ce site (textes, photographies, logos, la marque {{brand}}, graphismes et vidéos) est protégé par le droit de la propriété intellectuelle et reste la propriété exclusive de l'éditeur. Toute reproduction, représentation ou diffusion, totale ou partielle, sans autorisation écrite préalable est interdite.",
+    "liabilityTitle": "Responsabilité",
+    "liabilityText": "L'éditeur s'efforce d'assurer l'exactitude des informations diffusées sur ce site (tarifs, horaires, prestations), mais ne saurait être tenu responsable des erreurs, omissions ou d'une indisponibilité du site. Les informations sont fournies à titre indicatif et sont susceptibles d'évoluer.",
+    "dataTitle": "Données personnelles",
+    "dataText": "Le traitement de vos données personnelles est détaillé dans notre"
+  },
+  "privacy": {
+    "heroSubtitle": "Protection des données",
+    "heroTitle": "Politique de Confidentialité",
+    "intro": "La présente politique de confidentialité décrit la manière dont vos données personnelles sont collectées et traitées lors de votre navigation sur ce site et de vos échanges avec le restaurant, conformément au Règlement Général sur la Protection des Données (RGPD).",
+    "controllerTitle": "Responsable du traitement",
+    "controllerText": "Le responsable du traitement des données est la société {{company}}, dont le siège social est situé {{headOffice}}. Pour toute question relative à vos données, vous pouvez nous contacter par téléphone au {{phone}} ou par courrier à l'adresse du siège social.",
+    "dataTitle": "Données collectées",
+    "dataText": "Ce site est un site vitrine et ne comporte pas de formulaire de collecte de données. Des données personnelles (nom, numéro de téléphone, date et nombre de couverts) peuvent être recueillies uniquement lorsque vous effectuez une réservation via notre outil de réservation en ligne ou lorsque vous nous contactez par téléphone.",
+    "purposeTitle": "Finalités du traitement",
+    "purposeText": "Les données collectées servent exclusivement à la gestion de vos réservations, à la réponse à vos demandes et à l'organisation du service au sein du restaurant. Elles ne font l'objet d'aucune revente ni d'aucune prospection commerciale non sollicitée.",
+    "reservationTitle": "Réservations en ligne",
+    "reservationText": "Les réservations sont gérées via un service tiers accessible depuis les boutons « Réserver » du site (reservation.ody.app). Les données que vous y renseignez sont traitées par ce prestataire pour le compte du restaurant, dans le seul but de traiter votre demande de réservation.",
+    "cookiesTitle": "Cookies",
+    "cookiesText": "Ce site n'utilise pas de cookies publicitaires ni de traceurs à des fins de suivi marketing. Seuls des éléments techniques strictement nécessaires au bon fonctionnement du site peuvent être utilisés.",
+    "retentionTitle": "Durée de conservation",
+    "retentionText": "Vos données ne sont conservées que le temps nécessaire à la finalité pour laquelle elles ont été collectées (gestion de la réservation et de la relation client), puis sont supprimées ou archivées conformément aux obligations légales en vigueur.",
+    "rightsTitle": "Vos droits",
+    "rightsText": "Conformément au RGPD et à la loi « Informatique et Libertés », vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation, d'opposition et de portabilité de vos données personnelles.",
+    "rightsContact": "Pour exercer ces droits, contactez-nous par téléphone au {{phone}} ou par courrier à {{headOffice}}. Vous disposez également du droit d'introduire une réclamation auprès de la CNIL (www.cnil.fr).",
+    "updateTitle": "Mise à jour",
+    "updateText": "La présente politique de confidentialité peut être modifiée à tout moment afin de refléter les évolutions légales ou de nos pratiques. Nous vous invitons à la consulter régulièrement."
+  },
   "footer": {
     "tagline": "Sept univers, une infinité de saveurs.",
     "quickLinks": "Liens rapides",
     "contactTitle": "Contact",
-    "rights": "Tous droits réservés."
+    "rights": "Tous droits réservés.",
+    "legalMentions": "Mentions légales",
+    "privacy": "Confidentialité"
   }
 }

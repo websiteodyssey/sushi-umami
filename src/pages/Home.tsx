@@ -1,6 +1,8 @@
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { Fish, Sandwich, Flame, Soup, Salad, Shell, IceCream, ArrowRight } from "lucide-react";
+import Carousel from "../components/Carousel";
+import GoldFrame from "../components/GoldFrame";
 import ImageMarquee from "../components/ImageMarquee";
 import TextMarquee from "../components/TextMarquee";
 import SpinningSeal from "../components/SpinningSeal";
@@ -36,15 +38,31 @@ const Home = () => {
   const marqueeImagesA = [
     { src: `${import.meta.env.BASE_URL}images/dining.webp`, alt: t("gallery.diningAlt") },
     { src: `${import.meta.env.BASE_URL}images/signature.webp`, alt: t("gallery.signatureAlt") },
-    { src: `${import.meta.env.BASE_URL}images/salon.webp`, alt: t("gallery.salonAlt") },
     { src: `${import.meta.env.BASE_URL}images/bar.webp`, alt: t("gallery.barAlt") },
+    { src: `${import.meta.env.BASE_URL}images/greenery.webp`, alt: t("gallery.greeneryAlt") },
+    { src: `${import.meta.env.BASE_URL}images/washroom.webp`, alt: t("gallery.washroomAlt") },
   ];
+
+  const plats = `${import.meta.env.BASE_URL}images/plats-web/`;
+  const specialties = [
+    { src: `${plats}fiori-ciliegio.webp`, caption: "Fiori di Ciliegio" },
+    { src: `${plats}sushi-deluxe.webp`, caption: "Sushi Deluxe" },
+    { src: `${plats}black-foie-gras.webp`, caption: "Black Foie Gras" },
+    { src: `${plats}crunchy-roll.webp`, caption: "Crunchy Roll" },
+    { src: `${plats}carpaccio-misto.webp`, caption: "Carpaccio Misto" },
+    { src: `${plats}spicy-sake-maki.webp`, caption: "Spicy Saké Maki" },
+    { src: `${plats}tacos-sake.webp`, caption: "Tacos Saké" },
+    { src: `${plats}sake-mango.webp`, caption: "Saké Mango" },
+    { src: `${plats}gambero-cotto.webp`, caption: "Gambero Cotto" },
+    { src: `${plats}chips-piccante.webp`, caption: "Chips Piccante" },
+  ].map((d) => ({ ...d, alt: `${d.caption} — ${t("specialties.altSuffix")}` }));
 
   const marqueeImagesB = [
     { src: `${import.meta.env.BASE_URL}images/salon.webp`, alt: t("gallery.salonAlt") },
-    { src: `${import.meta.env.BASE_URL}images/atrium.webp`, alt: t("gallery.atriumAlt") },
-    { src: `${import.meta.env.BASE_URL}images/bar.webp`, alt: t("gallery.barAlt") },
-    { src: `${import.meta.env.BASE_URL}images/dining.webp`, alt: t("gallery.diningAlt") },
+    { src: `${import.meta.env.BASE_URL}images/table-detail.webp`, alt: t("gallery.tableAlt") },
+    { src: `${import.meta.env.BASE_URL}images/bar-detail.webp`, alt: t("gallery.barDetailAlt") },
+    { src: `${import.meta.env.BASE_URL}images/table-marble.webp`, alt: t("gallery.diningAlt") },
+    { src: `${import.meta.env.BASE_URL}images/bar-glasses.webp`, alt: t("gallery.barAlt") },
   ];
 
   return (
@@ -95,12 +113,14 @@ const Home = () => {
               {t("home.heroCta2")}
               <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
             </Link>
-            <button
-              type="button"
+            <a
+              href={siteConfig.reservationUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-shine inline-flex items-center justify-center gap-2 bg-luxury-gold text-luxury-black hover:bg-luxury-gold-bright transition-colors font-accent uppercase text-xs sm:text-sm tracking-luxury rounded-full px-5 sm:px-9 py-3.5 sm:py-4"
             >
               {t("common.reserve")}
-            </button>
+            </a>
           </div>
 
           <div className="animate-fade-up mt-16 md:mt-16 grid grid-cols-2 sm:grid-cols-4 gap-y-8 gap-x-6 max-w-md sm:max-w-2xl mx-auto" style={{ animationDelay: "1.9s" }}>
@@ -122,6 +142,39 @@ const Home = () => {
       {/* ===================== CATEGORY MARQUEE ===================== */}
       <section className="bg-luxury-black border-b border-luxury-gold/20 py-5">
         <TextMarquee items={universes.map((u) => u.title)} speed={36} />
+      </section>
+
+      {/* ===================== SPECIALTIES CAROUSEL ===================== */}
+      <section className="relative py-16 md:py-24 lg:py-32 bg-luxury-black grain overflow-hidden">
+        <span className="absolute top-24 right-[9%] animate-float" aria-hidden="true">
+          <span className="block h-2.5 w-2.5 rotate-45 bg-luxury-gold/25" />
+        </span>
+        <div className="section-padding relative z-10">
+          <Reveal className="max-w-3xl mx-auto mb-10 md:mb-14">
+            <SectionHeading
+              tone="dark"
+              eyebrow={t("specialties.eyebrow")}
+              title={t("specialties.title")}
+              subtitle={t("specialties.subtitle")}
+            />
+          </Reveal>
+          <Reveal className="max-w-4xl mx-auto">
+            <GoldFrame>
+              <div className="aspect-[4/3] sm:aspect-[16/10] w-full">
+                <Carousel slides={specialties} autoPlayMs={4500} />
+              </div>
+            </GoldFrame>
+          </Reveal>
+          <Reveal className="mt-14 text-center">
+            <Link
+              to="/menu"
+              className="group inline-flex items-center gap-2 border border-luxury-gold text-luxury-gold hover:bg-luxury-gold hover:text-luxury-black transition-colors font-body uppercase text-sm tracking-luxury rounded-full px-8 py-4"
+            >
+              {t("specialties.cta")}
+              <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+            </Link>
+          </Reveal>
+        </div>
       </section>
 
       {/* ===================== AMBIANCE ===================== */}
@@ -153,6 +206,33 @@ const Home = () => {
             {t("home.ambianceCta")}
           </Link>
         </Reveal>
+      </section>
+
+      {/* ===================== PRICING ===================== */}
+      <section className="relative py-16 md:py-24 lg:py-32 bg-luxury-ink grain emerald-wash overflow-hidden">
+        <ParallaxBg src={`${import.meta.env.BASE_URL}images/signature.webp`} className="opacity-[0.12]" />
+        <div className="animate-aurora absolute inset-0 bg-gradient-to-br from-luxury-emerald-deep/45 via-transparent to-luxury-gold-deep/25 pointer-events-none" />
+        <span className="absolute top-20 left-[8%] animate-float" aria-hidden="true">
+          <span className="block h-2.5 w-2.5 rotate-45 bg-luxury-gold/25" />
+        </span>
+        <div className="section-padding relative z-10">
+          <Reveal className="text-center max-w-3xl mx-auto mb-10">
+            <div className="flex items-center justify-center gap-3 mb-5">
+              <span className="h-px w-8 bg-luxury-gold/60" />
+              <span className="font-accent uppercase tracking-luxury-wide text-xs text-luxury-gold">
+                {t("menu.pricingTitle")}
+              </span>
+              <span className="h-px w-8 bg-luxury-gold/60" />
+            </div>
+            <h2 className="font-display text-display-md md:text-display-lg leading-tight">
+              <span className="text-luxury-cream">{t("home.pricingLead")} </span>
+              <span className="text-gold-shimmer italic">{t("home.pricingAccent")}</span>
+            </h2>
+          </Reveal>
+          <Reveal>
+            <PricingTabs />
+          </Reveal>
+        </div>
       </section>
 
       {/* ===================== 7 UNIVERSES ===================== */}
@@ -206,33 +286,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ===================== PRICING ===================== */}
-      <section className="relative py-16 md:py-24 lg:py-32 bg-luxury-ink grain emerald-wash overflow-hidden">
-        <ParallaxBg src={`${import.meta.env.BASE_URL}images/signature.webp`} className="opacity-[0.12]" />
-        <div className="animate-aurora absolute inset-0 bg-gradient-to-br from-luxury-emerald-deep/45 via-transparent to-luxury-gold-deep/25 pointer-events-none" />
-        <span className="absolute top-20 left-[8%] animate-float" aria-hidden="true">
-          <span className="block h-2.5 w-2.5 rotate-45 bg-luxury-gold/25" />
-        </span>
-        <div className="section-padding relative z-10">
-          <Reveal className="text-center max-w-3xl mx-auto mb-10">
-            <div className="flex items-center justify-center gap-3 mb-5">
-              <span className="h-px w-8 bg-luxury-gold/60" />
-              <span className="font-accent uppercase tracking-luxury-wide text-xs text-luxury-gold">
-                {t("menu.pricingTitle")}
-              </span>
-              <span className="h-px w-8 bg-luxury-gold/60" />
-            </div>
-            <h2 className="font-display text-display-md md:text-display-lg leading-tight">
-              <span className="text-luxury-cream">{t("home.pricingLead")} </span>
-              <span className="text-gold-shimmer italic">{t("home.pricingAccent")}</span>
-            </h2>
-          </Reveal>
-          <Reveal>
-            <PricingTabs />
-          </Reveal>
-        </div>
-      </section>
-
       {/* ===================== FIND US ===================== */}
       <section className="emerald-wash relative py-16 md:py-24 lg:py-32 bg-luxury-ink grain overflow-hidden">
         <SectionFX />
@@ -275,12 +328,14 @@ const Home = () => {
           <p className="text-lg text-luxury-champagne/75 font-body leading-relaxed mb-10">
             {t("home.ctaText")}
           </p>
-          <button
-            type="button"
+          <a
+            href={siteConfig.reservationUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-shine inline-block bg-luxury-gold text-luxury-black hover:bg-luxury-gold-bright transition-colors font-body uppercase text-sm tracking-luxury rounded-full px-12 py-4"
           >
             {t("home.ctaButton")}
-          </button>
+          </a>
         </Reveal>
       </section>
     </div>

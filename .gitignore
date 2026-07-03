@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# HD source photos (kept locally, not deployed)
+_originals-hd/

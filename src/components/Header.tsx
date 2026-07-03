@@ -61,12 +61,14 @@ const Header = () => {
 
         <div className="hidden lg:flex items-center gap-6">
           <LanguageSwitcher />
-          <button
-            type="button"
+          <a
+            href={siteConfig.reservationUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-shine border border-luxury-gold text-luxury-gold hover:bg-luxury-gold hover:text-luxury-black transition-colors font-body uppercase text-sm tracking-luxury rounded-full px-6 py-2.5"
           >
             {t("common.reserve")}
-          </button>
+          </a>
         </div>
 
         <div className="flex items-center gap-3 lg:hidden">
@@ -149,15 +151,18 @@ const Header = () => {
               )}
             </NavLink>
           ))}
-          <button
-            type="button"
+          <a
+            href={siteConfig.reservationUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={close}
             style={{ transitionDelay: menuOpen ? `${180 + navItems.length * 60}ms` : "0ms" }}
             className={`btn-shine mt-7 border border-luxury-gold text-luxury-gold hover:bg-luxury-gold hover:text-luxury-black font-accent uppercase text-sm tracking-luxury rounded-full px-6 py-3.5 text-center transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
               menuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
             }`}
           >
             {t("common.reserve")}
-          </button>
+          </a>
         </nav>
       </div>
     </header>

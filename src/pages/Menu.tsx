@@ -35,7 +35,7 @@ const Menu = () => {
       <PageHero
         title={t("menu.heroTitle")}
         subtitle={t("menu.heroSubtitle")}
-        backgroundImage={`${import.meta.env.BASE_URL}images/bar.webp`}
+        backgroundImage={`${import.meta.env.BASE_URL}images/dining.webp`}
       />
 
       {/* Pricing */}
@@ -116,15 +116,17 @@ const Menu = () => {
 
       {/* CTA */}
       <section className="relative py-16 md:py-24 lg:py-32 bg-luxury-black grain text-center overflow-hidden">
-        <ParallaxBg src={`${import.meta.env.BASE_URL}images/dining.webp`} className="opacity-15" />
+        <ParallaxBg src={`${import.meta.env.BASE_URL}images/bar.webp`} className="opacity-15" />
         <Reveal className="section-padding relative z-10">
           <Ornament className="mb-8" />
-          <button
-            type="button"
+          <a
+            href={siteConfig.reservationUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-shine inline-block bg-luxury-gold text-luxury-black hover:bg-luxury-gold-bright transition-colors font-body uppercase text-sm tracking-luxury rounded-full px-12 py-4"
           >
             {t("menu.reserveCta")}
-          </button>
+          </a>
         </Reveal>
       </section>
     </div>

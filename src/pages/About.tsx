@@ -65,27 +65,6 @@ const About = () => {
         </Reveal>
       </section>
 
-      {/* Photo strip */}
-      <section className="bg-luxury-black relative">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-luxury-gold/15">
-          {[
-            { src: "salon.webp", alt: t("gallery.salonAlt") },
-            { src: "atrium.webp", alt: t("gallery.atriumAlt") },
-            { src: "washroom.webp", alt: t("gallery.washroomAlt") },
-          ].map((img) => (
-            <div key={img.src} className="relative h-72 overflow-hidden group bg-luxury-black">
-              <img
-                src={`${import.meta.env.BASE_URL}images/${img.src}`}
-                alt={img.alt}
-                className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-110"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-luxury-black/60 to-transparent opacity-60 group-hover:opacity-20 transition-opacity duration-500" />
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Philosophy */}
       <section className="py-16 md:py-24 lg:py-32 bg-luxury-cream relative">
         <div className="section-padding relative z-10">
@@ -119,8 +98,8 @@ const About = () => {
               <GoldFrame>
                 <div className="relative h-72 md:h-[30rem] overflow-hidden group">
                   <img
-                    src={`${import.meta.env.BASE_URL}images/salon.webp`}
-                    alt={t("gallery.salonAlt")}
+                    src={`${import.meta.env.BASE_URL}images/bar.webp`}
+                    alt={t("gallery.barAlt")}
                     className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-105"
                     loading="lazy"
                   />

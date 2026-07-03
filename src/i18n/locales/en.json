@@ -70,6 +70,13 @@
     "pricingAccent": "big pleasure",
     "pricingCta": "See all prices"
   },
+  "specialties": {
+    "eyebrow": "The Counter",
+    "title": "Our Specialties",
+    "subtitle": "A glimpse of our signature creations, plated to order by our chefs.",
+    "cta": "Explore the buffet",
+    "altSuffix": "signature specialty of Sushi Umami"
+  },
   "about": {
     "heroSubtitle": "Our Story",
     "heroTitle": "About Us",
@@ -124,12 +131,17 @@
     "heroTitle": "Gallery",
     "title": "Our World in Pictures",
     "subtitle": "An elegant setting, designed down to the smallest detail for a complete sensory experience.",
-    "barAlt": "Sushi bar and sake cellar in black marble and golden light",
-    "diningAlt": "Main dining room with green booths and golden circles",
-    "salonAlt": "Private salon with murals and marble tables set for service",
-    "atriumAlt": "Glass roof and tree-lined patio bathed in natural light",
-    "signatureAlt": "Signature wall of backlit golden niches",
-    "washroomAlt": "Black marble washroom with illuminated round mirrors"
+    "barAlt": "Bar with hanging glassware and espresso machine in golden light",
+    "diningAlt": "Main dining room with green booths and brass-edged tables",
+    "salonAlt": "Salon with green booths, hanging greenery and circular pendants",
+    "atriumAlt": "Glass roof and hanging greenery bathed in natural light",
+    "signatureAlt": "Signature wall of backlit golden fan-shaped niches",
+    "washroomAlt": "Illuminated Sushi Umami sign",
+    "greeneryAlt": "Hanging greenery in golden cages above the dining room",
+    "tableAlt": "Brass-edged tables set with frosted tumblers",
+    "barDetailAlt": "Espresso machine and backlit shelving at the bar",
+    "pendantAlt": "Golden cage lantern pendant with warm light",
+    "wallDetailAlt": "Close-up of the backlit art-deco shells of the signature wall"
   },
   "contact": {
     "heroSubtitle": "Find Us",
@@ -144,10 +156,65 @@
     "hoursDinner": "Dinner: 7:00 PM - 10:30 PM",
     "hoursDays": "Open 7 days a week"
   },
+  "legal": {
+    "heroSubtitle": "Legal Information",
+    "heroTitle": "Legal Notice",
+    "editorTitle": "Site Publisher",
+    "editorIntro": "This website is published by:",
+    "fields": {
+      "company": "Company name",
+      "brand": "Trade name",
+      "legalForm": "Legal form",
+      "capital": "Share capital",
+      "headOffice": "Registered office",
+      "rcs": "Trade register (RCS)",
+      "siren": "SIREN",
+      "managementNumber": "Management no.",
+      "euid": "European ID (EUID)",
+      "naf": "NAF / APE code",
+      "president": "President",
+      "activity": "Business activity",
+      "phone": "Phone"
+    },
+    "directorTitle": "Publication Director",
+    "directorText": "The publication director is {{president}}, as President of {{company}}.",
+    "hostTitle": "Hosting",
+    "hostText": "This website is hosted by GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA (GitHub Pages).",
+    "ipTitle": "Intellectual Property",
+    "ipText": "All content on this site (text, photographs, logos, the {{brand}} trade name, graphics and videos) is protected by intellectual property law and remains the exclusive property of the publisher. Any reproduction, representation or distribution, in whole or in part, without prior written authorisation is prohibited.",
+    "liabilityTitle": "Liability",
+    "liabilityText": "The publisher strives to ensure the accuracy of the information published on this site (prices, opening hours, services) but cannot be held liable for any errors, omissions or unavailability of the site. Information is provided for guidance only and is subject to change.",
+    "dataTitle": "Personal Data",
+    "dataText": "How your personal data is processed is described in our"
+  },
+  "privacy": {
+    "heroSubtitle": "Data Protection",
+    "heroTitle": "Privacy Policy",
+    "intro": "This privacy policy describes how your personal data is collected and processed when you browse this website and interact with the restaurant, in accordance with the General Data Protection Regulation (GDPR).",
+    "controllerTitle": "Data Controller",
+    "controllerText": "The data controller is {{company}}, whose registered office is located at {{headOffice}}. For any question regarding your data, you may contact us by phone at {{phone}} or by post at the registered office address.",
+    "dataTitle": "Data Collected",
+    "dataText": "This is a showcase website and does not include any data collection form. Personal data (name, phone number, date and number of guests) is collected only when you make a booking through our online reservation tool or when you contact us by phone.",
+    "purposeTitle": "Purpose of Processing",
+    "purposeText": "The data collected is used solely to manage your bookings, respond to your requests and organise service within the restaurant. It is never sold on or used for unsolicited marketing.",
+    "reservationTitle": "Online Reservations",
+    "reservationText": "Reservations are handled through a third-party service accessible from the “Book” buttons on the site (reservation.ody.app). The information you enter there is processed by this provider on behalf of the restaurant, solely to handle your booking request.",
+    "cookiesTitle": "Cookies",
+    "cookiesText": "This site does not use advertising cookies or marketing tracking. Only technical elements strictly necessary for the proper functioning of the site may be used.",
+    "retentionTitle": "Data Retention",
+    "retentionText": "Your data is kept only for as long as necessary for the purpose for which it was collected (managing the booking and customer relationship), then deleted or archived in accordance with applicable legal obligations.",
+    "rightsTitle": "Your Rights",
+    "rightsText": "In accordance with the GDPR and the French Data Protection Act, you have the right to access, rectify, erase, restrict, object to and port your personal data.",
+    "rightsContact": "To exercise these rights, contact us by phone at {{phone}} or by post at {{headOffice}}. You also have the right to lodge a complaint with the CNIL (www.cnil.fr).",
+    "updateTitle": "Updates",
+    "updateText": "This privacy policy may be amended at any time to reflect legal developments or changes in our practices. We encourage you to review it regularly."
+  },
   "footer": {
     "tagline": "Seven worlds, endless flavors.",
     "quickLinks": "Quick Links",
     "contactTitle": "Contact",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "legalMentions": "Legal Notice",
+    "privacy": "Privacy Policy"
   }
 }

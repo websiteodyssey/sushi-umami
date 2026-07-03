@@ -1,9 +1,7 @@
 import { useTranslation } from "react-i18next";
 import PageHero from "../components/PageHero";
-import Carousel from "../components/Carousel";
 import Reveal from "../components/Reveal";
 import SectionHeading from "../components/SectionHeading";
-import GoldFrame from "../components/GoldFrame";
 import SectionFX from "../components/SectionFX";
 
 const Gallery = () => {
@@ -14,8 +12,12 @@ const Gallery = () => {
     { src: `${import.meta.env.BASE_URL}images/signature.webp`, alt: t("gallery.signatureAlt") },
     { src: `${import.meta.env.BASE_URL}images/salon.webp`, alt: t("gallery.salonAlt") },
     { src: `${import.meta.env.BASE_URL}images/bar.webp`, alt: t("gallery.barAlt") },
-    { src: `${import.meta.env.BASE_URL}images/atrium.webp`, alt: t("gallery.atriumAlt") },
+    { src: `${import.meta.env.BASE_URL}images/greenery.webp`, alt: t("gallery.greeneryAlt") },
     { src: `${import.meta.env.BASE_URL}images/washroom.webp`, alt: t("gallery.washroomAlt") },
+    { src: `${import.meta.env.BASE_URL}images/table-detail.webp`, alt: t("gallery.tableAlt") },
+    { src: `${import.meta.env.BASE_URL}images/bar-detail.webp`, alt: t("gallery.barDetailAlt") },
+    { src: `${import.meta.env.BASE_URL}images/pendant.webp`, alt: t("gallery.pendantAlt") },
+    { src: `${import.meta.env.BASE_URL}images/wall-detail.webp`, alt: t("gallery.wallDetailAlt") },
   ];
 
   return (
@@ -38,17 +40,8 @@ const Gallery = () => {
             />
           </Reveal>
 
-          {/* Featured carousel */}
-          <Reveal className="mb-12">
-            <GoldFrame>
-              <div className="h-[44vh] md:h-[64vh]">
-                <Carousel slides={images} />
-              </div>
-            </GoldFrame>
-          </Reveal>
-
           {/* Grid */}
-          <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-4 md:gap-6">
             {images.map((img, i) => (
               <Reveal key={img.src} delay={(i % 3) * 140} className="relative aspect-[4/3] overflow-hidden group">
                 <img

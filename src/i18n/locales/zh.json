@@ -70,6 +70,13 @@
     "pricingAccent": "极致享受",
     "pricingCta": "查看全部价格"
   },
+  "specialties": {
+    "eyebrow": "料理台",
+    "title": "招牌料理",
+    "subtitle": "领略我们由厨师现点现做的招牌创意料理。",
+    "cta": "探索自助餐",
+    "altSuffix": "Sushi Umami 招牌料理"
+  },
   "about": {
     "heroSubtitle": "我们的故事",
     "heroTitle": "关于我们",
@@ -124,12 +131,17 @@
     "heroTitle": "图片库",
     "title": "图片中的世界",
     "subtitle": "优雅的空间设计，每一处细节都旨在带来完整的感官体验。",
-    "barAlt": "寿司吧与清酒陈列，黑色大理石与金色灯光",
-    "diningAlt": "主用餐区，绿色卡座与金色圆环装饰",
-    "salonAlt": "私人包厢，壁画装饰与大理石摆台",
-    "atriumAlt": "玻璃顶棚与绿植中庭，沐浴自然光",
-    "signatureAlt": "标志性墙面，金色背光壁龛",
-    "washroomAlt": "黑色大理石洗手区与圆形发光镜面"
+    "barAlt": "吧台悬挂玻璃杯与咖啡机，金色灯光",
+    "diningAlt": "主用餐区，绿色卡座与黄铜镶边餐桌",
+    "salonAlt": "包厢，绿色卡座、悬垂绿植与环形吊灯",
+    "atriumAlt": "玻璃顶棚与悬垂绿植，沐浴自然光",
+    "signatureAlt": "标志性墙面，扇形金色背光壁龛",
+    "washroomAlt": "Sushi Umami 发光招牌",
+    "greeneryAlt": "餐厅上方金色吊笼中的悬垂绿植",
+    "tableAlt": "黄铜镶边餐桌与磨砂玻璃杯",
+    "barDetailAlt": "吧台的咖啡机与背光置物架",
+    "pendantAlt": "金色鸟笼吊灯，暖光",
+    "wallDetailAlt": "标志性墙面背光艺术装饰贝壳特写"
   },
   "contact": {
     "heroSubtitle": "找到我们",
@@ -144,10 +156,65 @@
     "hoursDinner": "晚餐：19:00 - 22:30",
     "hoursDays": "每周七天营业"
   },
+  "legal": {
+    "heroSubtitle": "法律信息",
+    "heroTitle": "法律声明",
+    "editorTitle": "网站出版方",
+    "editorIntro": "本网站由以下公司出版：",
+    "fields": {
+      "company": "公司名称",
+      "brand": "商号",
+      "legalForm": "法律形式",
+      "capital": "注册资本",
+      "headOffice": "注册地址",
+      "rcs": "商业登记（RCS）",
+      "siren": "SIREN 编号",
+      "managementNumber": "管理编号",
+      "euid": "欧洲唯一标识（EUID）",
+      "naf": "NAF / APE 代码",
+      "president": "总裁",
+      "activity": "经营范围",
+      "phone": "电话"
+    },
+    "directorTitle": "出版负责人",
+    "directorText": "出版负责人为 {{company}} 公司总裁 {{president}}。",
+    "hostTitle": "托管服务",
+    "hostText": "本网站由 GitHub, Inc. 托管，地址：88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, 美国（GitHub Pages）。",
+    "ipTitle": "知识产权",
+    "ipText": "本网站的所有内容（文字、照片、标识、{{brand}} 商标、图形及视频）均受知识产权法保护，为出版方独家所有。未经事先书面授权，禁止全部或部分复制、展示或传播。",
+    "liabilityTitle": "责任",
+    "liabilityText": "出版方力求确保本网站所载信息（价格、营业时间、服务）的准确性，但对任何错误、遗漏或网站不可用概不负责。相关信息仅供参考，可能随时变更。",
+    "dataTitle": "个人数据",
+    "dataText": "有关您个人数据的处理方式，详见我们的"
+  },
+  "privacy": {
+    "heroSubtitle": "数据保护",
+    "heroTitle": "隐私政策",
+    "intro": "本隐私政策说明在您浏览本网站及与餐厅联系时，我们如何依据《通用数据保护条例》（RGPD/GDPR）收集和处理您的个人数据。",
+    "controllerTitle": "数据控制者",
+    "controllerText": "数据控制者为 {{company}} 公司，注册地址为 {{headOffice}}。如对您的数据有任何疑问，可拨打电话 {{phone}} 或寄信至注册地址与我们联系。",
+    "dataTitle": "所收集的数据",
+    "dataText": "本网站为展示型网站，不含任何数据收集表单。仅当您通过我们的在线预订工具进行预订或通过电话与我们联系时，才会收集个人数据（姓名、电话号码、日期及用餐人数）。",
+    "purposeTitle": "处理目的",
+    "purposeText": "所收集的数据仅用于管理您的预订、回复您的请求以及安排餐厅服务。我们绝不会转售您的数据，也不会用于未经请求的商业推广。",
+    "reservationTitle": "在线预订",
+    "reservationText": "预订通过网站上「预订」按钮所链接的第三方服务（reservation.ody.app）处理。您在其中填写的信息由该服务商代表餐厅处理，仅用于处理您的预订请求。",
+    "cookiesTitle": "Cookie",
+    "cookiesText": "本网站不使用广告 Cookie 或营销追踪工具。仅可能使用为网站正常运行所严格必要的技术性元素。",
+    "retentionTitle": "数据保留期限",
+    "retentionText": "您的数据仅在实现收集目的（预订及客户关系管理）所必需的期限内保留，之后将依据现行法律义务予以删除或存档。",
+    "rightsTitle": "您的权利",
+    "rightsText": "根据 GDPR 及法国《信息与自由法》，您对您的个人数据享有访问、更正、删除、限制处理、反对及可携带的权利。",
+    "rightsContact": "如需行使上述权利，请拨打电话 {{phone}} 或寄信至 {{headOffice}} 与我们联系。您亦有权向法国国家信息与自由委员会（CNIL，www.cnil.fr）提出投诉。",
+    "updateTitle": "更新",
+    "updateText": "本隐私政策可能随时修订，以反映法律变化或我们做法的调整。建议您定期查阅。"
+  },
   "footer": {
     "tagline": "七大风味世界，无限美味之旅。",
     "quickLinks": "快速链接",
     "contactTitle": "联系方式",
-    "rights": "版权所有。"
+    "rights": "版权所有。",
+    "legalMentions": "法律声明",
+    "privacy": "隐私政策"
   }
 }

@@ -72,7 +72,27 @@ const Footer = () => {
       </div>
 
       <div className="border-t border-luxury-gold/20 py-6 text-center font-body text-sm text-luxury-cream/60">
-        © {new Date().getFullYear()} {siteConfig.name} — {t("footer.rights")}
+        <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 mb-3">
+          <Link to="/mentions-legales" className="hover:text-luxury-gold transition-colors">
+            {t("footer.legalMentions")}
+          </Link>
+          <span className="text-luxury-gold/30" aria-hidden="true">·</span>
+          <Link to="/confidentialite" className="hover:text-luxury-gold transition-colors">
+            {t("footer.privacy")}
+          </Link>
+        </nav>
+        <p>© {new Date().getFullYear()} {siteConfig.name} — {t("footer.rights")}</p>
+        <p className="mt-1.5 text-luxury-cream/45">
+          Powered by{" "}
+          <a
+            href="https://pro.ody.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-luxury-gold/80 hover:text-luxury-gold transition-colors"
+          >
+            ody
+          </a>
+        </p>
       </div>
     </footer>
   );
