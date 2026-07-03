@@ -13,6 +13,8 @@ import SectionHeading from "../components/SectionHeading";
 import ParallaxBg from "../components/ParallaxBg";
 import SectionFX from "../components/SectionFX";
 import ContactDetails from "../components/ContactDetails";
+import InstagramIcon from "../components/InstagramIcon";
+import TikTokIcon from "../components/TikTokIcon";
 import { siteConfig } from "../config/siteConfig";
 
 const Home = () => {
@@ -131,6 +133,22 @@ const Home = () => {
               </div>
             ))}
           </div>
+
+          {(siteConfig.social.instagram || siteConfig.social.tiktok) && (
+            /* Visual only — intentionally not clickable (no redirect). */
+            <div className="animate-fade-up mt-10 flex items-center justify-center gap-3" style={{ animationDelay: "2s" }} aria-label="Instagram, TikTok">
+              {siteConfig.social.instagram && (
+                <span aria-hidden="true" className="flex h-11 w-11 items-center justify-center rounded-full border border-luxury-gold/40 text-luxury-cream/90 bg-luxury-black/25 backdrop-blur-sm">
+                  <InstagramIcon size={21} />
+                </span>
+              )}
+              {siteConfig.social.tiktok && (
+                <span aria-hidden="true" className="flex h-11 w-11 items-center justify-center rounded-full border border-luxury-gold/40 text-luxury-cream/90 bg-luxury-black/25 backdrop-blur-sm">
+                  <TikTokIcon size={20} />
+                </span>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Spinning gold seal */}
