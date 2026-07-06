@@ -1,83 +1,67 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+﻿import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
-type TabKey = "adult" | "child";
-
-/**
- * Pacific-style tabbed pricing: Adulte / Enfant segmented toggle over a frosted
- * gold-tinted card (cream days, bright-gold prices). Matches the official menu.
- */
 const PricingTabs = () => {
   const { t } = useTranslation();
-  const [tab, setTab] = useState<TabKey>("adult");
 
-  const rows: Record<TabKey, { day: string; midi: string; soir: string }[]> = {
-    adult: [
-      { day: t("menu.dayWeek"), midi: "18,90 €", soir: "28,90 €" },
-      { day: t("menu.dayWeekend"), midi: "28,90 €", soir: "28,90 €" },
-    ],
-    child: [
-      { day: t("menu.dayWeek"), midi: "11,90 €", soir: "15,90 €" },
-      { day: t("menu.dayWeekend"), midi: "15,90 €", soir: "15,90 €" },
-    ],
-  };
-
-  const tabs: { key: TabKey; label: string }[] = [
-    { key: "adult", label: t("menu.adultsTitle") },
-    { key: "child", label: t("menu.childrenTitle") },
+  const adultRows = [
+    { label: t("menu.labelMidiWeek"), price: "18,90 €" },
+    { label: t("menu.labelSoirWeek"), price: "28,90 €" },
+    { label: t("menu.labelSoirWeekend"), price: "29,90 €" },
   ];
 
+  const childRows = [
+    { label: t("menu.labelMidiWeek"), price: "11,90 €" },
+    { label: t("menu.labelSoir"), price: "15,90 €" },
+  ];
+
+  const renderRows = (rows: { label: string; price: string }[]) => (
+    <div>
+      {rows.map((r) => (
+        <div
+          key={r.label}
+          className="grid grid-cols-[1.6fr_1fr] items-center py-4 border-b border-luxury-gold/10 last:border-0 transition-colors hover:bg-luxury-gold/[0.06] rounded-lg"
+        >
+          <span className="font-display text-luxury-cream text-lg md:text-xl pl-2">{r.label}</span>
+          <span className="num-elegant font-display text-luxury-gold-bright text-xl md:text-2xl text-right pr-2">{r.price}</span>
+        </div>
+      ))}
+    </div>
+  );
+
   return (
-    <div className="max-w-2xl mx-auto">
-      {/* Segmented toggle */}
-      <div className="flex justify-center mb-9">
-        <div className="inline-flex rounded-full border border-luxury-gold/40 p-1 bg-white/5 backdrop-blur">
-          {tabs.map((tb) => (
-            <button
-              key={tb.key}
-              type="button"
-              onClick={() => setTab(tb.key)}
-              className={`btn-shine font-accent uppercase text-sm tracking-luxury rounded-full px-7 py-2.5 transition-colors ${
-                tab === tb.key
-                  ? "bg-luxury-gold text-luxury-black"
-                  : "text-luxury-cream hover:text-luxury-gold"
-              }`}
-            >
-              {tb.label}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Frosted gold-tinted price card */}
+    <div className="max-w-3xl mx-auto">
       <div className="deco-corners gold-glow relative rounded-3xl border border-luxury-gold/35 bg-gradient-to-br from-luxury-gold/[0.12] via-white/[0.05] to-transparent backdrop-blur-md p-6 md:p-9">
-        <div className="grid grid-cols-[1.4fr_1fr_1fr] font-accent uppercase tracking-luxury text-xs text-luxury-gold pb-4 border-b border-luxury-gold/25">
-          <span>{t("menu.dayLabel")}</span>
-          <span className="text-center">{t("common.lunch")}</span>
-          <span className="text-right">{t("common.dinner")}</span>
+        <div className="grid grid-cols-[1.6fr_1fr] font-accent uppercase tracking-luxury text-xs text-luxury-gold pb-4 border-b border-luxury-gold/25">
+          <span>{t("menu.formulaLabel")}</span>
+          <span className="text-right">{t("menu.priceLabel")}</span>
         </div>
 
-        <div key={tab} className="animate-fade-up">
-          {rows[tab].map((r) => (
-            <div
-              key={r.day}
-              className="grid grid-cols-[1.4fr_1fr_1fr] items-center py-5 border-b border-luxury-gold/10 last:border-0 transition-colors hover:bg-luxury-gold/[0.06] rounded-lg"
-            >
-              <span className="font-display text-luxury-cream text-lg md:text-xl pl-2">{r.day}</span>
-              <span className="num-elegant font-display text-luxury-gold-bright text-xl md:text-2xl text-center">{r.midi}</span>
-              <span className="num-elegant font-display text-luxury-gold-bright text-xl md:text-2xl text-right pr-2">{r.soir}</span>
+        <div className="grid gap-8 md:grid-cols-2 md:gap-10 mt-6">
+          <section>
+            <h3 className="font-accent uppercase tracking-luxury text-sm text-luxury-gold mb-3">
+              {t("menu.adultsTitle")}
+            </h3>
+            {renderRows(adultRows)}
+          </section>
+
+          <section>
+            <h3 className="font-accent uppercase tracking-luxury text-sm text-luxury-gold mb-3">
+              {t("menu.childrenTitle")}
+            </h3>
+            {renderRows(childRows)}
+            <div className="mt-4 border-l-2 border-luxury-gold bg-luxury-gold/[0.08] rounded-r-xl px-4 py-3 font-body text-luxury-champagne/80">
+              {t("menu.childUnder3")} · {t("menu.free")}
             </div>
-          ))}
+          </section>
         </div>
 
-        <div className="border-l-2 border-luxury-gold bg-luxury-gold/[0.08] rounded-r-xl px-5 py-4 mt-7 text-center font-body text-luxury-champagne/80">
-          {tab === "child" ? `${t("menu.childUnder3")} · ${t("menu.free")}` : t("menu.hoursNote")}
+        <div className="border-l-2 border-luxury-gold bg-luxury-gold/[0.08] rounded-r-xl px-5 py-4 mt-8 text-center font-body text-luxury-champagne/80">
+          {t("menu.hoursNote")}
         </div>
       </div>
 
-      {/* CTA */}
       <div className="text-center mt-9">
         <Link
           to="/menu"

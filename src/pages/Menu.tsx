@@ -1,4 +1,4 @@
-import { useTranslation } from "react-i18next";
+﻿import { useTranslation } from "react-i18next";
 import { Clock, IdCard, Trash2, Ban } from "lucide-react";
 import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
@@ -13,13 +13,12 @@ const Menu = () => {
 
   const adultRows = [
     { label: t("menu.labelMidiWeek"), price: "18,90 €" },
-    { label: t("menu.labelMidiWeekend"), price: "28,90 €" },
-    { label: t("menu.labelSoir"), price: "28,90 €" },
+    { label: t("menu.labelSoirWeek"), price: "28,90 €" },
+    { label: t("menu.labelSoirWeekend"), price: "29,90 €" },
   ];
 
   const childRows = [
     { label: t("menu.labelMidiWeek"), price: "11,90 €" },
-    { label: t("menu.labelMidiWeekend"), price: "15,90 €" },
     { label: t("menu.labelSoir"), price: "15,90 €" },
     { label: t("menu.childUnder3"), price: t("menu.free") },
   ];
@@ -47,53 +46,57 @@ const Menu = () => {
             <SectionHeading tone="dark" title={t("menu.pricingTitle")} />
           </Reveal>
 
-          <div className="cards-stagger grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
-            <Reveal className="luxury-card-dark animate-card-pulse deco-corners gold-glow p-8 md:p-10">
-              <h3 className="font-display text-2xl text-luxury-gold uppercase tracking-luxury mb-8 text-center">
-                {t("menu.adultsTitle")}
-              </h3>
-              <ul className="divide-y divide-luxury-gold/15 font-body">
-                {adultRows.map((row) => (
-                  <li key={row.label} className="flex items-baseline justify-between gap-4 py-3.5 text-lg group">
-                    <span className="text-luxury-champagne/85">{row.label}</span>
-                    <span className="hidden sm:block flex-1 mx-1 border-b border-dotted border-luxury-gold/25 translate-y-[-4px]" />
-                    <span className="num-elegant text-luxury-cream font-display text-xl shrink-0 group-hover:text-luxury-gold transition-colors">{row.price}</span>
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
+          <Reveal className="max-w-5xl mx-auto luxury-card-dark animate-card-pulse deco-corners gold-glow p-8 md:p-10">
+            <div className="grid gap-10 lg:grid-cols-2">
+              <section>
+                <h3 className="font-display text-2xl text-luxury-gold uppercase tracking-luxury mb-8 text-center">
+                  {t("menu.adultsTitle")}
+                </h3>
+                <ul className="divide-y divide-luxury-gold/15 font-body">
+                  {adultRows.map((row) => (
+                    <li key={row.label} className="flex items-baseline justify-between gap-4 py-3.5 text-lg group">
+                      <span className="text-luxury-champagne/85">{row.label}</span>
+                      <span className="hidden sm:block flex-1 mx-1 border-b border-dotted border-luxury-gold/25 translate-y-[-4px]" />
+                      <span className="num-elegant text-luxury-cream font-display text-xl shrink-0 group-hover:text-luxury-gold transition-colors">{row.price}</span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
 
-            <Reveal delay={150} className="luxury-card-dark animate-card-pulse deco-corners gold-glow p-8 md:p-10">
-              <h3 className="font-display text-2xl text-luxury-gold uppercase tracking-luxury mb-8 text-center">
-                {t("menu.childrenTitle")}
-              </h3>
-              <ul className="divide-y divide-luxury-gold/15 font-body">
-                {childRows.map((row) => (
-                  <li key={row.label} className="flex items-baseline justify-between gap-4 py-3.5 text-lg group">
-                    <span className="text-luxury-champagne/85">{row.label}</span>
-                    <span className="hidden sm:block flex-1 mx-1 border-b border-dotted border-luxury-gold/25 translate-y-[-4px]" />
-                    <span className="num-elegant text-luxury-cream font-display text-xl shrink-0 group-hover:text-luxury-gold transition-colors">{row.price}</span>
-                  </li>
-                ))}
-              </ul>
+              <section className="lg:border-l lg:border-luxury-gold/15 lg:pl-10">
+                <h3 className="font-display text-2xl text-luxury-gold uppercase tracking-luxury mb-8 text-center">
+                  {t("menu.childrenTitle")}
+                </h3>
+                <ul className="divide-y divide-luxury-gold/15 font-body">
+                  {childRows.map((row) => (
+                    <li key={row.label} className="flex items-baseline justify-between gap-4 py-3.5 text-lg group">
+                      <span className="text-luxury-champagne/85">{row.label}</span>
+                      <span className="hidden sm:block flex-1 mx-1 border-b border-dotted border-luxury-gold/25 translate-y-[-4px]" />
+                      <span className="num-elegant text-luxury-cream font-display text-xl shrink-0 group-hover:text-luxury-gold transition-colors">{row.price}</span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            </div>
 
-              <div className="mt-10">
-                <h4 className="font-display text-xl text-luxury-gold uppercase tracking-luxury mb-4 text-center flex items-center justify-center gap-2">
-                  <Clock size={20} />
-                  {t("menu.hoursTitle")}
-                </h4>
+            <div className="mt-10 border-t border-luxury-gold/15 pt-8">
+              <h4 className="font-display text-xl text-luxury-gold uppercase tracking-luxury mb-4 text-center flex items-center justify-center gap-2">
+                <Clock size={20} />
+                {t("menu.hoursTitle")}
+              </h4>
+              <div className="grid gap-4 md:grid-cols-2 max-w-3xl mx-auto">
                 <div className="flex justify-between text-lg font-body py-2 border-b border-luxury-gold/15">
                   <span className="text-luxury-champagne/85">{t("common.lunch")}</span>
                   <span className="text-luxury-cream">{siteConfig.hours.lunch}</span>
                 </div>
-                <div className="flex justify-between text-lg font-body py-2">
+                <div className="flex justify-between text-lg font-body py-2 border-b border-luxury-gold/15 md:border-b">
                   <span className="text-luxury-champagne/85">{t("common.dinner")}</span>
                   <span className="text-luxury-cream">{siteConfig.hours.dinner}</span>
                 </div>
-                <p className="text-center text-luxury-champagne/55 font-body mt-4">{t("menu.hoursNote")}</p>
               </div>
-            </Reveal>
-          </div>
+              <p className="text-center text-luxury-champagne/55 font-body mt-4">{t("menu.hoursNote")}</p>
+            </div>
+          </Reveal>
         </div>
       </section>
 
