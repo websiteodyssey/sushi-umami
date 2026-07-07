@@ -327,6 +327,13 @@ h4 {
     animation: ken-burns 18s ease-out forwards;
   }
 
+  /* Very gentle cinematic drift for the hero dish slideshow — kept subtle so the
+     plating never feels over-zoomed or cropped. Continuous + alternating so images
+     revisited by the loop always feel alive (no reset pop). */
+  .animate-hero-zoom {
+    animation: hero-zoom 22s ease-in-out infinite alternate;
+  }
+
   .animate-float {
     animation: float 3.5s ease-in-out infinite;
   }
@@ -484,6 +491,15 @@ h4 {
   }
 }
 
+@keyframes hero-zoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
 @keyframes float {
   0%,
   100% {
@@ -556,6 +572,7 @@ h4 {
   .animate-letter-in,
   .animate-page-in,
   .animate-ken-burns,
+  .animate-hero-zoom,
   .animate-float,
   .animate-spin-slow,
   .animate-aurora,

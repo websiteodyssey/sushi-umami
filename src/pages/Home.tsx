@@ -1,8 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { Fish, Sandwich, Flame, Soup, Salad, Shell, IceCream, ArrowRight } from "lucide-react";
-import Carousel from "../components/Carousel";
-import GoldFrame from "../components/GoldFrame";
 import ImageMarquee from "../components/ImageMarquee";
 import TextMarquee from "../components/TextMarquee";
 import SpinningSeal from "../components/SpinningSeal";
@@ -13,6 +11,7 @@ import SectionHeading from "../components/SectionHeading";
 import ParallaxBg from "../components/ParallaxBg";
 import SectionFX from "../components/SectionFX";
 import ContactDetails from "../components/ContactDetails";
+import HeroSlideshow from "../components/HeroSlideshow";
 import InstagramIcon from "../components/InstagramIcon";
 import TikTokIcon from "../components/TikTokIcon";
 import { siteConfig } from "../config/siteConfig";
@@ -37,54 +36,48 @@ const Home = () => {
     { value: "7/7", label: t("home.stat4") },
   ];
 
+  const img = (name: string) => `${import.meta.env.BASE_URL}images/${name}`;
+  const plat = (slug: string) => `${import.meta.env.BASE_URL}images/plats-web/${slug}.webp`;
+  const platAlt = (name: string) => `${name} — ${t("specialties.altSuffix")}`;
+
+  // Both marquee rows blend room ambiance with appetising dishes so the culinary
+  // world stays present all the way down the page.
   const marqueeImagesA = [
-    { src: `${import.meta.env.BASE_URL}images/dining.webp`, alt: t("gallery.diningAlt") },
-    { src: `${import.meta.env.BASE_URL}images/signature.webp`, alt: t("gallery.signatureAlt") },
-    { src: `${import.meta.env.BASE_URL}images/bar.webp`, alt: t("gallery.barAlt") },
-    { src: `${import.meta.env.BASE_URL}images/greenery.webp`, alt: t("gallery.greeneryAlt") },
-    { src: `${import.meta.env.BASE_URL}images/washroom.webp`, alt: t("gallery.washroomAlt") },
+    { src: img("dining.webp"), alt: t("gallery.diningAlt") },
+    { src: plat("sushi-deluxe"), alt: platAlt("Plateau de sushis Sushi Deluxe") },
+    { src: img("signature.webp"), alt: t("gallery.signatureAlt") },
+    { src: plat("spicy-sake-maki"), alt: platAlt("Assortiment de makis épicés au saumon") },
+    { src: img("greenery.webp"), alt: t("gallery.greeneryAlt") },
+    { src: plat("sashimi-misto"), alt: platAlt("Sashimis frais assortis") },
+    { src: plat("fiori-ciliegio"), alt: platAlt("Nigiris Fiori di Ciliegio") },
   ];
 
-  const plats = `${import.meta.env.BASE_URL}images/plats-web/`;
-  const specialties = [
-    { src: `${plats}fiori-ciliegio.webp`, caption: "Fiori di Ciliegio" },
-    { src: `${plats}sushi-deluxe.webp`, caption: "Sushi Deluxe" },
-    { src: `${plats}black-foie-gras.webp`, caption: "Black Foie Gras" },
-    { src: `${plats}crunchy-roll.webp`, caption: "Crunchy Roll" },
-    { src: `${plats}carpaccio-misto.webp`, caption: "Carpaccio Misto" },
-    { src: `${plats}spicy-sake-maki.webp`, caption: "Spicy Saké Maki" },
-    { src: `${plats}tacos-sake.webp`, caption: "Tacos Saké" },
-    { src: `${plats}sake-mango.webp`, caption: "Saké Mango" },
-    { src: `${plats}gambero-cotto.webp`, caption: "Gambero Cotto" },
-    { src: `${plats}chips-piccante.webp`, caption: "Chips Piccante" },
-  ].map((d) => ({ ...d, alt: `${d.caption} — ${t("specialties.altSuffix")}` }));
-
   const marqueeImagesB = [
-    { src: `${import.meta.env.BASE_URL}images/salon.webp`, alt: t("gallery.salonAlt") },
-    { src: `${import.meta.env.BASE_URL}images/table-detail.webp`, alt: t("gallery.tableAlt") },
-    { src: `${import.meta.env.BASE_URL}images/bar-detail.webp`, alt: t("gallery.barDetailAlt") },
-    { src: `${import.meta.env.BASE_URL}images/table-marble.webp`, alt: t("gallery.diningAlt") },
-    { src: `${import.meta.env.BASE_URL}images/bar-glasses.webp`, alt: t("gallery.barAlt") },
+    { src: img("salon.webp"), alt: t("gallery.salonAlt") },
+    { src: plat("black-foie-gras"), alt: platAlt("Maki black au foie gras") },
+    { src: img("table-marble.webp"), alt: t("gallery.tableAlt") },
+    { src: plat("tacos-sake"), alt: platAlt("Tacos de saumon") },
+    { src: img("bar-glasses.webp"), alt: t("gallery.barAlt") },
+    { src: plat("gambero-cotto"), alt: platAlt("Nigiri à la crevette") },
+    { src: plat("sakura-roll"), alt: platAlt("Sakura roll signature") },
   ];
 
   return (
     <div>
       {/* ===================== HERO ===================== */}
       <section className="relative min-h-[84svh] md:min-h-[100svh] flex items-center justify-center overflow-hidden bg-luxury-black grain py-24 md:py-32">
-        {/* Cinematic background video (poster shows instantly while it loads) */}
-        <video
-          className="absolute inset-0 w-full h-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          poster={`${import.meta.env.BASE_URL}images/dining.webp`}
-        >
-          <source src={`${import.meta.env.BASE_URL}images/hero.mp4`} type="video/mp4" />
-        </video>
-        <div className="hero-overlay absolute inset-0 pointer-events-none" />
-        <div className="absolute inset-0 bg-luxury-black/35 pointer-events-none" />
+        {/* Auto-advancing dish carousel in the background — food is the first thing seen */}
+        <HeroSlideshow />
+        {/* Neutral legibility layers — pure black (not the warm luxury-black) so the
+            dishes keep their natural, appetising colours. Kept light: just enough weight
+            top & bottom (nav / title / stats) plus a soft centre scrim behind the text. */}
+        <div className="absolute inset-0 bg-black/10 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: "radial-gradient(ellipse 60% 50% at 50% 46%, rgba(0,0,0,0.38), rgba(0,0,0,0) 70%)" }}
+        />
         <div className="gold-halo absolute inset-0 pointer-events-none animate-fade-up" style={{ animationDelay: "1.4s" }} />
 
         {/* Vertical side captions */}
@@ -95,7 +88,7 @@ const Home = () => {
           {siteConfig.address.city.replace(/^\d+\s*/, "")} — France
         </span>
 
-        <div className="relative z-10 text-center px-6 max-w-4xl">
+        <div className="relative z-10 text-center px-6 max-w-4xl [text-shadow:0_1px_18px_rgba(0,0,0,0.55)]">
           <p className="animate-fade-up text-luxury-gold text-xs md:text-sm tracking-luxury-wide uppercase font-accent mb-6" style={{ animationDelay: "1.3s" }}>
             {t("home.heroSubtitle")}
           </p>
@@ -135,15 +128,35 @@ const Home = () => {
           </div>
 
           {(siteConfig.social.instagram || siteConfig.social.tiktok) && (
-            /* Visual only — intentionally not clickable (no redirect). */
-            <div className="animate-fade-up mt-10 flex items-center justify-center gap-3" style={{ animationDelay: "2s" }} aria-label="Instagram, TikTok">
+            <div className="animate-fade-up mt-10 flex items-center justify-center gap-3" style={{ animationDelay: "2s" }}>
               {siteConfig.social.instagram && (
-                <span aria-hidden="true" className="flex h-11 w-11 items-center justify-center rounded-full border border-luxury-gold/40 text-luxury-cream/90 bg-luxury-black/25 backdrop-blur-sm">
+                <a
+                  href={siteConfig.social.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-luxury-gold/40 text-luxury-cream/90 bg-luxury-black/25 backdrop-blur-sm hover:text-luxury-gold hover:border-luxury-gold transition-colors"
+                >
                   <InstagramIcon size={21} />
-                </span>
+                </a>
               )}
-              {siteConfig.social.tiktok && (
-                <span aria-hidden="true" className="flex h-11 w-11 items-center justify-center rounded-full border border-luxury-gold/40 text-luxury-cream/90 bg-luxury-black/25 backdrop-blur-sm">
+              {siteConfig.social.tiktok ? (
+                <a
+                  href={siteConfig.social.tiktok}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="TikTok"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-luxury-gold/40 text-luxury-cream/90 bg-luxury-black/25 backdrop-blur-sm hover:text-luxury-gold hover:border-luxury-gold transition-colors"
+                >
+                  <TikTokIcon size={20} />
+                </a>
+              ) : (
+                <span
+                  aria-label="TikTok (bientôt disponible)"
+                  aria-disabled="true"
+                  title="Bientôt disponible"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-luxury-gold/40 text-luxury-cream/90 bg-luxury-black/25 backdrop-blur-sm opacity-50 cursor-not-allowed"
+                >
                   <TikTokIcon size={20} />
                 </span>
               )}
@@ -160,39 +173,6 @@ const Home = () => {
       {/* ===================== CATEGORY MARQUEE ===================== */}
       <section className="bg-luxury-black border-b border-luxury-gold/20 py-5">
         <TextMarquee items={universes.map((u) => u.title)} speed={36} />
-      </section>
-
-      {/* ===================== SPECIALTIES CAROUSEL ===================== */}
-      <section className="relative py-16 md:py-24 lg:py-32 bg-luxury-black grain overflow-hidden">
-        <span className="absolute top-24 right-[9%] animate-float" aria-hidden="true">
-          <span className="block h-2.5 w-2.5 rotate-45 bg-luxury-gold/25" />
-        </span>
-        <div className="section-padding relative z-10">
-          <Reveal className="max-w-3xl mx-auto mb-10 md:mb-14">
-            <SectionHeading
-              tone="dark"
-              eyebrow={t("specialties.eyebrow")}
-              title={t("specialties.title")}
-              subtitle={t("specialties.subtitle")}
-            />
-          </Reveal>
-          <Reveal className="max-w-4xl mx-auto">
-            <GoldFrame>
-              <div className="aspect-[4/3] sm:aspect-[16/10] w-full">
-                <Carousel slides={specialties} autoPlayMs={4500} />
-              </div>
-            </GoldFrame>
-          </Reveal>
-          <Reveal className="mt-14 text-center">
-            <Link
-              to="/menu"
-              className="group inline-flex items-center gap-2 border border-luxury-gold text-luxury-gold hover:bg-luxury-gold hover:text-luxury-black transition-colors font-body uppercase text-sm tracking-luxury rounded-full px-8 py-4"
-            >
-              {t("specialties.cta")}
-              <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-            </Link>
-          </Reveal>
-        </div>
       </section>
 
       {/* ===================== AMBIANCE ===================== */}
