@@ -75,7 +75,8 @@
     "title": "招牌料理",
     "subtitle": "领略我们由厨师现点现做的招牌创意料理。",
     "cta": "探索自助餐",
-    "altSuffix": "Sushi Umami 招牌料理"
+    "altSuffix": "Sushi Umami 招牌料理",
+    "scrollHint": "滚动查看全部料理"
   },
   "about": {
     "heroSubtitle": "我们的故事",

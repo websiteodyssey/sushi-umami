@@ -14,7 +14,7 @@ const Contact = () => {
       <PageHero
         title={t("contact.heroTitle")}
         subtitle={t("contact.heroSubtitle")}
-        backgroundImage={`${import.meta.env.BASE_URL}images/salon.webp`}
+        backgroundImage={`${import.meta.env.BASE_URL}images/signature.webp`}
       />
 
       <section className="emerald-wash relative py-16 md:py-24 lg:py-32 bg-luxury-ink grain overflow-hidden">

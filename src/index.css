@@ -37,7 +37,9 @@
 
 html,
 body {
-  overflow-x: hidden;
+  /* `clip` (not `hidden`) prevents sideways scroll WITHOUT establishing a scroll
+     container — so `position: sticky` (used by the gallery carousel pin) keeps working. */
+  overflow-x: clip;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -402,6 +404,11 @@ h4 {
     transform: translateY(-7px);
   }
 
+  /* Gentle horizontal nudge for scroll-cue arrows */
+  .animate-nudge-x {
+    animation: nudge-x 1.6s ease-in-out infinite;
+  }
+
   /* Scroll-triggered reveal: hidden until .is-visible is added */
   .reveal {
     opacity: 0;
@@ -500,6 +507,16 @@ h4 {
   }
 }
 
+@keyframes nudge-x {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(6px);
+  }
+}
+
 @keyframes float {
   0%,
   100% {
@@ -568,11 +585,13 @@ h4 {
     transition: none;
   }
 
+
   .animate-fade-up,
   .animate-letter-in,
   .animate-page-in,
   .animate-ken-burns,
   .animate-hero-zoom,
+  .animate-nudge-x,
   .animate-float,
   .animate-spin-slow,
   .animate-aurora,

@@ -75,7 +75,8 @@
     "title": "Nos Spécialités",
     "subtitle": "Un aperçu de nos créations signature, dressées à la minute par nos chefs.",
     "cta": "Découvrir le buffet",
-    "altSuffix": "spécialité signature de Sushi Umami"
+    "altSuffix": "spécialité signature de Sushi Umami",
+    "scrollHint": "Faites défiler pour voir tous les plats"
   },
   "about": {
     "heroSubtitle": "Notre Histoire",

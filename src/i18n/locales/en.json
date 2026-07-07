@@ -75,7 +75,8 @@
     "title": "Our Specialties",
     "subtitle": "A glimpse of our signature creations, plated to order by our chefs.",
     "cta": "Explore the buffet",
-    "altSuffix": "signature specialty of Sushi Umami"
+    "altSuffix": "signature specialty of Sushi Umami",
+    "scrollHint": "Scroll to reveal every dish"
   },
   "about": {
     "heroSubtitle": "Our Story",

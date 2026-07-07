@@ -1,7 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { Fish, Sandwich, Flame, Soup, Salad, Shell, IceCream, ArrowRight } from "lucide-react";
-import ImageMarquee from "../components/ImageMarquee";
 import TextMarquee from "../components/TextMarquee";
 import SpinningSeal from "../components/SpinningSeal";
 import PricingTabs from "../components/PricingTabs";
@@ -11,7 +10,7 @@ import SectionHeading from "../components/SectionHeading";
 import ParallaxBg from "../components/ParallaxBg";
 import SectionFX from "../components/SectionFX";
 import ContactDetails from "../components/ContactDetails";
-import HeroSlideshow from "../components/HeroSlideshow";
+import SpecialtiesCarousel from "../components/SpecialtiesCarousel";
 import InstagramIcon from "../components/InstagramIcon";
 import TikTokIcon from "../components/TikTokIcon";
 import { siteConfig } from "../config/siteConfig";
@@ -37,47 +36,37 @@ const Home = () => {
   ];
 
   const img = (name: string) => `${import.meta.env.BASE_URL}images/${name}`;
-  const plat = (slug: string) => `${import.meta.env.BASE_URL}images/plats-web/${slug}.webp`;
-  const platAlt = (name: string) => `${name} — ${t("specialties.altSuffix")}`;
 
-  // Both marquee rows blend room ambiance with appetising dishes so the culinary
-  // world stays present all the way down the page.
-  const marqueeImagesA = [
-    { src: img("dining.webp"), alt: t("gallery.diningAlt") },
-    { src: plat("sushi-deluxe"), alt: platAlt("Plateau de sushis Sushi Deluxe") },
+  // Interior / ambiance photos, arranged as an editorial bento mosaic (no carousel).
+  const ambianceTiles = [
+    { src: img("dining.webp"), alt: t("gallery.diningAlt"), cls: "col-span-2 row-span-2" },
     { src: img("signature.webp"), alt: t("gallery.signatureAlt") },
-    { src: plat("spicy-sake-maki"), alt: platAlt("Assortiment de makis épicés au saumon") },
-    { src: img("greenery.webp"), alt: t("gallery.greeneryAlt") },
-    { src: plat("sashimi-misto"), alt: platAlt("Sashimis frais assortis") },
-    { src: plat("fiori-ciliegio"), alt: platAlt("Nigiris Fiori di Ciliegio") },
-  ];
-
-  const marqueeImagesB = [
-    { src: img("salon.webp"), alt: t("gallery.salonAlt") },
-    { src: plat("black-foie-gras"), alt: platAlt("Maki black au foie gras") },
-    { src: img("table-marble.webp"), alt: t("gallery.tableAlt") },
-    { src: plat("tacos-sake"), alt: platAlt("Tacos de saumon") },
-    { src: img("bar-glasses.webp"), alt: t("gallery.barAlt") },
-    { src: plat("gambero-cotto"), alt: platAlt("Nigiri à la crevette") },
-    { src: plat("sakura-roll"), alt: platAlt("Sakura roll signature") },
+    { src: img("bar.webp"), alt: t("gallery.barAlt") },
+    { src: img("table-detail.webp"), alt: t("gallery.tableAlt") },
+    { src: img("washroom.webp"), alt: t("gallery.washroomAlt") },
   ];
 
   return (
-    <div>
+    // One continuous dark canvas so sections flow into each other instead of
+    // reading as separate blocks — individual sections drop their solid fill and
+    // let this gradient show through, keeping only their grain / wash / decor.
+    <div className="relative bg-luxury-black bg-gradient-to-b from-luxury-black via-luxury-ink to-luxury-black">
       {/* ===================== HERO ===================== */}
       <section className="relative min-h-[84svh] md:min-h-[100svh] flex items-center justify-center overflow-hidden bg-luxury-black grain py-24 md:py-32">
-        {/* Auto-advancing dish carousel in the background — food is the first thing seen */}
-        <HeroSlideshow />
-        {/* Neutral legibility layers — pure black (not the warm luxury-black) so the
-            dishes keep their natural, appetising colours. Kept light: just enough weight
-            top & bottom (nav / title / stats) plus a soft centre scrim behind the text. */}
-        <div className="absolute inset-0 bg-black/10 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse 60% 50% at 50% 46%, rgba(0,0,0,0.38), rgba(0,0,0,0) 70%)" }}
-        />
+        {/* Cinematic background video of the dining room (poster shows instantly while it loads) */}
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster={`${import.meta.env.BASE_URL}images/dining.webp`}
+        >
+          <source src={`${import.meta.env.BASE_URL}images/hero.mp4`} type="video/mp4" />
+        </video>
+        <div className="hero-overlay absolute inset-0 pointer-events-none" />
+        <div className="absolute inset-0 bg-luxury-black/35 pointer-events-none" />
         <div className="gold-halo absolute inset-0 pointer-events-none animate-fade-up" style={{ animationDelay: "1.4s" }} />
 
         {/* Vertical side captions */}
@@ -88,7 +77,7 @@ const Home = () => {
           {siteConfig.address.city.replace(/^\d+\s*/, "")} — France
         </span>
 
-        <div className="relative z-10 text-center px-6 max-w-4xl [text-shadow:0_1px_18px_rgba(0,0,0,0.55)]">
+        <div className="relative z-10 text-center px-6 max-w-4xl">
           <p className="animate-fade-up text-luxury-gold text-xs md:text-sm tracking-luxury-wide uppercase font-accent mb-6" style={{ animationDelay: "1.3s" }}>
             {t("home.heroSubtitle")}
           </p>
@@ -171,43 +160,62 @@ const Home = () => {
       </section>
 
       {/* ===================== CATEGORY MARQUEE ===================== */}
-      <section className="bg-luxury-black border-b border-luxury-gold/20 py-5">
+      <section className="relative py-5">
+        {/* hairline gold gradients instead of a hard border, for a softer seam */}
+        <span aria-hidden="true" className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-luxury-gold/25 to-transparent" />
+        <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-luxury-gold/25 to-transparent" />
         <TextMarquee items={universes.map((u) => u.title)} speed={36} />
       </section>
 
-      {/* ===================== AMBIANCE ===================== */}
-      <section className="py-16 md:py-24 lg:py-32 bg-luxury-cream relative overflow-hidden">
-        <img
-          src={`${import.meta.env.BASE_URL}images/sakura-branch.svg`}
-          alt=""
-          aria-hidden="true"
-          className="absolute right-0 top-0 w-[24rem] md:w-[34rem] opacity-40 -scale-x-100 pointer-events-none select-none"
-        />
-        <div className="section-padding mb-12 relative z-10">
+      {/* ===================== SPECIALTIES CAROUSEL ===================== */}
+      <SpecialtiesCarousel />
+
+      {/* ===================== AMBIANCE (editorial mosaic) ===================== */}
+      <section className="relative py-16 md:py-24 lg:py-32 grain emerald-wash overflow-hidden">
+        <span className="absolute top-24 right-[7%] animate-float" aria-hidden="true">
+          <span className="block h-2.5 w-2.5 rotate-45 bg-luxury-gold/20" />
+        </span>
+        <div className="section-padding mb-10 md:mb-14 relative z-10">
           <Reveal className="max-w-3xl mx-auto">
             <SectionHeading
-              tone="light"
+              tone="dark"
               eyebrow={t("home.ambianceSubtitle")}
               title={t("home.ambianceTitle")}
             />
           </Reveal>
         </div>
-        <div className="space-y-6 relative z-10">
-          <ImageMarquee images={marqueeImagesA} direction="left" speed={45} />
-          <ImageMarquee images={marqueeImagesB} direction="right" speed={50} />
+        <div className="section-padding relative z-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[8.5rem] sm:auto-rows-[10rem] md:auto-rows-[12rem] gap-3 md:gap-4 max-w-6xl mx-auto">
+            {ambianceTiles.map((tile, i) => (
+              <Reveal
+                key={tile.src}
+                delay={(i % 4) * 90}
+                className={`group relative overflow-hidden rounded-lg border border-luxury-gold/12 ${tile.cls ?? ""}`}
+              >
+                <img
+                  src={tile.src}
+                  alt={tile.alt}
+                  loading="lazy"
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.3s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.08]"
+                />
+                <span className="pointer-events-none absolute inset-3 border border-luxury-gold/0 group-hover:border-luxury-gold/30 transition-colors duration-500" />
+              </Reveal>
+            ))}
+          </div>
         </div>
-        <Reveal className="section-padding mt-14 text-center relative z-10">
+        <Reveal className="section-padding mt-12 md:mt-14 text-center relative z-10">
           <Link
             to="/gallery"
-            className="inline-block border border-luxury-gold text-luxury-gold hover:bg-luxury-gold hover:text-luxury-black transition-colors font-body uppercase text-sm tracking-luxury rounded-full px-8 py-4"
+            className="group inline-flex items-center gap-2 border border-luxury-gold text-luxury-gold hover:bg-luxury-gold hover:text-luxury-black transition-colors font-body uppercase text-sm tracking-luxury rounded-full px-8 py-4"
           >
             {t("home.ambianceCta")}
+            <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
           </Link>
         </Reveal>
       </section>
 
       {/* ===================== PRICING ===================== */}
-      <section className="relative py-16 md:py-24 lg:py-32 bg-luxury-ink grain emerald-wash overflow-hidden">
+      <section className="relative py-16 md:py-24 lg:py-32 grain emerald-wash overflow-hidden">
         <ParallaxBg src={`${import.meta.env.BASE_URL}images/signature.webp`} className="opacity-[0.12]" />
         <div className="animate-aurora absolute inset-0 bg-gradient-to-br from-luxury-emerald-deep/45 via-transparent to-luxury-gold-deep/25 pointer-events-none" />
         <span className="absolute top-20 left-[8%] animate-float" aria-hidden="true">
@@ -234,7 +242,7 @@ const Home = () => {
       </section>
 
       {/* ===================== 7 UNIVERSES ===================== */}
-      <section className="emerald-wash py-16 md:py-24 lg:py-32 bg-luxury-ink grain relative overflow-hidden">
+      <section className="emerald-wash py-16 md:py-24 lg:py-32 grain relative overflow-hidden">
         <span className="absolute top-28 left-[7%] animate-float" aria-hidden="true">
           <span className="block h-2.5 w-2.5 rotate-45 bg-luxury-gold/25" />
         </span>
@@ -285,7 +293,7 @@ const Home = () => {
       </section>
 
       {/* ===================== FIND US ===================== */}
-      <section className="emerald-wash relative py-16 md:py-24 lg:py-32 bg-luxury-ink grain overflow-hidden">
+      <section className="emerald-wash relative py-16 md:py-24 lg:py-32 grain overflow-hidden">
         <SectionFX />
         <div className="section-padding relative z-10">
           <Reveal className="max-w-2xl mx-auto mb-12">
@@ -311,7 +319,7 @@ const Home = () => {
       </section>
 
       {/* ===================== FINAL CTA ===================== */}
-      <section className="relative py-20 md:py-28 lg:py-36 bg-luxury-black grain text-center overflow-hidden">
+      <section className="relative py-20 md:py-28 lg:py-36 grain text-center overflow-hidden">
         <ParallaxBg src={`${import.meta.env.BASE_URL}images/bar.webp`} className="opacity-40" />
         <div className="absolute inset-0 bg-gradient-to-t from-luxury-black via-luxury-black/75 to-luxury-black/85 pointer-events-none" />
         <span className="absolute top-16 right-[12%] animate-float" aria-hidden="true">
