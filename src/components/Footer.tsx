@@ -24,20 +24,34 @@ const Footer = () => {
             {t("footer.tagline")}
           </p>
           {(siteConfig.social.instagram || siteConfig.social.tiktok) && (
-            /* Visual only — intentionally not clickable (no redirect). */
-            <div className="flex items-center gap-3 mt-5" aria-label="Instagram, TikTok">
+            <div className="flex items-center gap-3 mt-5">
               {siteConfig.social.instagram && (
-                <span
-                  aria-hidden="true"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-luxury-gold/30 text-luxury-cream/80"
+                <a
+                  href={siteConfig.social.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-luxury-gold/30 text-luxury-cream/80 hover:text-luxury-gold hover:border-luxury-gold/60 transition-colors"
                 >
                   <InstagramIcon size={20} />
-                </span>
+                </a>
               )}
-              {siteConfig.social.tiktok && (
+              {siteConfig.social.tiktok ? (
+                <a
+                  href={siteConfig.social.tiktok}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="TikTok"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-luxury-gold/30 text-luxury-cream/80 hover:text-luxury-gold hover:border-luxury-gold/60 transition-colors"
+                >
+                  <TikTokIcon size={19} />
+                </a>
+              ) : (
                 <span
-                  aria-hidden="true"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-luxury-gold/30 text-luxury-cream/80"
+                  aria-label="TikTok (bientôt disponible)"
+                  aria-disabled="true"
+                  title="Bientôt disponible"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-luxury-gold/30 text-luxury-cream/80 opacity-50 cursor-not-allowed"
                 >
                   <TikTokIcon size={19} />
                 </span>

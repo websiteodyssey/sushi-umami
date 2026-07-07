@@ -13,10 +13,9 @@ export const siteConfig = {
   mapsUrl: "https://maps.google.com/?q=7+All%C3%A9e+Duquesne,+44000+Nantes",
   reservationUrl: "https://reservation.ody.app/1b1a1127-1fa4-462a-af61-92ba17c21b80",
   // Réseaux sociaux — coller l'URL complète du profil (laisser vide = icône masquée).
-  // TODO: remplacer par les vrais comptes (liens temporaires pour l'aperçu).
   social: {
-    instagram: "https://www.instagram.com/",
-    tiktok: "https://www.tiktok.com/",
+    instagram: "https://www.instagram.com/umamisushi668/",
+    tiktok: "",
   },
   // Données légales issues de l'extrait Kbis (RCS Nantes, à jour au 08/02/2026).
   legal: {

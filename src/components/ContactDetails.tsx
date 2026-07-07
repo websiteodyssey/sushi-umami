@@ -80,15 +80,35 @@ const ContactDetails = ({ actions, showSocial = false }: ContactDetailsProps) =>
           <Reveal delay={240} className="luxury-card-dark p-6 flex items-center gap-5">
             <div>
               <h3 className={label}>{t("contact.followTitle")}</h3>
-              {/* Visual only — intentionally not clickable */}
-              <div className="flex items-center gap-3 mt-2" aria-label="Instagram, TikTok">
+              <div className="flex items-center gap-3 mt-2">
                 {instagram && (
-                  <span className={badge} aria-hidden="true">
+                  <a
+                    href={instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                    className={`${badge} hover:bg-luxury-gold/10 transition-colors`}
+                  >
                     <InstagramIcon size={22} />
-                  </span>
+                  </a>
                 )}
-                {tiktok && (
-                  <span className={badge} aria-hidden="true">
+                {tiktok ? (
+                  <a
+                    href={tiktok}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="TikTok"
+                    className={`${badge} hover:bg-luxury-gold/10 transition-colors`}
+                  >
+                    <TikTokIcon size={21} />
+                  </a>
+                ) : (
+                  <span
+                    aria-label="TikTok (bientôt disponible)"
+                    aria-disabled="true"
+                    title="Bientôt disponible"
+                    className={`${badge} opacity-50 cursor-not-allowed`}
+                  >
                     <TikTokIcon size={21} />
                   </span>
                 )}
