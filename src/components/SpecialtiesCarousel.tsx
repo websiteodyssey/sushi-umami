@@ -26,51 +26,54 @@ const shuffle = (arr: Dish[], seed: number) => {
 const MIXED = shuffle(DISHES, 730421);
 
 /**
- * One dish row that gently drifts sideways as the section scrolls through the
- * viewport (soft, eased, non-pinned — the page keeps flowing), while the arrows
- * let the visitor browse the rest at will. `dir` flips the drift direction so the
- * two rows glide in opposition for a luxurious feel.
+ * One dish row that continuously auto-scrolls sideways on its own in a seamless
+ * infinite loop (the dish list is doubled so the wrap is invisible). `dir` flips
+ * the direction so the two rows glide in opposition for a luxurious feel. The
+ * loop runs continuously (no hover pause); the arrows nudge it and it keeps going.
  */
 const DishRow = ({ dishes, dir }: { dishes: Dish[]; dir: number }) => {
   const { t } = useTranslation();
-  const rowRef = useRef<HTMLDivElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
-  const offset = useRef(0);
-  const max = useRef(0);
+  const pos = useRef(0);
+  const half = useRef(0);
+
+  // Doubled list so the track can loop seamlessly.
+  const loop = [...dishes, ...dishes];
 
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const track = trackRef.current;
-    const vp = viewportRef.current;
-    const row = rowRef.current;
-    if (!track || !vp || !row) return;
+    if (!track) return;
 
     let raf = 0;
-    let cur = 0;
     let running = true;
+    const speed = 0.6; // px per frame ≈ 36px/s at 60fps — smooth & lively
 
     const remeasure = () => {
-      max.current = Math.max(0, track.scrollWidth - vp.clientWidth);
-      if (offset.current < -max.current) offset.current = -max.current;
+      half.current = track.scrollWidth / 2;
     };
-    const target = () => {
-      let drift = 0;
-      if (!reduce && max.current > 0) {
-        const rect = row.getBoundingClientRect();
-        const p = Math.min(1, Math.max(0, (window.innerHeight - rect.top) / (window.innerHeight + rect.height)));
-        const soft = Math.min(300, max.current);
-        drift = dir > 0 ? -p * soft : -(1 - p) * soft;
-      }
-      return Math.max(-max.current, Math.min(0, drift + offset.current));
+
+    const wrap = (v: number) => {
+      const h = half.current;
+      if (h <= 0) return 0;
+      if (v <= -h) v += h;
+      if (v > 0) v -= h;
+      return v;
     };
+
     const tick = () => {
-      cur += (target() - cur) * 0.08;
-      track.style.transform = `translate3d(${cur.toFixed(2)}px, 0, 0)`;
+      if (!reduce) {
+        pos.current = wrap(pos.current - speed * (dir > 0 ? 1 : -1));
+      }
+      track.style.transform = `translate3d(${pos.current.toFixed(2)}px, 0, 0)`;
       if (running) raf = requestAnimationFrame(tick);
     };
 
+    // dir<0 rows start already shifted so they drift the other way from full.
+    pos.current = dir > 0 ? 0 : -1;
     remeasure();
+    pos.current = wrap(pos.current);
     window.addEventListener("resize", remeasure);
     raf = requestAnimationFrame(tick);
     return () => {
@@ -81,18 +84,25 @@ const DishRow = ({ dishes, dir }: { dishes: Dish[]; dir: number }) => {
   }, [dir, dishes.length]);
 
   const nudge = (d: number) => {
-    const card = trackRef.current?.querySelector("article") as HTMLElement | null;
+    const track = trackRef.current;
+    const card = track?.querySelector("article") as HTMLElement | null;
     const step = card ? card.offsetWidth + 20 : 300;
-    offset.current = Math.max(-max.current, Math.min(0, offset.current - d * step));
+    let v = pos.current - d * step;
+    const h = half.current;
+    if (h > 0) {
+      if (v <= -h) v += h;
+      if (v > 0) v -= h;
+    }
+    pos.current = v;
   };
 
   return (
-    <div ref={rowRef} className="relative">
+    <div className="relative">
       <div ref={viewportRef} className="overflow-hidden">
         <div ref={trackRef} className="flex gap-4 md:gap-6 px-6 md:px-[7vw] py-1 w-max will-change-transform">
-          {dishes.map((dsh) => (
+          {loop.map((dsh, i) => (
             <article
-              key={dsh.slug}
+              key={`${dsh.slug}-${i}`}
               className="group relative shrink-0 w-[62vw] xs:w-[15rem] sm:w-[17rem] lg:w-[20rem] aspect-[3/4] overflow-hidden rounded-lg border border-luxury-gold/15"
             >
               <img

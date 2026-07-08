@@ -77,7 +77,7 @@ const Home = () => {
           {siteConfig.address.city.replace(/^\d+\s*/, "")} — France
         </span>
 
-        <div className="relative z-10 text-center px-6 max-w-4xl">
+        <div className="relative z-10 text-center px-6 max-w-4xl mt-16 md:mt-0">
           <p className="animate-fade-up text-luxury-gold text-xs md:text-sm tracking-luxury-wide uppercase font-accent mb-6" style={{ animationDelay: "1.3s" }}>
             {t("home.heroSubtitle")}
           </p>

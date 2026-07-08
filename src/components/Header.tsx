@@ -39,14 +39,14 @@ const Header = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled || menuOpen
-          ? "h-16 md:h-20 bg-luxury-black/95 backdrop-blur border-b border-luxury-gold/20"
-          : "h-20 md:h-24 bg-gradient-to-b from-black/60 to-transparent border-b border-transparent"
+          ? "h-11 md:h-20 bg-luxury-black/95 backdrop-blur border-b border-luxury-gold/20"
+          : "h-12 md:h-24 bg-gradient-to-b from-black/60 to-transparent border-b border-transparent"
       }`}
     >
       <div className="section-padding relative z-50 h-full flex items-center justify-between gap-4">
         <NavLink to="/" className="flex items-center gap-3 shrink-0" onClick={close}>
-          <img src={`${import.meta.env.BASE_URL}images/logo-round.webp`} alt={siteConfig.name} className="h-11 w-11 md:h-12 md:w-12 object-cover rounded-full shrink-0" />
-          <span className="font-display text-xl md:text-2xl text-luxury-cream tracking-wide whitespace-nowrap">
+          <img src={`${import.meta.env.BASE_URL}images/logo-round.webp`} alt={siteConfig.name} className="h-8 w-8 md:h-12 md:w-12 object-cover rounded-full shrink-0" />
+          <span className="font-display text-lg md:text-2xl text-luxury-cream tracking-wide whitespace-nowrap">
             {siteConfig.name}
           </span>
         </NavLink>
