@@ -142,7 +142,18 @@
     "tableAlt": "黄铜镶边餐桌与磨砂玻璃杯",
     "barDetailAlt": "吧台的咖啡机与背光置物架",
     "pendantAlt": "金色鸟笼吊灯，暖光",
-    "wallDetailAlt": "标志性墙面背光艺术装饰贝壳特写"
+    "wallDetailAlt": "标志性墙面背光艺术装饰贝壳特写",
+    "discWallAlt": "装饰艺术风格金色圆盘背光墙面",
+    "alcoveAlt": "带椭圆金色镜面与镂空隔断的壁龛",
+    "tableSettingAlt": "金色圆盘墙前摆放切割玻璃杯的餐桌",
+    "banquetteAlt": "金色吊灯下的翡翠绿卡座",
+    "venueAlt": "Sushi Umami 餐厅用餐区与内饰",
+    "plateAlt": "主厨创作——寿司、刺身与卷物拼盘",
+    "labelRoom": "空间",
+    "labelPlate": "料理",
+    "close": "关闭",
+    "prev": "上一张",
+    "next": "下一张"
   },
   "contact": {
     "heroSubtitle": "找到我们",

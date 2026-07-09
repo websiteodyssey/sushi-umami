@@ -26,3 +26,6 @@ dist-ssr
 # HD source photos (kept locally, not deployed)
 _originals-hd/
 public/images/plats/
+
+# HD source photos (kept locally, not deployed)
+public/images/imges version2/

@@ -37,13 +37,16 @@ const Home = () => {
 
   const img = (name: string) => `${import.meta.env.BASE_URL}images/${name}`;
 
-  // Interior / ambiance photos, arranged as an editorial bento mosaic (no carousel).
+  // Editorial bento mosaic (no carousel): the emerald-and-gold disc wall anchors
+  // the space and a second dining-room shot grounds the venue, framed by three
+  // vivid plated creations so the section bursts with colour without reading as a
+  // dark interior grid.
   const ambianceTiles = [
-    { src: img("dining.webp"), alt: t("gallery.diningAlt"), cls: "col-span-2 row-span-2" },
-    { src: img("signature.webp"), alt: t("gallery.signatureAlt") },
-    { src: img("bar.webp"), alt: t("gallery.barAlt") },
-    { src: img("table-detail.webp"), alt: t("gallery.tableAlt") },
-    { src: img("washroom.webp"), alt: t("gallery.washroomAlt") },
+    { src: img("venue/2t9a8814.webp"), alt: t("gallery.discWallAlt"), cls: "col-span-2 row-span-2" },
+    { src: img("venue/2t9a9545.webp"), alt: t("gallery.plateAlt") },
+    { src: img("venue/2t9a9558.webp"), alt: t("gallery.plateAlt") },
+    { src: img("venue/2t9a9539.webp"), alt: t("gallery.plateAlt") },
+    { src: img("venue/2t9a8812.webp"), alt: t("gallery.venueAlt") },
   ];
 
   return (

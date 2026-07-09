@@ -146,7 +146,18 @@
     "tableAlt": "Tables laquées de laiton dressées aux verres glacés",
     "barDetailAlt": "Machine à espresso et étagères rétroéclairées du bar",
     "pendantAlt": "Suspension lanterne en cage dorée à la lumière chaude",
-    "wallDetailAlt": "Gros plan des coquilles art-déco rétroéclairées du mur signature"
+    "wallDetailAlt": "Gros plan des coquilles art-déco rétroéclairées du mur signature",
+    "discWallAlt": "Mur art-déco aux disques dorés rétroéclairés",
+    "alcoveAlt": "Alcôve au miroir doré ovale et claustras ajourés",
+    "tableSettingAlt": "Table dressée aux verres taillés devant le mur à disques dorés",
+    "banquetteAlt": "Rangée de banquettes émeraude sous les suspensions dorées",
+    "venueAlt": "Salle et décor du restaurant Sushi Umami",
+    "plateAlt": "Création du chef — sushis, sashimis et makis dressés",
+    "labelRoom": "Salle",
+    "labelPlate": "Cuisine",
+    "close": "Fermer",
+    "prev": "Précédent",
+    "next": "Suivant"
   },
   "contact": {
     "heroSubtitle": "Nous Trouver",

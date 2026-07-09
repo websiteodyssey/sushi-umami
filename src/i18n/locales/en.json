@@ -146,7 +146,18 @@
     "tableAlt": "Brass-edged tables set with frosted tumblers",
     "barDetailAlt": "Espresso machine and backlit shelving at the bar",
     "pendantAlt": "Golden cage lantern pendant with warm light",
-    "wallDetailAlt": "Close-up of the backlit art-deco shells of the signature wall"
+    "wallDetailAlt": "Close-up of the backlit art-deco shells of the signature wall",
+    "discWallAlt": "Art-deco wall of backlit golden discs",
+    "alcoveAlt": "Alcove with an oval golden mirror and openwork screens",
+    "tableSettingAlt": "Table set with cut-glass tumblers before the golden disc wall",
+    "banquetteAlt": "Row of emerald booths beneath golden pendant lights",
+    "venueAlt": "Dining room and interior of Sushi Umami",
+    "plateAlt": "Chef's creation — plated sushi, sashimi and maki",
+    "labelRoom": "Interior",
+    "labelPlate": "Cuisine",
+    "close": "Close",
+    "prev": "Previous",
+    "next": "Next"
   },
   "contact": {
     "heroSubtitle": "Find Us",
