@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Sushi Umami",
-  phone: "02 51 82 78 86",
-  phoneHref: "tel:+33251827886",
+  phone: "09 63 04 62 58",
+  phoneHref: "tel:+33963046258",
   address: {
     street: "7 Allée Duquesne",
     city: "44000 Nantes",
