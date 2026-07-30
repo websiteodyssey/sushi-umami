@@ -120,14 +120,13 @@ const Footer = () => {
         </nav>
         <p>© {new Date().getFullYear()} {siteConfig.name} — {t("footer.rights")}</p>
         <p className="mt-1.5 text-luxury-cream/45">
-          Powered by{" "}
           <a
             href="https://pro.ody.app/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-luxury-gold/80 hover:text-luxury-gold transition-colors"
           >
-            ody
+            Powered by ODY
           </a>
         </p>
       </div>
