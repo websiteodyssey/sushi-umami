@@ -1,5 +1,5 @@
 ﻿import { useTranslation } from "react-i18next";
-import { Clock, IdCard, Trash2, Ban } from "lucide-react";
+import { Clock, IdCard, Trash2, Ban, CreditCard } from "lucide-react";
 import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
 import Ornament from "../components/Ornament";
@@ -27,6 +27,7 @@ const Menu = () => {
     { icon: IdCard, text: t("menu.rule1") },
     { icon: Trash2, text: t("menu.rule2") },
     { icon: Ban, text: t("menu.rule3") },
+    { icon: CreditCard, text: t("menu.rule4") },
   ];
 
   return (
