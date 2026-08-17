@@ -7,8 +7,8 @@ export const siteConfig = {
     city: "44000 Nantes",
   },
   hours: {
-    lunch: "12h00 - 14h30",
-    dinner: "19h00 - 22h30",
+    lunch: "12h00 - 14h15",
+    dinner: "19h00 - 22h15",
   },
   mapsUrl: "https://maps.google.com/?q=7+All%C3%A9e+Duquesne,+44000+Nantes",
   reservationUrl: "https://reservation.ody.app/1b1a1127-1fa4-462a-af61-92ba17c21b80",
